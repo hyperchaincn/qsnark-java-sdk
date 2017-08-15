@@ -1,0 +1,346 @@
+[
+  [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        },
+        {
+          "name": "resp",
+          "type": "bytes4"
+        }
+      ],
+      "name": "endrResponse",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "cmId",
+          "type": "bytes32"
+        },
+        {
+          "name": "nm",
+          "type": "bytes32"
+        },
+        {
+          "name": "acct",
+          "type": "bytes32"
+        }
+      ],
+      "name": "newUser",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        },
+        {
+          "name": "busiType",
+          "type": "uint8"
+        },
+        {
+          "name": "mark",
+          "type": "bytes4"
+        },
+        {
+          "name": "nm",
+          "type": "bytes32"
+        },
+        {
+          "name": "cmId",
+          "type": "bytes32"
+        },
+        {
+          "name": "acct",
+          "type": "bytes32"
+        }
+      ],
+      "name": "addBillRecord",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getBillRecord",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "uint8[]"
+        },
+        {
+          "name": "",
+          "type": "bytes4[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "queryUserInfoByAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "queryMyUnBill",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        }
+      ],
+      "name": "queryBillInfo",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "name": "",
+          "type": "bytes4"
+        },
+        {
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "name": "",
+          "type": "bytes8"
+        },
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        }
+      ],
+      "name": "queryBillHistInfo",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "uint8[]"
+        },
+        {
+          "name": "",
+          "type": "bytes4[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        },
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        },
+        {
+          "name": "amt",
+          "type": "int256"
+        },
+        {
+          "name": "billType",
+          "type": "bytes4"
+        },
+        {
+          "name": "issueDate",
+          "type": "int256"
+        },
+        {
+          "name": "dueDate",
+          "type": "int256"
+        },
+        {
+          "name": "drwr",
+          "type": "address"
+        },
+        {
+          "name": "accptr",
+          "type": "address"
+        },
+        {
+          "name": "pyee",
+          "type": "address"
+        },
+        {
+          "name": "hodr",
+          "type": "address"
+        }
+      ],
+      "name": "pubBillInfo",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "queryMyBill",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "no",
+          "type": "bytes32"
+        },
+        {
+          "name": "ende",
+          "type": "address"
+        }
+      ],
+      "name": "endrRequst",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    }
+  ]
+]
