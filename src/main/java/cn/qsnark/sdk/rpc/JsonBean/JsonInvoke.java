@@ -16,23 +16,19 @@ public class JsonInvoke {
 
     private String func_name;
     private String token;
-    private String access_token;
     private boolean _const;
     private String from;
     private String payload;
-    private String _private;
     private String to;
     private String abi;
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
 
-    public JsonInvoke(String func_name, String token, String account_token, boolean _const, String from, String payload, String _private, String to, String abi) {
+    public JsonInvoke(String func_name, String token,  boolean _const, String from, String payload,  String to, String abi) {
         this.func_name = func_name;
         this.token = token;
-        this.access_token = account_token;
         this._const = _const;
         this.from = from;
         this.payload = payload;
-        this._private = _private;
         this.to = to;
         this.abi = abi;
     }
@@ -45,9 +41,6 @@ public class JsonInvoke {
         return token;
     }
 
-    public String getAccount_token() {
-        return access_token;
-    }
 
     public boolean is_const() {
         return _const;
@@ -65,10 +58,6 @@ public class JsonInvoke {
         return payload;
     }
 
-    public String get_private() {
-        return _private;
-    }
-
     public String getTo() {
         return to;
     }
@@ -78,11 +67,9 @@ public class JsonInvoke {
         JSONObject jsonObject = JSONObject.fromObject(jsonString);
         this.func_name = jsonObject.getString("func_name");
         this.token = jsonObject.getString("token");
-        this.access_token = account_token;
         this._const = _const;
         this.payload = payload;
         this.from = jsonObject.getString("from");
-        this._private = jsonObject.getString("_private");
         this.to = jsonObject.getString("to");
         if (jsonObject.containsKey("abi"))
             this.abi = jsonObject.getString("abi");
@@ -96,11 +83,9 @@ public class JsonInvoke {
         JSONObject jsonObject = JSONObject.fromObject(jsonString);
         this.func_name = jsonObject.getString("func_name");
         this.token = jsonObject.getString("token");
-        this.access_token = jsonObject.getString("access_token");
         this._const = _const;
         this.payload = jsonObject.getString("payload");
         this.from = jsonObject.getString("from");
-        this._private = jsonObject.getString("_private");
         this.to = jsonObject.getString("to");
         this.abi = jsonObject.getString("abi");
 

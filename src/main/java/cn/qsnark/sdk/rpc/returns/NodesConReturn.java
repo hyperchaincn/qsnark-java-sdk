@@ -17,19 +17,36 @@ public class NodesConReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String  status;
     private JSONArray nodes;
-
+    private String error;
+    private String message;
+    private int code;
 
     public NodesConReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
-        if (jsonString.contains("Status")) {
-            JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status"))
-                this.status = jsonObject.getString("Status");
-            if (jsonObject.containsKey("Nodes"))
-                this.nodes = jsonObject.getJSONArray("Nodes");
-
+        if (jsonString.contains("invalid access token")) {
+            this.error = "invalid access token";
+            this.message = "invalid access token";
+            this.code = -1;
         } else {
-            logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
+            if (jsonString.contains("Status")) {
+                JSONObject jsonObject = JSONObject.fromObject(jsonString);
+                if (jsonObject.containsKey("Status"))
+                    this.status = jsonObject.getString("Status");
+                if (jsonObject.containsKey("Nodes"))
+                    this.nodes = jsonObject.getJSONArray("Nodes");
+
+            } else {
+                logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
+            }
+        }
+        if(this.nodes.equals("")){
+            this.error =this.status;
+            this.message = this.status;
+            this.code = -1;
+        }else{
+
+            this.message = "success";
+            this.code = 0;
         }
     }
 
@@ -39,5 +56,17 @@ public class NodesConReturn {
 
     public JSONArray getNodes() {
         return nodes;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int getCode() {
+        return code;
     }
 }

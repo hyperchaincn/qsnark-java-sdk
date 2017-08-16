@@ -4,6 +4,7 @@ import cn.qsnark.sdk.HttpRequestManager.*;
 import cn.qsnark.sdk.crypto.ECKey;
 import cn.qsnark.sdk.crypto.HashUtil;
 import cn.qsnark.sdk.exception.TxException;
+import cn.qsnark.sdk.rpc.JsonBean.JsonDeploy;
 import cn.qsnark.sdk.rpc.JsonBean.JsonGetTxRecipt;
 import cn.qsnark.sdk.rpc.JsonBean.JsonInvoke;
 import cn.qsnark.sdk.rpc.callback.ComCallback;
@@ -15,7 +16,6 @@ import cn.qsnark.sdk.rpc.function.FunctionEncode;
 import cn.qsnark.sdk.rpc.params.*;
 import cn.qsnark.sdk.rpc.returns.*;
 import cn.qsnark.sdk.rpc.utils.ByteUtil;
-import cn.qsnark.sdk.rpc.utils.HmUtils;
 import cn.qsnark.sdk.rpc.utils.Utils;
 import net.sf.json.JSONObject;
 
@@ -56,8 +56,6 @@ public class QsnarkAPI {
     private DiscardManager discardManager = new DiscardManager();
 
 
-    private HmUtils hmUtils = new HmUtils();
-
     /**
      * 1.1 获取access_token
      *
@@ -78,9 +76,9 @@ public class QsnarkAPI {
     /**
      * 1.2 刷新access_token
      *
-     * @param client_id 应用唯一标识
-     * @param client_secret 应用私钥
-     * @param retoken  前一次token
+     * @param client_id
+     * @param client_secret
+     * @param retoken       前一次token
      * @return 标准格式返回值
      */
 
@@ -94,13 +92,11 @@ public class QsnarkAPI {
     /**
      * 1.3 创建区块链
      *
-     * @param userId        use id
-     * @param appId API授权token user api access token
-     * @param token      应用唯一标识 request body
+     * @param token
      * @return 标准格式返回值
      */
-    public CreteAccountReturn createAccount(long userId, long appId,  String token) throws IOException {
-        CreateAccountParams createParams = new CreateAccountParams(userId, appId, token);
+    public CreteAccountReturn createAccount(String token) throws IOException {
+        CreateAccountParams createParams = new CreateAccountParams(token);
         return new CreteAccountReturn(this.createAccountManager.SyncRequest(createParams));
     }
 
@@ -114,10 +110,10 @@ public class QsnarkAPI {
      * @param Oldpwd       用户老密码
      * @return 标准格式返回值
      */
-    public ChangeAccountReturn ChangeAccountPwd(String token, String access_token, String app_key, String NewPwd, String Oldpwd) throws IOException {
-        ChangeAccountParams changeAccountParams = new ChangeAccountParams(token, access_token, app_key, NewPwd, Oldpwd);
-        return new ChangeAccountReturn(this.changeAccountManager.SyncRequest(changeAccountParams));
-    }
+//    public ChangeAccountReturn ChangeAccountPwd(String token, String access_token, String app_key, String NewPwd, String Oldpwd) throws IOException {
+//        ChangeAccountParams changeAccountParams = new ChangeAccountParams(token, access_token, app_key, NewPwd, Oldpwd);
+//        return new ChangeAccountReturn(this.changeAccountManager.SyncRequest(changeAccountParams));
+//    }
 
     /**
      * 1.5 查询交易信息
@@ -134,20 +130,18 @@ public class QsnarkAPI {
     /**
      * 1.6 获取某个应用下的合约列表
      *
-     * @param access_token header string true "user api access token"
-     * @param token        query string true "user id"
-     * @param appkey       query string true "app key"
+     * @param token        query string true "user api access token"
      * @param pindex       query string true "page index"
      * @param psize        query string true "page size"
      * @return 标准格式返回值
      */
-    public QueryContReturn QueryContractList(String access_token, String token, String appkey, String pindex, String psize) throws IOException {
-        QueryContParams queryContParams = new QueryContParams(access_token, token, appkey, pindex, psize);
+    public QueryContReturn QueryContractList( String token, String pindex, String psize) throws IOException {
+        QueryContParams queryContParams = new QueryContParams( token, pindex, psize);
         return new QueryContReturn(this.queryContManage.SyncRequest(queryContParams));
     }
 
     /**
-     * 1.7.1 compileContract编译智能合约
+     * 1.7 compileContract编译智能合约
      *
      * @param token      API授权token
      * @param sourceCode 智能合约源码
@@ -199,11 +193,11 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.9.2 DeployContract
+     * 1.9.1 DeployContract
      *
-     * @param token         header string true "user api access token"
-     * @param bin           合约调用者地址
-     * @param from          合约调用者地址
+     * @param token header string true "user api access token"
+     * @param bin   合约调用者地址
+     * @param from  合约调用者地址
      * @return 编译结果
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
@@ -227,19 +221,18 @@ public class QsnarkAPI {
      * @return 编译结果
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
-//    public DeployConReturn deployContract(String jsonString, ComCallback callback) throws IOException, InterruptedException {
-//        JsonDeploy jsonDeploy = new JsonDeploy(jsonString);
-//        DeployConParams deployConParams = new DeployConParams(jsonDeploy.getToken(), jsonDeploy.getAccount_token(), jsonDeploy.getBin(),
-//                jsonDeploy.getFrom(), jsonDeploy.getId(), jsonDeploy.get_private());
-//        DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
-//
-//        GetDepTxReceiptThread getDepTxReceiptThread = new GetDepTxReceiptThread(jsonDeploy.getToken(), deployConReturn, callback);
-//
-//        Thread thread = new Thread(getDepTxReceiptThread);
-//        thread.start();
-//
-//        return deployConReturn;
-//    }
+    public DeployConReturn deployContract(String jsonString, ComCallback callback) throws IOException, InterruptedException {
+        JsonDeploy jsonDeploy = new JsonDeploy(jsonString);
+        DeployConParams deployConParams = new DeployConParams(jsonDeploy.getToken(), jsonDeploy.getBin(), jsonDeploy.getFrom());
+        DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
+
+        GetDepTxReceiptThread getDepTxReceiptThread = new GetDepTxReceiptThread(jsonDeploy.getToken(), deployConReturn, callback);
+
+        Thread thread = new Thread(getDepTxReceiptThread);
+        thread.start();
+
+        return deployConReturn;
+    }
 
 
     /**
@@ -249,19 +242,20 @@ public class QsnarkAPI {
      * @param func_name 方法名
      * @param from      交易发送方的地址
      * @param payload   部署合约与调用合约的时候才有这个值，可以通过这个值追朔到合约调用的方法以及调用传入的参数
-     * @param _private  区块链私钥
      * @param to        交易接收方的地址
      * @param callback  回调方法
      * @return 编译结果
      * @Description Invoke Contract
      */
     //本方法用户需要提供payload 不需要提供contract信息
-    public InvokeConReturn invokeContract(String token, String account_token, String func_name, String from, String payload, String _private, String to, String abi, InvCallback callback) throws IOException, TxException, InterruptedException {
+    public InvokeConReturn invokeContract(String token, String func_name, String from, String payload,
+                                          String to, String abi, InvCallback callback) throws IOException, TxException,
+            InterruptedException {
 
 
         boolean _const = true;
 
-        InvokeConParams invokeConParams = new InvokeConParams(token, account_token, _const, from, payload, _private, to);
+        InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(func_name, token, invokeReturn, abi, callback);
         new Thread(getInvTxReceiptThread).start();
@@ -284,7 +278,7 @@ public class QsnarkAPI {
 
         boolean _const = true;
         JsonInvoke jsonInvoke = new JsonInvoke(_const, jsonString);
-        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), jsonInvoke.getAccount_token(), _const, jsonInvoke.getFrom(), jsonInvoke.getPayload(), jsonInvoke.get_private(), jsonInvoke.getTo());
+        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), _const, jsonInvoke.getFrom(), jsonInvoke.getPayload(),  jsonInvoke.getTo());
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(jsonInvoke.getFunc_name(), jsonInvoke.getToken(), invokeReturn, jsonInvoke.getAbi(), callback);
         new Thread(getInvTxReceiptThread).start();
@@ -293,27 +287,26 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.10.1 Invoke Contract
+     * 1.10.3 Invoke Contract
      * <p>
      * 用户传入交易签名
      *
      * @param func_name    方法名
      * @param jsonContract json字符串格式的contract
      * @param from         交易发送方的地址
-     * @param _private     区块链私钥
      * @param to           交易接收方的地址
      * @param callback     回调方法
      * @return 编译结果
      * @Description Invoke Contract
      */
     //本方法用户需要提供contract信息 不需要提供payload
-    public InvokeConReturn invokeContractNopay(String token, String func_name, String jsonContract, String from, String _private, String to, String abi, InvCallback callback) throws IOException, TxException, InterruptedException {
+    public InvokeConReturn invokeContractNopay(String token, String func_name, String jsonContract, String from,  String to, String abi, InvCallback callback) throws IOException, TxException, InterruptedException {
         String account_token = "";
         boolean _const = true;
 
         String payload = createPayload(func_name, jsonContract);
         System.out.println(payload);
-        InvokeConParams invokeConParams = new InvokeConParams(token, account_token, _const, from, payload, _private, to);
+        InvokeConParams invokeConParams = new InvokeConParams(token,  _const, from, payload,  to);
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
 
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(func_name, token, invokeReturn, abi, callback);
@@ -323,7 +316,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.10.2 Invoke Contract
+     * 1.10.4 Invoke Contract
      * 用户传入交易签名
      *
      * @param jsonString 包含各种信息
@@ -345,7 +338,7 @@ public class QsnarkAPI {
         String payload = createPayload(func_name, jsonContract);
         System.out.println(payload);
         JsonInvoke jsonInvoke = new JsonInvoke(account_token, _const, payload, jsonString);
-        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), jsonInvoke.getAccount_token(), jsonInvoke.is_const(), jsonInvoke.getFrom(), jsonInvoke.getPayload(), jsonInvoke.get_private(), jsonInvoke.getTo());
+        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), jsonInvoke.is_const(), jsonInvoke.getFrom(), jsonInvoke.getPayload(),  jsonInvoke.getTo());
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(jsonInvoke.getFunc_name(), jsonInvoke.getToken(), invokeReturn, jsonInvoke.getAbi(), callback);
         new Thread(getInvTxReceiptThread).start();
@@ -553,8 +546,8 @@ public class QsnarkAPI {
      * @param token user api access token
      * @Description query transaction by hash 获取链上交易总数
      */
-    public CountConReturn countTransaction(String token) throws IOException {
-        return new CountConReturn(this.countManager.SyncRequest(token));
+    public CountTraReturn countTransaction(String token) throws IOException {
+        return new CountTraReturn(this.countManager.SyncRequest(token));
     }
 
     /**

@@ -49,7 +49,15 @@ public class CompileReturn {
                 if (jsObject.containsKey("OK"))
                     this.cts_ok = jsObject.getBoolean("OK");
             }
+            if(this.cts_bin.equals("")){
+                this.error =this.status;
+                this.message = this.status;
+                this.code = -1;
+            }else{
 
+                this.message = "success";
+                this.code = 0;
+            }
         }
     }
 
@@ -80,6 +88,16 @@ public class CompileReturn {
     public boolean isCts_ok() {
         return cts_ok;
     }
+
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int getCode() {
+        return code;
+    }
 }
-
-

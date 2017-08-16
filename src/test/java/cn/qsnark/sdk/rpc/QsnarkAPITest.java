@@ -47,49 +47,26 @@ public class QsnarkAPITest {
     @Test
     public void createAccount() throws Exception {
 
-        api.createAccount(6, 2, "Bearer XUSICYOHONK_AJA1LMQQLQ");
+        api.createAccount("Bearer Y9VITF6ONAQTSTQTFXXTVG");
     }
-
-//    @Test
-//    public void changeAccount() throws Exception {
-//
-//        api.ChangeAccountPwd("Bearer YPNLR5IIOWMP-TKIJQJVIA", "1", "1", "1", "1");
-//    }
-
 
     @Test
     public void queryContractList() throws Exception {
 
-        QueryContReturn singleValueReturn = api.QueryContractList("Bearer F-Q1MMX4OWKHGERYDSEBBQ", "1", "1", "1", "1");
+        QueryContReturn singleValueReturn = api.QueryContractList("Bearer Y9VITF6ONAQTSTQTFXXTVG", "1", "1");
     }
 
     @Test
     public void compileContract() throws Exception {
 
         String s = "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-        System.out.println(s);
-        System.out.println(s);
-        CompileReturn compileReturn = api.compileContract("Bearer _G2BS9FTNUE2SC5SO-NB3Q", s);
+        CompileReturn compileReturn = api.compileContract("Bearer MN6O_MJTMI2DCBA9LYS6CA", s);
     }
-
-//    @Test
-//    public void jsonCompileContract() throws Exception {
-//
-//        String s = "[" + "\n" +
-//                "{" + "\"CTCode\": \"contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;   " +
-//                "  }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }\"" + "}" +
-//                "\n" + "]";
-//        String jsonString = "{" + "\n" + "\"token\":\"Bearer YPNLR5IIOWMP-TKIJQJVIA\"," + "\n" + "\"sourceCode\":" + s + "" + "\n" + "}";
-//        System.out.println(jsonString);
-//        api.compileContract(jsonString);
-//
-//    }
-
 
     @Test
     public void getTxReceipt() throws Exception {
 
-        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer XUSICYOHONK_AJA1LMQQLQ", "0x42d3b2e3dd3f63b933c178e8ff9d6084a3440a79f592ac4bdbe0d1503d045248");
+        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer M-4RA2TJOPSZ2MXGCTXHMW", "0x2163f867c4354eac311e2fac32c38badbcc775b48d1fcbb78aaa416d217ee9f0");
         System.out.println(getTxReciptReturn.getContract_address());
     }
 
@@ -97,7 +74,7 @@ public class QsnarkAPITest {
     public void getJsonTxReceipt() throws Exception {
 
         String s = "0x42d3b2e3dd3f63b933c178e8ff9d6084a3440a79f592ac4bdbe0d1503d045248";
-        String jsonString = "{" + "\n" + "\"token\":\"Bearer YPNLR5IIOWMP-TKIJQJVIA\"," + "\n" + "\"txhash\":\"" + s + "\"" + "\n" + "}";
+        String jsonString = "{" + "\n" + "\"token\":\"Bearer Y5BFCSV2MCAZUQMZ9LMMSQ\"," + "\n" + "\"txhash\":\"" + s + "\"" + "\n" + "}";
         System.out.println(jsonString);
         GetTxReciptReturn getTxReciptReturn = api.getTxReceipt(jsonString);
         System.out.println(getTxReciptReturn.getContract_address());
@@ -151,7 +128,7 @@ public class QsnarkAPITest {
     @Test
     public void deleteContract() throws Exception {
 
-        api.deleteContract("Bearer YPNLR5IIOWMP-TKIJQJVIA");
+        api.deleteContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
     }
 
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
@@ -222,7 +199,7 @@ public class QsnarkAPITest {
     @Test
     public void queryTransactionByHash() throws Exception {
 
-        QueryTranReturn qreturn = api.QueryTransactionByHash("Bearer YPNLR5IIOWMP-TKIJQJVIA", "0x17e8747903ea0a929cfda41e38e70d20b4205291b3b59af2f3ee0529b8f62825");
+        QueryTranReturn qreturn = api.QueryTransactionByHash("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "0x17e8747903ea0a929cfda41e38e70d20b4205291b3b59af2f3ee0529b8f62825");
         System.out.println(qreturn.getTimestamp());
     }
 
@@ -236,52 +213,52 @@ public class QsnarkAPITest {
                 "  \"payload\": \"0x60606040523415600b57fe5b5b605e8060196000396000f300606060405263ffffffff60e060020a600035041663f954b8e281146020575bfe5b3415602757fe5b602d602f565b005b5b5600a165627a7a723058200e839a57a0a817eea675d3a664f8d9b98b42f00c435b5ab2713e52a755275e430029\",\n" +
                 "  \"to\": \"0xca1d2f87624994954e561e1ca116567319609b6a\"\n" +
                 "}";
-        api.maintainContract("Bearer YPNLR5IIOWMP-TKIJQJVIA", jsonString);
+        api.maintainContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", jsonString);
     }
 
     @Test
     public void countTransaction() throws Exception {
 
-        api.countTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA");
+        api.countTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
     }
 
     @Test
     public void statusContract() throws Exception {
 
-        api.statusContract("Bearer YPNLR5IIOWMP-TKIJQJVIA", "1", "1", "0xbd2d36e631fbe711728ef23dff9c6c6e0928d382");
+        api.statusContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "1", "2", "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
     }
 
     @Test
     public void discardTransaction() throws Exception {
 
-        DiscardConReturn discardConReturn = api.discardTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA", "20161111", "20170606");
+        DiscardConReturn discardConReturn = api.discardTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "20100101", "20170606");
         System.out.println(discardConReturn.getTransaction());
     }
 
     @Test
     public void nodesChain() throws Exception {
 
-        NodesConReturn nodesConReturn = api.nodesChain("Bearer YPNLR5IIOWMP-TKIJQJVIA");
+        NodesConReturn nodesConReturn = api.nodesChain("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
         System.out.println(nodesConReturn.getNodes());
     }
 
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer YPNLR5IIOWMP-TKIJQJVIA", "number", 11);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "number", 1);
 
     }
 
     @Test
     public void queryBlocks() throws Exception {
 
-        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer YPNLR5IIOWMP-TKIJQJVIA", 1, 11);
+        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", 1, 1);
 
     }
 
     @Test
     public void signTransaction() throws Exception {
-        SignTransactionReturn queryBlocksReturn = api.signTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA", "1", "{}");
+        SignTransactionReturn queryBlocksReturn = api.signTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "1", "{}");
 
     }
 

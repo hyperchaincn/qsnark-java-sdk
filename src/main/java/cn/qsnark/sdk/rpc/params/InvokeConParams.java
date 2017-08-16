@@ -11,20 +11,16 @@ package cn.qsnark.sdk.rpc.params;
 public class InvokeConParams implements Params {
 
     private String token;
-    private String account_token;
     private boolean _const;
     private String from;
     private String payload;
-    private String _private;
     private String to;
 
-    public InvokeConParams(String token, String account_token, boolean _const, String from, String payload, String _private, String to) {
+    public InvokeConParams(String token,  boolean _const, String from, String payload, String to) {
         this.token = token;
-        this.account_token = account_token;
         this._const = _const;
         this.from = from;
         this.payload = payload;
-        this._private = _private;
         this.to = to;
     }
 
@@ -32,9 +28,6 @@ public class InvokeConParams implements Params {
         return token;
     }
 
-    public String getAccount_token() {
-        return account_token;
-    }
 
     public boolean is_const() {
         return _const;
@@ -48,10 +41,6 @@ public class InvokeConParams implements Params {
         return payload;
     }
 
-    public String get_private() {
-        return _private;
-    }
-
     public String getTo() {
         return to;
     }
@@ -59,11 +48,9 @@ public class InvokeConParams implements Params {
     @Override
     public String serlize() {
         String str = "{" +
-                "\"AccountToken\":\"" + this.account_token + "\"," +
                 "\"Const\":" + this._const + "," +
                 "\"From\":\"" + this.from + "\"," +
                 "\"Payload\":\"" + this.payload + "\"," +
-                "\"Private\":\"" + this._private + "\"," +
                 "\"To\":\"" + this.to + "\"" + "}";
         System.out.println(str);
         return str;

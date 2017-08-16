@@ -14,19 +14,13 @@ import org.apache.log4j.Logger;
 public class JsonDeploy {
 
     private String token;
-    private String account_token;
     private String bin;
     private String from;
-    private int id;
-    private String _private;
+
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
 
     public String getToken() {
         return token;
-    }
-
-    public String getAccount_token() {
-        return account_token;
     }
 
     public String getBin() {
@@ -37,23 +31,12 @@ public class JsonDeploy {
         return from;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String get_private() {
-        return _private;
-    }
-
     public JsonDeploy(String jsonString) {
 
         logger.debug("[REQUEST] " + jsonString);
         JSONObject jsonObject = JSONObject.fromObject(jsonString);
         this.token = jsonObject.getString("token");
-        this.account_token = jsonObject.getString("access_token");
         this.bin = jsonObject.getString("bin");
         this.from = jsonObject.getString("from");
-        this.id = jsonObject.getInt("id");
-        this._private = jsonObject.getString("private");
     }
 }

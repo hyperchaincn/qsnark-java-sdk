@@ -12,26 +12,17 @@ package cn.qsnark.sdk.rpc.params;
 
 public class CreateAccountParams  {
 
-    private long userId;
-    private long appId;
+
     private String token;
 
 
 
-    public CreateAccountParams(long userId, long appId, String token) {
-        this.userId = userId;
-        this.appId = appId;
+    public CreateAccountParams(String token) {
         this.token = token;
 
     }
 
-    public long getUserId() {
-        return userId;
-    }
 
-    public long getAppId() {
-        return appId;
-    }
 
     public String getToken() {
         return token;

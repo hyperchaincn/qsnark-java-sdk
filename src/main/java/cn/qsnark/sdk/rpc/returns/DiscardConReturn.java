@@ -15,22 +15,52 @@ import org.apache.log4j.Logger;
  */
 public class DiscardConReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
-    private String  status;
+    private String status;
     private JSONArray transaction;
+    private String error;
+    private String message;
+    private int code;
 
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int getCode() {
+        return code;
+    }
 
     public DiscardConReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
-        if (jsonString.contains("Status")) {
-            JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status"))
-                this.status = jsonObject.getString("Status");
-            if (jsonObject.containsKey("Transactions"))
-                this.transaction = jsonObject.getJSONArray("Transactions");
-
+        if (jsonString.contains("invalid access token")) {
+            this.error = "invalid access token";
+            this.message = "invalid access token";
+            this.code = -1;
         } else {
-            logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
+            if (jsonString.contains("Status")) {
+                JSONObject jsonObject = JSONObject.fromObject(jsonString);
+                if (jsonObject.containsKey("Status"))
+                    this.status = jsonObject.getString("Status");
+                if (jsonObject.containsKey("Transactions"))
+                    this.transaction = jsonObject.getJSONArray("Transactions");
+
+            } else {
+                logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
+            }
         }
+        if (this.transaction.equals("") || this.transaction == null) {
+            this.error = this.status;
+            this.message = this.status;
+            this.code = -1;
+        } else {
+
+            this.message = "success";
+            this.code = 0;
+        }
+
     }
 
     public String getStatus() {

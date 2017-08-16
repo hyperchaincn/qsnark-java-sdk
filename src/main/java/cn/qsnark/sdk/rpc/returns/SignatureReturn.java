@@ -15,7 +15,8 @@ public class SignatureReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     public String status;
     public String message;
-
+    private String error;
+    private int code;
     public SignatureReturn(String jsonString) {
 //        System.out.println(jsonString);
         logger.debug("[RESPONSE] " + jsonString);
