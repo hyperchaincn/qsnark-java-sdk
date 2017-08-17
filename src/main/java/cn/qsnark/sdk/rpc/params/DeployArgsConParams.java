@@ -12,12 +12,9 @@ import net.sf.json.JSONArray;
 public class DeployArgsConParams implements Params {
     private String token;
     private String abiStr;
-    private String accountToken;
     private String args;
     private String bin;
     private String from;
-    private int id;
-    private String _private;
 
 
     public String getToken() {
@@ -28,9 +25,6 @@ public class DeployArgsConParams implements Params {
         return abiStr;
     }
 
-    public String getAccountToken() {
-        return accountToken;
-    }
 
     public String getArgs() {
         return args;
@@ -44,37 +38,24 @@ public class DeployArgsConParams implements Params {
         return from;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String get_private() {
-        return _private;
-    }
 
     JSONArray jsonArray;
 
-    public DeployArgsConParams(String token, String abiStr, String accountToken, String args, String bin, String from, int id, String _private) {
+    public DeployArgsConParams(String token, String abiStr, String args, String bin, String from) {
         this.token = token;
         this.abiStr = abiStr;
-        this.accountToken = accountToken;
         this.args = args;
         this.bin = bin;
         this.from = from;
-        this.id = id;
-        this._private = _private;
     }
 
     @Override
     public String serlize() {
         String str = "{" +"\n"+
                 "\"Abistr\":\"" + this.abiStr + "\"," +"\n"+
-                "\"AccountToken\":\"" + this.accountToken + "\"," +"\n"+
                 "\"Args\":" + this.args + "," +"\n"+
                 "\"Bin\":\"" + this.bin + "\"," +"\n"+
-                "\"From\":\"" + this.from + "\"," +"\n"+
-                "\"Id\":" + this.id + "," +"\n"+
-                "\"Private\":\"" + this._private + "\"" + "\n"+"}";
+                "\"From\":\"" + this.from + "\"," +"\n"+"}";
         return str;
 
     }

@@ -130,13 +130,13 @@ public class QsnarkAPI {
     /**
      * 1.6 获取某个应用下的合约列表
      *
-     * @param token        query string true "user api access token"
-     * @param pindex       query string true "page index"
-     * @param psize        query string true "page size"
+     * @param token  query string true "user api access token"
+     * @param pindex query string true "page index"
+     * @param psize  query string true "page size"
      * @return 标准格式返回值
      */
-    public QueryContReturn QueryContractList( String token, String pindex, String psize) throws IOException {
-        QueryContParams queryContParams = new QueryContParams( token, pindex, psize);
+    public QueryContReturn QueryContractList(String token, String pindex, String psize) throws IOException {
+        QueryContParams queryContParams = new QueryContParams(token, pindex, psize);
         return new QueryContReturn(this.queryContManage.SyncRequest(queryContParams));
     }
 
@@ -278,7 +278,7 @@ public class QsnarkAPI {
 
         boolean _const = true;
         JsonInvoke jsonInvoke = new JsonInvoke(_const, jsonString);
-        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), _const, jsonInvoke.getFrom(), jsonInvoke.getPayload(),  jsonInvoke.getTo());
+        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), _const, jsonInvoke.getFrom(), jsonInvoke.getPayload(), jsonInvoke.getTo());
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(jsonInvoke.getFunc_name(), jsonInvoke.getToken(), invokeReturn, jsonInvoke.getAbi(), callback);
         new Thread(getInvTxReceiptThread).start();
@@ -300,13 +300,13 @@ public class QsnarkAPI {
      * @Description Invoke Contract
      */
     //本方法用户需要提供contract信息 不需要提供payload
-    public InvokeConReturn invokeContractNopay(String token, String func_name, String jsonContract, String from,  String to, String abi, InvCallback callback) throws IOException, TxException, InterruptedException {
+    public InvokeConReturn invokeContractNopay(String token, String func_name, String jsonContract, String from, String to, String abi, InvCallback callback) throws IOException, TxException, InterruptedException {
         String account_token = "";
         boolean _const = true;
 
         String payload = createPayload(func_name, jsonContract);
         System.out.println(payload);
-        InvokeConParams invokeConParams = new InvokeConParams(token,  _const, from, payload,  to);
+        InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
 
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(func_name, token, invokeReturn, abi, callback);
@@ -338,7 +338,7 @@ public class QsnarkAPI {
         String payload = createPayload(func_name, jsonContract);
         System.out.println(payload);
         JsonInvoke jsonInvoke = new JsonInvoke(account_token, _const, payload, jsonString);
-        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), jsonInvoke.is_const(), jsonInvoke.getFrom(), jsonInvoke.getPayload(),  jsonInvoke.getTo());
+        InvokeConParams invokeConParams = new InvokeConParams(jsonInvoke.getToken(), jsonInvoke.is_const(), jsonInvoke.getFrom(), jsonInvoke.getPayload(), jsonInvoke.getTo());
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
         GetInvTxReceiptThread getInvTxReceiptThread = new GetInvTxReceiptThread(jsonInvoke.getFunc_name(), jsonInvoke.getToken(), invokeReturn, jsonInvoke.getAbi(), callback);
         new Thread(getInvTxReceiptThread).start();
@@ -525,17 +525,14 @@ public class QsnarkAPI {
      *
      * @param token        user api access token
      * @param abiStr       Abistr
-     * @param accountToken AccountToken
      * @param args         Args
      * @param bin          Bin
      * @param from         From
-     * @param id           Id
-     * @param _private     Private
      * @return hash
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
-    public DeployArgsConReturn deployArgsContract(String token, String abiStr, String accountToken, String args, String bin, String from, int id, String _private) throws IOException {
-        DeployArgsConParams deployArgsConParams = new DeployArgsConParams(token, abiStr, accountToken, args, bin, from, id, _private);
+    public DeployArgsConReturn deployArgsContract(String token, String abiStr,String args, String bin, String from) throws IOException {
+        DeployArgsConParams deployArgsConParams = new DeployArgsConParams(token, abiStr, args, bin, from);
         return new DeployArgsConReturn(this.deployArgsConManager.SyncRequest(deployArgsConParams));
     }
 

@@ -41,7 +41,7 @@ public class QueryTranReturn {
             this.error = "invalid access token";
             this.message = "invalid access token";
             this.code = -1;
-        } else {
+        } else if (jsonString.contains("Status")) {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
             if (jsonObject.containsKey("status"))
                 this.status = jsonObject.getString("Status");

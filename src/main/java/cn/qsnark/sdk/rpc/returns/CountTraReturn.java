@@ -42,20 +42,20 @@ public class CountTraReturn {
             this.code = -1;
         } else {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status")){
+            if (jsonObject.containsKey("Status")) {
                 this.status = jsonObject.getString("Status");
             }
-            if (jsonObject.containsKey("Count")){
+            if (jsonObject.containsKey("Count")) {
                 this.count = jsonObject.getString("Count");
             }
-            if (jsonObject.containsKey("Timestamp")){
+            if (jsonObject.containsKey("Timestamp")) {
                 this.timeStamp = jsonObject.getString("Timestamp");
             }
-            if(this.timeStamp == null||this.timeStamp.equals("")){
+            if (this.timeStamp == null || this.timeStamp.equals("")) {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;
-            }else{
+            } else {
                 this.message = "success";
                 this.code = 0;
             }

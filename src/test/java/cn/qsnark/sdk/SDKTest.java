@@ -28,9 +28,9 @@ public class SDKTest {
     @Test
     public void compileContract() throws Exception {
 
-        String s = "contract SimpleBank{ struct User{ uint256 id; bytes32 name; } mapping (uint256 => User) private accounts; uint256[] userlist; function newUser(User u) internal{ userlist.push(u.id); accounts[u.id] = u; } function SimpleBank() { User memory u1 = User(1,\"name1\"); User memory u2 = User(2,\"name2\"); User memory u3 = User(3,\"name3\"); newUser(u1); newUser(u2); newUser(u3); } function getUsers() returns (uint256[]){ return userlist; } function getUserInfo(uint256 id) returns (uint256,bytes32){ if (accounts[id].id != 0){ return (accounts[id].id,accounts[id].name); }else{ return (0,0x0); } } }";
+        String s = "contrat SimpleBank{ struct User{ uint256 id; bytes32 name; } mapping (uint256 => User) private accounts; uint256[] userlist; function newUser(User u) internal{ userlist.push(u.id); accounts[u.id] = u; } function SimpleBank() { User memory u1 = User(1,\"name1\"); User memory u2 = User(2,\"name2\"); User memory u3 = User(3,\"name3\"); newUser(u1); newUser(u2); newUser(u3); } function getUsers() returns (uint256[]){ return userlist; } function getUserInfo(uint256 id) returns (uint256,bytes32){ if (accounts[id].id != 0){ return (accounts[id].id,accounts[id].name); }else{ return (0,0x0); } } }";
 
-        CompileReturn compileReturn = api.compileContract("Bearer CLVJBORDO9W7H4WMUXF0XG", s);
+        CompileReturn compileReturn = api.compileContract("Bearer TYDICAD7PDWX914PFXOMQG", s);
     }
 
 //
@@ -46,7 +46,6 @@ public class SDKTest {
 //        CompileReturn compileReturn = api.compileContract(jsonString);
 //
 //    }
-
 
 
     //获取回执 查询指定交易回执信息
@@ -85,7 +84,7 @@ public class SDKTest {
     //创建payload
     @Test
     public void createPayload() {
-        String jsonContract = "{\"uint33\":\"1\",\"uint32\":\"1\"}";
+        String jsonContract = "{\"uint32\":\"1\",\"uint32\":\"1\"}";
         String s = api.createPayload("add", jsonContract);
         System.out.println(s);
         System.out.println(s.length());
@@ -104,7 +103,6 @@ public class SDKTest {
     }
 
 
-
     //按顺序给出signature对应的参数列表
     @Test
     public void signature2() throws Exception {
@@ -117,12 +115,11 @@ public class SDKTest {
                 "81020463ffffffff199091161790555b005b3460025760005463ffffffff16" +
                 "6040805163ffffffff9092168252519081900360200190f35b3460025" +
                 "7605c6000805460e060020a63ffffffff821660010181020463ffffffff1990911617905556";
+        System.out.println(payload);
         String signature = api.signature(from, to, payload);
         System.out.println(signature);
         System.out.println(signature.length());
     }
-
-
 
 
     //json格式参数获取signature
@@ -160,45 +157,52 @@ public class SDKTest {
                 "  \"payload\": \"0x60606040523415600b57fe5b5b605e8060196000396000f300606060405263ffffffff60e060020a600035041663f954b8e281146020575bfe5b3415602757fe5b602d602f565b005b5b5600a165627a7a723058200e839a57a0a817eea675d3a664f8d9b98b42f00c435b5ab2713e52a755275e430029\",\n" +
                 "  \"to\": \"0xca1d2f87624994954e561e1ca116567319609b6a\"\n" +
                 "}";
-        api.maintainContract("Bearer YPNLR5IIOWMP-TKIJQJVIA",jsonString);
+        api.maintainContract("Bearer YPNLR5IIOWMP-TKIJQJVIA", jsonString);
     }
+
     @Test
     public void countTransaction() throws Exception {
 
         api.countTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA");
     }
+
     @Test
     public void statusContract() throws Exception {
 
-        api.statusContract("Bearer YPNLR5IIOWMP-TKIJQJVIA","1","1","0xbd2d36e631fbe711728ef23dff9c6c6e0928d382");
+        api.statusContract("Bearer YPNLR5IIOWMP-TKIJQJVIA", "1", "1", "0xbd2d36e631fbe711728ef23dff9c6c6e0928d382");
     }
+
     @Test
     public void discardTransaction() throws Exception {
 
-       DiscardConReturn discardConReturn = api.discardTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA","20161111","20170606");
+        DiscardConReturn discardConReturn = api.discardTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA", "20161111", "20170606");
         System.out.println(discardConReturn.getTransaction());
     }
+
     @Test
     public void nodesChain() throws Exception {
 
         NodesConReturn nodesConReturn = api.nodesChain("Bearer YPNLR5IIOWMP-TKIJQJVIA");
         System.out.println(nodesConReturn.getNodes());
     }
+
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer YPNLR5IIOWMP-TKIJQJVIA","number",11);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer YPNLR5IIOWMP-TKIJQJVIA", "number", 11);
 
     }
+
     @Test
     public void queryBlocks() throws Exception {
 
-        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer YPNLR5IIOWMP-TKIJQJVIA",1,11);
+        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer YPNLR5IIOWMP-TKIJQJVIA", 1, 11);
 
     }
+
     @Test
     public void signTransaction() throws Exception {
-        SignTransactionReturn queryBlocksReturn = api.signTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA","1","{}");
+        SignTransactionReturn queryBlocksReturn = api.signTransaction("Bearer YPNLR5IIOWMP-TKIJQJVIA", "1", "{}");
 
     }
 }

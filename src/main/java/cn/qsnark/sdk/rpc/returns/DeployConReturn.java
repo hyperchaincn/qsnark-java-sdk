@@ -39,11 +39,11 @@ public class DeployConReturn {
             }
 
         }
-        if (this.txHash==""){
+        if (this.txHash == "") {
             this.error = this.status;
             this.message = this.status;
             this.code = -1;
-        }else{
+        } else {
 
             this.message = "success";
             this.code = 0;

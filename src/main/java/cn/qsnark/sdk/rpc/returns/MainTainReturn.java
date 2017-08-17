@@ -23,7 +23,6 @@ public class MainTainReturn {
     private int code;
 
 
-
     public MainTainReturn(String jsonString) {
 
         logger.debug("[RESPONSE] " + jsonString);
@@ -31,7 +30,7 @@ public class MainTainReturn {
             this.error = "invalid access token";
             this.message = "invalid access token";
             this.code = -1;
-        } else {
+        } else if (jsonString.contains("Status")) {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
             if (jsonObject.has("Status")) {
@@ -44,17 +43,16 @@ public class MainTainReturn {
                 this.txHash = jsonObject.getString("TxHash");
             }
         }
-        if(this.txHash.equals("")){
-            this.error =this.status;
+        if (this.txHash.equals("")) {
+            this.error = this.status;
             this.message = this.status;
             this.code = -1;
-        }else{
-
+        } else {
             this.message = "success";
             this.code = 0;
-
         }
     }
+
     public String getStatus() {
         return status;
     }
@@ -66,6 +64,7 @@ public class MainTainReturn {
     public String getTxHash() {
         return txHash;
     }
+
     public String getError() {
         return error;
     }

@@ -66,7 +66,7 @@ public class RetokenReturn {
             this.error = jsonObject.getString("error");
             this.message = jsonObject.getString("error_description");
             this.code = -1;
-        }else{
+        } else {
             this.code = 0;
             this.message = "success";
         }

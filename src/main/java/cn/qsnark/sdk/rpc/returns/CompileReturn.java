@@ -33,30 +33,38 @@ public class CompileReturn {
             this.message = "invalid access token";
             this.code = -1;
         } else {
-            JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status"))
-                this.status = jsonObject.getString("Status");
-            if (jsonObject.containsKey("Cts")) {
-                String ctsJsonString = jsonObject.getString("Cts");
-                this.cts = JSONArray.fromObject(ctsJsonString);
-                JSONObject jsObject = (JSONObject) this.cts.get(0);
-                if (jsObject.containsKey("Id"))
-                    this.cts_id = jsObject.getInt("Id");
-                if (jsObject.containsKey("Bin"))
-                    this.cts_bin = jsObject.getString("Bin");
-                if (jsObject.containsKey("Abi"))
-                    this.cts_abi = jsObject.getString("Abi");
-                if (jsObject.containsKey("OK"))
-                    this.cts_ok = jsObject.getBoolean("OK");
-            }
-            if(this.cts_bin.equals("")){
-                this.error =this.status;
-                this.message = this.status;
-                this.code = -1;
-            }else{
+            if (jsonString.contains("Status")) {
+                JSONObject jsonObject = JSONObject.fromObject(jsonString);
+                if (jsonObject.containsKey("Status"))
+                    this.status = jsonObject.getString("Status");
+                if (jsonObject.containsKey("Cts")) {
+                    String ctsJsonString = jsonObject.getString("Cts");
+                    if (ctsJsonString != null && !ctsJsonString.equals("") && ctsJsonString != "null") {
+                        this.cts = JSONArray.fromObject(ctsJsonString);
 
-                this.message = "success";
-                this.code = 0;
+                        if (this.cts != null && !this.cts.equals("")) {
+                            JSONObject jsObject = (JSONObject) this.cts.get(0);
+                            if (jsObject.containsKey("Id"))
+                                this.cts_id = jsObject.getInt("Id");
+                            if (jsObject.containsKey("Bin"))
+                                this.cts_bin = jsObject.getString("Bin");
+                            if (jsObject.containsKey("Abi"))
+                                this.cts_abi = jsObject.getString("Abi");
+                            if (jsObject.containsKey("OK"))
+                                this.cts_ok = jsObject.getBoolean("OK");
+                        }
+
+                        if (this.cts_bin.equals("")) {
+                            this.error = this.status;
+                            this.message = this.status;
+                            this.code = -1;
+                        } else {
+
+                            this.message = "success";
+                            this.code = 0;
+                        }
+                    }
+                }
             }
         }
     }

@@ -47,20 +47,20 @@ public class QsnarkAPITest {
     @Test
     public void createAccount() throws Exception {
 
-        api.createAccount("Bearer Y9VITF6ONAQTSTQTFXXTVG");
+        api.createAccount("Bearer 478D4OLMN1IRD9UMDDUH1G");
     }
 
     @Test
     public void queryContractList() throws Exception {
 
-        QueryContReturn singleValueReturn = api.QueryContractList("Bearer Y9VITF6ONAQTSTQTFXXTVG", "1", "1");
+        QueryContReturn singleValueReturn = api.QueryContractList("Bearer DM_VHYTJOPCGNZKZX8IMHQ", "-1", "1");
     }
 
     @Test
     public void compileContract() throws Exception {
 
-        String s = "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-        CompileReturn compileReturn = api.compileContract("Bearer MN6O_MJTMI2DCBA9LYS6CA", s);
+        String s = "contact ccumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
+        CompileReturn compileReturn = api.compileContract("Bearer DM_VHYTJOPCGNZKZX8IMHQ", s);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class QsnarkAPITest {
     @Test
     public void getJsonTxReceipt() throws Exception {
 
-        String s = "0x42d3b2e3dd3f63b933c178e8ff9d6084a3440a79f592ac4bdbe0d1503d045248";
-        String jsonString = "{" + "\n" + "\"token\":\"Bearer Y5BFCSV2MCAZUQMZ9LMMSQ\"," + "\n" + "\"txhash\":\"" + s + "\"" + "\n" + "}";
+        String s = "0xbef684bc8d58d48345e19c1cfa8f8891f7c0cef82181cb73b1b6ad9550e5225d";
+        String jsonString = "{" + "\n" + "\"token\":\"Bearer _AT5GRBAM_SWXOR63CS7WQ\"," + "\n" + "\"txhash\":\"" + s + "\"" + "\n" + "}";
         System.out.println(jsonString);
         GetTxReciptReturn getTxReciptReturn = api.getTxReceipt(jsonString);
         System.out.println(getTxReciptReturn.getContract_address());

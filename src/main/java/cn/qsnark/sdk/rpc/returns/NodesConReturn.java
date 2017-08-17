@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class NodesConReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
-    private String  status;
+    private String status;
     private JSONArray nodes;
     private String error;
     private String message;
@@ -39,11 +39,11 @@ public class NodesConReturn {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
         }
-        if(this.nodes.equals("")){
-            this.error =this.status;
+        if (this.nodes.equals("")) {
+            this.error = this.status;
             this.message = this.status;
             this.code = -1;
-        }else{
+        } else {
 
             this.message = "success";
             this.code = 0;

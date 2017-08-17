@@ -17,14 +17,15 @@ public class SignTransactionReturn {
     public String message;
 
     public SignTransactionReturn(String jsonString) {
-//        System.out.println(jsonString);
+
         logger.debug("[RESPONSE] " + jsonString);
-        JSONObject jsonObject = JSONObject.fromObject(jsonString);
-        if (jsonObject.containsKey("status"))
-            this.status = jsonObject.getString("status");
-        if (jsonObject.containsKey("message"))
-            this.message = jsonObject.getString("message");
+        if (jsonString.contains("status")) {
+            JSONObject jsonObject = JSONObject.fromObject(jsonString);
+            if (jsonObject.containsKey("status"))
+                this.status = jsonObject.getString("status");
+            if (jsonObject.containsKey("message"))
+                this.message = jsonObject.getString("message");
 
-
+        }
     }
 }

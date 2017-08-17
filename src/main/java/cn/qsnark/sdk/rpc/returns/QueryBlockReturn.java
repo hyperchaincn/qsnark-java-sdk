@@ -39,11 +39,11 @@ public class QueryBlockReturn {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
         }
-        if(this.blocks.equals("")){
-            this.error =this.status;
+        if (this.blocks.equals("")) {
+            this.error = this.status;
             this.message = this.status;
             this.code = -1;
-        }else{
+        } else {
 
             this.message = "success";
             this.code = 0;

@@ -29,17 +29,15 @@ public class CreteAccountReturn {
             this.code = -1;
         } else {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-
             if (jsonObject.containsKey("address"))
                 this.address = jsonObject.getString("address");
             if (jsonObject.containsKey("Status"))
                 this.status = jsonObject.getString("Status");
-            if (this.address==""){
+            if (this.address == "") {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;
-            }else{
+            } else {
 
                 this.message = "success";
                 this.code = 0;

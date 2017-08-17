@@ -19,6 +19,7 @@ public class QueryContReturn {
     private String message;
     private String error;
     private int code;
+
     public QueryContReturn(String jsonString) {
 //        System.out.println(jsonString);
 
@@ -34,10 +35,10 @@ public class QueryContReturn {
             if (jsonObject.containsKey("status"))
                 this.message = jsonObject.getString("message");
         }
-        if(this.message.equals("")){
-            this.error =this.status;
+        if (this.message.equals("")) {
+            this.error = this.status;
             this.code = -1;
-        }else{
+        } else {
             this.code = 0;
         }
     }

@@ -41,7 +41,7 @@ public class QueryATReturn {
             this.error = "invalid access token";
             this.message = "invalid access token";
             this.code = -1;
-        } else {
+        } else if (jsonString.contains("Status")) {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
             if (jsonObject.containsKey("access_token"))
                 this.access_token = jsonObject.getString("access_token");
@@ -53,16 +53,17 @@ public class QueryATReturn {
                 this.error_msg = jsonObject.getString("error_msg");
 
         }
-        if(this.access_token.equals("")){
-            this.error =error_msg;
+        if (this.access_token.equals("")) {
+            this.error = error_msg;
             this.message = error_msg;
             this.code = -1;
-        }else{
+        } else {
 
             this.message = "success";
             this.code = 0;
         }
     }
+
     public String getAccess_token() {
         return access_token;
     }

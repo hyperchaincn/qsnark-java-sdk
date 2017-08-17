@@ -35,24 +35,26 @@ public class GetTxReciptReturn {
             this.message = "invalid access token";
             this.code = -1;
         } else {
-            JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status"))
-                this.status = jsonObject.getString("Status");
-            if (jsonObject.containsKey("TxHash"))
-                this.txHash = jsonObject.getString("TxHash");
-            if (jsonObject.containsKey("PostState"))
-                this.poststate = jsonObject.getString("PostState");
-            if (jsonObject.containsKey("ContractAddress"))
-                this.contract_address = jsonObject.getString("ContractAddress");
-            if (jsonObject.containsKey("Ret"))
-                this.ret = jsonObject.getString("Ret");
-            if(this.txHash == ""){
-                this.error = this.status;
-                this.message = this.status;
-                this.code = -1;
-            }else{
-                this.message = "success";
-                this.code = 0;
+            if (jsonString.contains("Status")) {
+                JSONObject jsonObject = JSONObject.fromObject(jsonString);
+                if (jsonObject.containsKey("Status"))
+                    this.status = jsonObject.getString("Status");
+                if (jsonObject.containsKey("TxHash"))
+                    this.txHash = jsonObject.getString("TxHash");
+                if (jsonObject.containsKey("PostState"))
+                    this.poststate = jsonObject.getString("PostState");
+                if (jsonObject.containsKey("ContractAddress"))
+                    this.contract_address = jsonObject.getString("ContractAddress");
+                if (jsonObject.containsKey("Ret"))
+                    this.ret = jsonObject.getString("Ret");
+                if (this.txHash == "") {
+                    this.error = this.status;
+                    this.message = this.status;
+                    this.code = -1;
+                } else {
+                    this.message = "success";
+                    this.code = 0;
+                }
             }
         }
     }

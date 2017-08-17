@@ -23,16 +23,16 @@ public class InvokeConReturn {
     private int code;
 
 
-
     public InvokeConReturn(String jsonString) {
 //        System.out.println(jsonString);
         logger.debug("[RESPONSE] " + jsonString);
-        JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
         if (jsonString.contains("invalid access token")) {
             this.error = "invalid access token";
             this.message = "invalid access token";
             this.code = -1;
-        } else {
+        } else if (jsonString.contains("Status")) {
+            JSONObject jsonObject = JSONObject.fromObject(jsonString);
             if (jsonObject.has("Status")) {
                 this.status = jsonObject.getString("Status");
             }
@@ -42,7 +42,6 @@ public class InvokeConReturn {
             if (jsonObject.has("TxHash")) {
                 this.txHash = jsonObject.getString("TxHash");
             }
-
         }
         if (this.txHash.equals("")) {
             this.error = this.status;
@@ -66,6 +65,7 @@ public class InvokeConReturn {
     public String getTxHash() {
         return txHash;
     }
+
     public String getError() {
         return error;
     }

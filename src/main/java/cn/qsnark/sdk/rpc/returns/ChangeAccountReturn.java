@@ -22,7 +22,6 @@ public class ChangeAccountReturn {
     private String error_msg;
 
     public ChangeAccountReturn(String jsonString) {
-//        System.out.println(jsonString);
         logger.debug("[RESPONSE] " + jsonString);
         JSONObject jsonObject = JSONObject.fromObject(jsonString);
         if (jsonObject.containsKey("address"))
@@ -40,9 +39,6 @@ public class ChangeAccountReturn {
 
     }
 
-    public static Logger getLogger() {
-        return logger;
-    }
 
     public String getStatus() {
         return status;

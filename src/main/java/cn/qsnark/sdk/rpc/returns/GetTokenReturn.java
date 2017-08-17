@@ -21,8 +21,9 @@ public class GetTokenReturn {
     private int code;
     private String message;
     private String error;
+
     public GetTokenReturn(String jsonString) {
-//        System.out.println(jsonString);
+
         logger.debug("[RESPONSE] " + jsonString);
 
         JSONObject jsonObject = JSONObject.fromObject(jsonString);

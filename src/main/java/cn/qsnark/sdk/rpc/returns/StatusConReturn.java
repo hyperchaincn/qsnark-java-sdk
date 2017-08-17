@@ -34,11 +34,11 @@ public class StatusConReturn {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
         }
-        if(this.status.equals("")){
-            this.error =this.status;
+        if (this.status.equals("")) {
+            this.error = this.status;
             this.message = this.status;
             this.code = -1;
-        }else{
+        } else {
 
             this.message = "success";
             this.code = 0;

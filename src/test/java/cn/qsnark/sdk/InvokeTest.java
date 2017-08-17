@@ -17,8 +17,8 @@ public class InvokeTest {
     public static void main(String[] args) throws Exception {
 //        invokeContract();
 //        invokeContract2();
-//        invokeContractNopay();
-        invokeContractNopay2();
+        invokeContractNopay();
+//        invokeContractNopay2();
     }
 
 
@@ -27,7 +27,7 @@ public class InvokeTest {
     public static void invokeContract() throws Exception {
         QsnarkAPI api = new QsnarkAPI();
         String abi = "[{\\\"constant\\\":false,\\\"inputs\\\":[{\\\"name\\\":\\\"num1\\\",\\\"type\\\":\\\"uint32\\\"},{\\\"name\\\":\\\"num2\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"name\\\":\\\"add\\\",\\\"outputs\\\":[{\\\"name\\\":\\\"\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"payable\\\":false,\\\"type\\\":\\\"function\\\"}]";
-        InvokeConReturn invokeConReturn = api.invokeContract("Bearer D5VV0OZOP9ODQYU6EH0KKQ","add", "0x9e33ffae1477a33233126c6680d418e0fb1ed219"
+        InvokeConReturn invokeConReturn = api.invokeContract("Bearer C1-_J3P8PJCURRIDX9M7FG","add", "0x9e33ffae1477a33233126c6680d418e0fb1ed219"
                 , "0x60606040523415600b57fe5b5b608b8061001a6000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146020575bfe5b3415602757fe5b603c63ffffffff600435811690602435166055565b6040805163ffffffff9092168252519081900360200190f35b8181015b929150505600a165627a7a7230582065c0eab350c9d860178b3851d8b3558d7280114749be7ce9f035c8afbe3ae0350029"
                 , "0x692a70d2e424a56d2c6c27aa97d1a86395877b3a", abi, new InvCallback() {
                     @Override
@@ -65,7 +65,8 @@ public class InvokeTest {
         QsnarkAPI api = new QsnarkAPI();
         String abi = "[{\\\"constant\\\":false,\\\"inputs\\\":[{\\\"name\\\":\\\"num1\\\",\\\"type\\\":\\\"uint32\\\"},{\\\"name\\\":\\\"num2\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"name\\\":\\\"add\\\",\\\"outputs\\\":[{\\\"name\\\":\\\"\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"payable\\\":false,\\\"type\\\":\\\"function\\\"}]";
         String jsonContract = "{\"uint33\":\"1\",\"uint32\":\"1\"}";
-        InvokeConReturn invokeConReturn = api.invokeContractNopay("Bearer D5VV0OZOP9ODQYU6EH0KKQ","add", jsonContract, "0x9e33ffae1477a33233126c6680d418e0fb1ed219"
+        System.out.println(jsonContract);
+        InvokeConReturn invokeConReturn = api.invokeContractNopay("Bearer C1-_J3P8PJCURRIDX9M7FG","add", jsonContract, "0x9e33ffae1477a33233126c6680d418e0fb1ed219"
                 , "0x4dffc0eecde676583ebde1c29d39a0319bc8b1c7", abi, new InvCallback() {
                     @Override
                     public void onCompute(List ret) {
@@ -80,8 +81,9 @@ public class InvokeTest {
         QsnarkAPI api = new QsnarkAPI();
         String abi = "[{\\\"constant\\\":false,\\\"inputs\\\":[{\\\"name\\\":\\\"num1\\\",\\\"type\\\":\\\"uint32\\\"},{\\\"name\\\":\\\"num2\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"name\\\":\\\"add\\\",\\\"outputs\\\":[{\\\"name\\\":\\\"\\\",\\\"type\\\":\\\"uint32\\\"}],\\\"payable\\\":false,\\\"type\\\":\\\"function\\\"}]";
         String jsonContract = "{\"uint33\":\"1\",\"uint32\":\"1\"}";
+        System.out.println(jsonContract);
         String s = "{\n" +
-                "  \"token\": \"Bearer D5VV0OZOP9ODQYU6EH0KKQ\",\n" +
+                "  \"token\": \"Bearer C1-_J3P8PJCURRIDX9M7FG\",\n" +
                 "  \"func_name\": \"add\",\n" +
                 "  \"jsonContract\": " + jsonContract + ",\n" +
                 "  \"from\": \"0x9e33ffae1477a33233126c6680d418e0fb1ed219\",\n" +
