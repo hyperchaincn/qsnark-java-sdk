@@ -37,17 +37,17 @@ public class DeployConReturn {
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
+            if (this.txHash == null || this.txHash.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
+                this.message = "success";
+                this.code = 0;
+            }
         }
-        if (this.txHash == "") {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
 
-            this.message = "success";
-            this.code = 0;
-        }
     }
 
     public String getStatus() {

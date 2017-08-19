@@ -50,16 +50,18 @@ public class DiscardConReturn {
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-        }
-        if (this.transaction.equals("") || this.transaction == null) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
+            if (this.transaction == null || this.transaction.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
-            this.message = "success";
-            this.code = 0;
+                this.message = "success";
+                this.code = 0;
+            }
+
         }
+
 
     }
 

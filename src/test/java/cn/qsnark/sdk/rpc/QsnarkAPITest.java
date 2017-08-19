@@ -1,16 +1,8 @@
 package cn.qsnark.sdk.rpc;
 
-import cn.qsnark.sdk.rpc.function.FuncParamReal;
-import cn.qsnark.sdk.rpc.function.FunctionEncode;
 import cn.qsnark.sdk.rpc.returns.*;
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,235 +23,193 @@ public class QsnarkAPITest {
     public void getAccess_Token() throws Exception {
 
         GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "yeyc", "hello");
+        System.out.println(getTokenReturn.getCode());
+        System.out.println(getTokenReturn.getMessage());
         System.out.println(getTokenReturn.getError());
+        System.out.println(getTokenReturn.getScope());
+        System.out.println(getTokenReturn.getAccess_token());
+        System.out.println(getTokenReturn.getToken_type());
+        System.out.println(getTokenReturn.getExpires_in());
+        System.out.println(getTokenReturn.getRefresh_token());
+
     }
 
     @Test
     public void refAccess_Token() throws Exception {
 
-        RetokenReturn retokenReturn = api.refAccess_Token("123", "123",  "7SRASIG9WL-TWUIVKEAU1A");
-        System.out.println(retokenReturn.getAccess_token());
-        System.out.println(retokenReturn.getToken_type());
-        System.out.println(retokenReturn.getMessage());
+        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "-2PCOI6AWCY5I8BWRGUKNA");
         System.out.println(retokenReturn.getCode());
+        System.out.println(retokenReturn.getMessage());
+        System.out.println(retokenReturn.getError());
+        System.out.println(retokenReturn.getScope());
+        System.out.println(retokenReturn.getToken_type());
+        System.out.println(retokenReturn.getExpires_in());
+        System.out.println(retokenReturn.getAccess_token());
+
     }
 
     @Test
     public void createAccount() throws Exception {
 
-        api.createAccount("Bearer 478D4OLMN1IRD9UMDDUH1G");
-    }
+        CreteAccountReturn creteAccountReturn = api.createAccount("Bearer FWYHAQMTWE6BPQWHPSGFXQ");
+        System.out.println(creteAccountReturn.getCode());
+        System.out.println(creteAccountReturn.getMessage());
+        System.out.println(creteAccountReturn.getError());
+        System.out.println(creteAccountReturn.getStatus());
+        System.out.println(creteAccountReturn.getAddress());
 
-    @Test
-    public void queryContractList() throws Exception {
-
-        QueryContReturn singleValueReturn = api.QueryContractList("Bearer DM_VHYTJOPCGNZKZX8IMHQ", "-1", "1");
-    }
-
-    @Test
-    public void compileContract() throws Exception {
-
-        String s = "contact ccumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-        CompileReturn compileReturn = api.compileContract("Bearer DM_VHYTJOPCGNZKZX8IMHQ", s);
-    }
-
-    @Test
-    public void getTxReceipt() throws Exception {
-
-        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer M-4RA2TJOPSZ2MXGCTXHMW", "0x2163f867c4354eac311e2fac32c38badbcc775b48d1fcbb78aaa416d217ee9f0");
-        System.out.println(getTxReciptReturn.getContract_address());
-    }
-
-    @Test
-    public void getJsonTxReceipt() throws Exception {
-
-        String s = "0xbef684bc8d58d48345e19c1cfa8f8891f7c0cef82181cb73b1b6ad9550e5225d";
-        String jsonString = "{" + "\n" + "\"token\":\"Bearer _AT5GRBAM_SWXOR63CS7WQ\"," + "\n" + "\"txhash\":\"" + s + "\"" + "\n" + "}";
-        System.out.println(jsonString);
-        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt(jsonString);
-        System.out.println(getTxReciptReturn.getContract_address());
-    }
-
-
-
-
-    //    @Test
-//    public void signature() throws Exception {
-//
-//        api.signature("1", "1", "1", "1");
-//    }
-    @Test
-    public void signature() throws Exception {
-//        String from = "0xeb28073ec2581727731805baab2fcbd13ea83b3f";
-//        String to = "0xeb28073ec2581727731805baab2fcbd13ea83b3f";
-//        String payload = "0x60606040526000805463ffffffff1916815560ae908190" +
-//                "601e90396000f3606060405260e060020a60003504633ad14af38114" +
-//                "6030578063569c5f6d14605e578063d09de08a146084575b6002565b" +
-//                "346002576000805460e060020a60243560043563ffffffff84160101" +
-//                "81020463ffffffff199091161790555b005b3460025760005463ffffffff16" +
-//                "6040805163ffffffff9092168252519081900360200190f35b3460025" +
-//                "7605c6000805460e060020a63ffffffff821660010181020463ffffffff1990911617905556";
-//        System.out.println(payload);
-//        String signature = api.signature(from, to, payload);
-        String signature = api.signature("00a05301bf18402910e86e269dc6a3499fa9a13aa4b1375258b80d969c29e7fa7d535a9918c0ba13a1007eb2379dfc29c8df028473703cb3f2ec2646c8b74d2edb00");
-        System.out.println(signature);
-    }
-
-    @Test
-    public void jsonSignature() throws Exception {
-        String from = "0xeb28073ec2581727731805baab2fcbd13ea83b3f";
-        String to = "0xeb28073ec2581727731805baab2fcbd13ea83b3f";
-        String payload = "0x60606040526000805463ffffffff1916815560ae908190" +
-                "601e90396000f3606060405260e060020a60003504633ad14af38114" +
-                "6030578063569c5f6d14605e578063d09de08a146084575b6002565b" +
-                "346002576000805460e060020a60243560043563ffffffff84160101" +
-                "81020463ffffffff199091161790555b005b3460025760005463ffffffff16" +
-                "6040805163ffffffff9092168252519081900360200190f35b3460025" +
-                "7605c6000805460e060020a63ffffffff821660010181020463ffffffff1990911617905556";
-//        System.out.println(payload);
-//        String signature = api.signature(from, to, payload);
-        String jsonSignature = "{\n" + "\"from\":\"" + from + "\",\n\"to\":\"" + to + "\",\n\"payload\":\"" + payload + "\"\n}";
-        System.out.println(jsonSignature);
-//        String signature = api.signature("00a05301bf18402910e86e269dc6a3499fa9a13aa4b1375258b80d969c29e7fa7d535a9918c0ba13a1007eb2379dfc29c8df028473703cb3f2ec2646c8b74d2edb00");
-        String signature = api.jsonSignature(jsonSignature);
-        System.out.println(signature);
-    }
-
-    @Test
-    public void deleteContract() throws Exception {
-
-        api.deleteContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
-    }
-
-    private static Logger logger = Logger.getLogger(QsnarkAPI.class);
-
-//    @Test
-//    public void invokeContract() throws Exception {
-//
-//        InvokeConReturn invokeConReturn = api.invokeContract("0xeb28073ec2581727731805baab2fcbd13ea83b3f"
-//                , "3ad14af300000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001",
-//                "0xcf66f23e76f08c452ef21872b592d0ef8f9331d158f8bca49ac36a0bdb052f21"
-//                , "0x4dffc0eecde676583ebde1c29d39a0319bc8b1c7", "", "", new InvCallback() {
-//                    @Override
-//                    public void onCompute(List ret) {
-//                        System.out.println(ret);
-//                    }
-//                });
-//        logger.info("successed");
-//        System.out.println(invokeConReturn.getTxHash());
-//    }
-
-
-//    java.math.BigInteger hmtrsferamount, BigInteger hmremainamount,
-//    cn.qsnark.sdk.rpc.types.SplitEcc RecsplitEcc, SplitEcc PaysplitEcc, String to
-
-
-    @Test
-    public void payload() throws Exception {
-
-
-        String jsonContract = "{\n\"uint33\":\"1\",\n\"uint32\":\"1\"\n}";
-        System.out.println(jsonContract);
-        String jsonString = jsonContract.substring(1, jsonContract.length() - 1);
-        String[] arr = jsonString.split(",");
-        List<FuncParamReal> list = new ArrayList<FuncParamReal>();
-        for (int i = 0; i < arr.length; i++) {
-            String[] array = arr[i].split(":");
-            String type = array[0].replace("\"", "").replace("\"", "").trim();
-            String value = array[1].replace("\"", "").replace("\"", "").trim();
-            System.out.println(type);
-            System.out.println(value);
-            FuncParamReal param = new FuncParamReal(type, new BigInteger(value));
-            list.add(param);
-        }
-        FuncParamReal[] arrParam = list.toArray(new FuncParamReal[list.size()]);
-        String func_name = "add";
-        String payload = FunctionEncode.encodeFunction(func_name, arrParam);
-        System.out.println(payload);
-    }
-
-    @Test
-    public void address() throws IOException {
-
-        String s = api.getAddress("0xcf66f23e76f08c452ef21872b592d0ef8f9331d158f8bca49ac36a0bdb052f21");
-        System.out.println(s);
-        System.out.println(s.length());
-
-    }
-
-    @Test
-    public void createPayload() {
-        String jsonContract = "{\"uint33\":\"1\",\"uint32\":\"1\"}";
-        String s = api.createPayload("add", jsonContract);
-        System.out.println(s);
-        System.out.println(s.length());
-
-    }
-
-    @Test
-    public void queryTransactionByHash() throws Exception {
-
-        QueryTranReturn qreturn = api.QueryTransactionByHash("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "0x17e8747903ea0a929cfda41e38e70d20b4205291b3b59af2f3ee0529b8f62825");
-        System.out.println(qreturn.getTimestamp());
-    }
-
-    @Test
-    public void manitainContract() throws Exception {
-        String jsonString = "{\n" +
-                "  \"AccountToken\": \"1\",\n" +
-                "  \"from\": \"0xeb28073ec2581727731805baab2fcbd13ea83b3f\",\n" +
-                "  \"opration\": 1,\n" +
-                "  \"paivatekey\": \"0xcf66f23e76f08c452ef21872b592d0ef8f9331d158f8bca49ac36a0bdb052f21\",\n" +
-                "  \"payload\": \"0x60606040523415600b57fe5b5b605e8060196000396000f300606060405263ffffffff60e060020a600035041663f954b8e281146020575bfe5b3415602757fe5b602d602f565b005b5b5600a165627a7a723058200e839a57a0a817eea675d3a664f8d9b98b42f00c435b5ab2713e52a755275e430029\",\n" +
-                "  \"to\": \"0xca1d2f87624994954e561e1ca116567319609b6a\"\n" +
-                "}";
-        api.maintainContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", jsonString);
-    }
-
-    @Test
-    public void countTransaction() throws Exception {
-
-        api.countTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
-    }
-
-    @Test
-    public void statusContract() throws Exception {
-
-        api.statusContract("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "1", "2", "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
-    }
-
-    @Test
-    public void discardTransaction() throws Exception {
-
-        DiscardConReturn discardConReturn = api.discardTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "20100101", "20170606");
-        System.out.println(discardConReturn.getTransaction());
-    }
-
-    @Test
-    public void nodesChain() throws Exception {
-
-        NodesConReturn nodesConReturn = api.nodesChain("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ");
-        System.out.println(nodesConReturn.getNodes());
     }
 
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "number", 1);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer FWYHAQMTWE6BPQWHPSGFXQ", "number", 1);
+
+        System.out.println(queryBlockReturn.getCode());
+        System.out.println(queryBlockReturn.getMessage());
+        System.out.println(queryBlockReturn.getError());
+        System.out.println(queryBlockReturn.getStatus());
+        System.out.println(queryBlockReturn.getBlocks());
+
 
     }
 
     @Test
     public void queryBlocks() throws Exception {
 
-        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", 1, 1);
+        QueryBlocksReturn queryBlocksReturn = api.queryBlocks("Bearer FW-_KMSSN7YASHZ6ZMBXOQ", 1, 2);
+
+        System.out.println(queryBlocksReturn.getCode());
+        System.out.println(queryBlocksReturn.getMessage());
+        System.out.println(queryBlocksReturn.getError());
+        System.out.println(queryBlocksReturn.getStatus());
+        System.out.println(queryBlocksReturn.getBlocks());
+
 
     }
 
     @Test
-    public void signTransaction() throws Exception {
-        SignTransactionReturn queryBlocksReturn = api.signTransaction("Bearer Y5BFCSV2MCAZUQMZ9LMMSQ", "1", "{}");
+    public void nodesChain() throws Exception {
 
+        NodesChainReturn nodesConReturn = api.nodesChain("Bearer FW-_KMSSN7YASHZ6ZMBXOQ");
+        System.out.println(nodesConReturn.getCode());
+        System.out.println(nodesConReturn.getMessage());
+        System.out.println(nodesConReturn.getError());
+        System.out.println(nodesConReturn.getStatus());
+        System.out.println(nodesConReturn.getNodes());
+
+    }
+
+    @Test
+    public void compileContract() throws Exception {
+
+        String s = "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
+        CompileReturn compileReturn = api.compileContract("Bearer JQS1VXOTNEANEOUZ79537Aman", s);
+
+        System.out.println(compileReturn.getCode());
+        System.out.println(compileReturn.getMessage());
+        System.out.println(compileReturn.getError());
+        System.out.println(compileReturn.getStatus());
+        System.out.println(compileReturn.getCts());
+        System.out.println(compileReturn.getCts_status());
+        System.out.println(compileReturn.getCts_bin());
+        System.out.println(compileReturn.getCts_abi());
+        System.out.println(compileReturn.getCts_id());
+    }
+
+    @Test
+    public void manitainContract() throws Exception {
+        MainTainReturn mainTainReturn = api.maintainContract("Bearer UT9WREPIOF-5PE35XI6EWQ", "0x910419d6088088bf0c6c9c67d81375a89f648be0",1,"0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029","0x910419d6088088bf0c6c9c67d81375a89f648be0");
+        System.out.println(mainTainReturn.getCode());
+        System.out.println(mainTainReturn.getMessage());
+        System.out.println(mainTainReturn.getError());
+        System.out.println(mainTainReturn.getStatus());
+        System.out.println(mainTainReturn.getData());
+        System.out.println(mainTainReturn.getTxHash());
+    }
+
+    @Test
+    public void queryContract() throws Exception {
+
+        QueryContReturn queryContReturn = api.queryContract("Bearer FW-_KMSSN7YASHZ6ZMBXOQ", "-1", "1");
+        System.out.println(queryContReturn.getCode());
+        System.out.println(queryContReturn.getMessage());
+        System.out.println(queryContReturn.getError());
+        System.out.println(queryContReturn.getStatus());
+
+    }
+
+    @Test
+    public void statusContract() throws Exception {
+
+        StatusConReturn statusConReturn = api.statusContract("Bearer FW-_KMSSN7YASHZ6ZMBXOQ",  "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
+        System.out.println(statusConReturn.getCode());
+        System.out.println(statusConReturn.getMessage());
+        System.out.println(statusConReturn.getError());
+        System.out.println(statusConReturn.getStatus());
+    }
+
+    @Test
+    public void countTransaction() throws Exception {
+
+        CountTraReturn countTraReturn = api.countTransaction("Bearer FWYHAQMTWE6BPQWHPSGFXQ");
+        System.out.println(countTraReturn.getCode());
+        System.out.println(countTraReturn.getMessage());
+        System.out.println(countTraReturn.getError());
+        System.out.println(countTraReturn.getStatus());
+        System.out.println(countTraReturn.getCount());
+        System.out.println(countTraReturn.getTimeStamp());
+
+    }
+
+    @Test
+    public void queryTransaction() throws Exception {
+
+        QueryTranReturn qreturn = api.queryTransaction("Bearer FWYHAQMTWE6BPQWHPSGFXQ", "0x4a630908bf78441197c9fc94aa3ebb4f21218cf61dfe82b62184aa1bc7f1dff1");
+        System.out.println(qreturn.getCode());
+        System.out.println(qreturn.getMessage());
+        System.out.println(qreturn.getError());
+        System.out.println(qreturn.getStatus());
+        System.out.println(qreturn.getTransaction());
+        System.out.println(qreturn.getBlockNumber());
+        System.out.println(qreturn.getAmount());
+        System.out.println(qreturn.getBlockHash());
+        System.out.println(qreturn.getTimestamp());
+        System.out.println(qreturn.getVersion());
+        System.out.println(qreturn.getTxIndex());
+        System.out.println(qreturn.getExecuteTime());
+        System.out.println(qreturn.getHash());
+        System.out.println(qreturn.getTo());
+        System.out.println(qreturn.getInvalidMsg());
+        System.out.println(qreturn.getTransaction());
+
+    }
+
+
+    @Test
+    public void getTxReceipt() throws Exception {
+
+        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer FWYHAQMTWE6BPQWHPSGFXQ", "0xe99162f667f1cdff50e6bbbe193f885d9fb0d3456c29b02fa15d91c99aad1c36");
+        System.out.println(getTxReciptReturn.getCode());
+        System.out.println(getTxReciptReturn.getMessage());
+        System.out.println(getTxReciptReturn.getError());
+        System.out.println(getTxReciptReturn.getStatus());
+        System.out.println(getTxReciptReturn.getContract_address());
+        System.out.println(getTxReciptReturn.getPoststate());
+        System.out.println(getTxReciptReturn.getTxHash());
+        System.out.println(getTxReciptReturn.getRet());
+    }
+
+
+    @Test
+    public void discardTransaction() throws Exception {
+
+        DiscardConReturn discardConReturn = api.discardTransaction("Bearer WYHAQMTWE6BPQWHPSGFXQ", "20100101", "20170606");
+        System.out.println(discardConReturn.getCode());
+        System.out.println(discardConReturn.getMessage());
+        System.out.println(discardConReturn.getError());
+        System.out.println(discardConReturn.getStatus());
+        System.out.println(discardConReturn.getTransaction());
     }
 
 

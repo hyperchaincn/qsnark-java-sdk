@@ -53,7 +53,7 @@ public class QueryATReturn {
                 this.error_msg = jsonObject.getString("error_msg");
 
         }
-        if (this.access_token.equals("")) {
+        if (this.access_token == null || this.access_token.equals("")) {
             this.error = error_msg;
             this.message = error_msg;
             this.code = -1;

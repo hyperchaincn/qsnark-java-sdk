@@ -2,6 +2,7 @@ package cn.qsnark.sdk.rpc.returns;
 
 
 import cn.qsnark.sdk.rpc.QsnarkAPI;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
@@ -12,15 +13,15 @@ import org.apache.log4j.Logger;
  * Date: 2017-06-02
  * Time: 下午4:50
  */
-public class DeployArgsConReturn {
+public class NodesChainReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String status;
-    private String txHash;
+    private JSONArray nodes;
     private String error;
     private String message;
     private int code;
 
-    public DeployArgsConReturn(String jsonString) {
+    public NodesChainReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
         if (jsonString.contains("invalid access token")) {
             this.error = "invalid access token";
@@ -31,28 +32,31 @@ public class DeployArgsConReturn {
                 JSONObject jsonObject = JSONObject.fromObject(jsonString);
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
-                if (jsonObject.containsKey("TxHash"))
-                    this.txHash = jsonObject.getString("TxHash");
+                if (jsonObject.containsKey("Nodes"))
+                    this.nodes = jsonObject.getJSONArray("Nodes");
+
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-            if (this.txHash == null || this.txHash == "") {
+            if (this.nodes == null || this.nodes.equals("")) {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;
             } else {
+
                 this.message = "success";
                 this.code = 0;
             }
         }
+
     }
 
     public String getStatus() {
         return status;
     }
 
-    public String getTxHash() {
-        return txHash;
+    public JSONArray getNodes() {
+        return nodes;
     }
 
     public String getError() {

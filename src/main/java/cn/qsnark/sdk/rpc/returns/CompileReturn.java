@@ -54,7 +54,7 @@ public class CompileReturn {
                                 this.cts_ok = jsObject.getBoolean("OK");
                         }
 
-                        if (this.cts_bin.equals("")) {
+                        if (this.cts_bin == null || this.cts_bin.equals("")) {
                             this.error = this.status;
                             this.message = this.status;
                             this.code = -1;

@@ -33,16 +33,17 @@ public class StatusConReturn {
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-        }
-        if (this.status.equals("")) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
+            if (this.status == null || this.status.equals("")||!this.status.equals("normal")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
-            this.message = "success";
-            this.code = 0;
+                this.message = "success";
+                this.code = 0;
+            }
         }
+
     }
 
     public String getStatus() {

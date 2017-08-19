@@ -47,7 +47,7 @@ public class GetTxReciptReturn {
                     this.contract_address = jsonObject.getString("ContractAddress");
                 if (jsonObject.containsKey("Ret"))
                     this.ret = jsonObject.getString("Ret");
-                if (this.txHash == "") {
+                if (this.txHash == null || this.txHash.equals("")) {
                     this.error = this.status;
                     this.message = this.status;
                     this.code = -1;

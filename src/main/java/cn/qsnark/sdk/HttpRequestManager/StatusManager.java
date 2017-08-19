@@ -76,7 +76,7 @@ public class StatusManager {
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .addHeader("address", params.getAddress())
-                .url("http://" + randomURL + "token=" + params.getToken() + "&appkey=" + params.getAppkey())
+                .url("http://" + randomURL + "token=" + params.getToken() )
                 .build();
         return request;
 

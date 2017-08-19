@@ -2,7 +2,6 @@ package cn.qsnark.sdk.rpc.returns;
 
 
 import cn.qsnark.sdk.rpc.QsnarkAPI;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
@@ -16,7 +15,7 @@ import org.apache.log4j.Logger;
 public class QueryBlockReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String status;
-    private JSONArray blocks;
+    private JSONObject blocks;
     private String error;
     private String message;
     private int code;
@@ -32,29 +31,34 @@ public class QueryBlockReturn {
                 JSONObject jsonObject = JSONObject.fromObject(jsonString);
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
-                if (jsonObject.containsKey("Nodes"))
-                    this.blocks = jsonObject.getJSONArray("Block");
-
+                if (jsonObject.containsKey("Block")) {
+                    if (jsonObject.getString("Block") == null || jsonObject.getString("Block").equals("null") || jsonObject.getString("Block").equals("")) {
+                        this.blocks = null;
+                    } else {
+                        this.blocks = jsonObject.getJSONObject("Block");
+                    }
+                }
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-        }
-        if (this.blocks.equals("")) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
+            if (this.blocks == null || this.blocks.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
-            this.message = "success";
-            this.code = 0;
+                this.message = "success";
+                this.code = 0;
+            }
         }
+
     }
 
     public String getStatus() {
         return status;
     }
 
-    public JSONArray getBlocks() {
+    public JSONObject getBlocks() {
         return blocks;
     }
 

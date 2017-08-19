@@ -33,7 +33,7 @@ public class DeployArgsConManager {
         Request req = null;
         req = Post(params);
         logger.debug("[REQUEST] " + params.serlize());
-        logger.debug("[REQUEST] CURL： " + "curl -X POST --head " + "'" + params.serlize() + "'");
+        logger.debug("[REQUEST] CURL： " + "curl -X POST --Body " + "'" + params.serlize() + "'");
         Response response = null;
         try {
             response = this.httpClient.newCall(req).execute();

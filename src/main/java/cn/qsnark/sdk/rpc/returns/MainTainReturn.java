@@ -42,15 +42,16 @@ public class MainTainReturn {
             if (jsonObject.has("TxHash")) {
                 this.txHash = jsonObject.getString("TxHash");
             }
+            if (this.txHash == null || this.txHash.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
+                this.message = "success";
+                this.code = 0;
+            }
         }
-        if (this.txHash.equals("")) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
-            this.message = "success";
-            this.code = 0;
-        }
+
     }
 
     public String getStatus() {

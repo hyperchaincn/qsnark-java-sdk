@@ -32,24 +32,28 @@ public class QueryBlocksReturn {
                 JSONObject jsonObject = JSONObject.fromObject(jsonString);
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
-                if (jsonObject.containsKey("Nodes"))
-                    this.blocks = jsonObject.getJSONArray("Block");
-
+                if (jsonObject.containsKey("Blocks")) {
+                    if (jsonObject.getString("Blocks") == null || jsonObject.getString("Blocks").equals("null") || jsonObject.getString("Blocks").equals("")) {
+                        this.blocks = null;
+                    } else {
+                        this.blocks = jsonObject.getJSONArray("Blocks");
+                    }
+                }
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
+            if (this.blocks == null || this.blocks.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
-        }
-        if (this.blocks.equals("")) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
-
-            this.message = "success";
-            this.code = 0;
+                this.message = "success";
+                this.code = 0;
+            }
         }
     }
+
 
     public String getStatus() {
         return status;

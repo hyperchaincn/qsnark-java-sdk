@@ -55,7 +55,8 @@ public class DeployArgsConParams implements Params {
                 "\"Abistr\":\"" + this.abiStr + "\"," +"\n"+
                 "\"Args\":" + this.args + "," +"\n"+
                 "\"Bin\":\"" + this.bin + "\"," +"\n"+
-                "\"From\":\"" + this.from + "\"," +"\n"+"}";
+                "\"From\":\"" + this.from + "\""
+                +"\n"+"}";
         return str;
 
     }

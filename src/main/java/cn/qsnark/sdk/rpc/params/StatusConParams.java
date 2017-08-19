@@ -9,28 +9,17 @@ package cn.qsnark.sdk.rpc.params;
  */
 public class StatusConParams {
     private String token;
-    private String _token;
-    private String appkey;
     private String address;
 
 
-    public StatusConParams(String token, String _token, String appkey, String address) {
+    public StatusConParams(String token, String address) {
         this.token = token;
-        this._token = _token;
-        this.appkey = appkey;
+
         this.address = address;
     }
 
     public String getToken() {
         return token;
-    }
-
-    public String get_token() {
-        return _token;
-    }
-
-    public String getAppkey() {
-        return appkey;
     }
 
     public String getAddress() {

@@ -33,7 +33,7 @@ public class CreteAccountReturn {
                 this.address = jsonObject.getString("address");
             if (jsonObject.containsKey("Status"))
                 this.status = jsonObject.getString("Status");
-            if (this.address == "") {
+            if (this.address == null || this.address.equals("")) {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;

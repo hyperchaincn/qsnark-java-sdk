@@ -21,8 +21,6 @@ public class QueryContReturn {
     private int code;
 
     public QueryContReturn(String jsonString) {
-//        System.out.println(jsonString);
-
         logger.debug("[RESPONSE] " + jsonString);
         if (jsonString.contains("invalid access token")) {
             this.error = "invalid access token";
@@ -32,15 +30,17 @@ public class QueryContReturn {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
             if (jsonObject.containsKey("status"))
                 this.status = jsonObject.getString("status");
-            if (jsonObject.containsKey("status"))
+            if (jsonObject.containsKey("message"))
                 this.message = jsonObject.getString("message");
+            if (this.message == null || this.message.equals("")) {
+                this.error = this.status;
+                this.code = -1;
+            } else {
+                this.code = 0;
+                this.message = "success";
+            }
         }
-        if (this.message.equals("")) {
-            this.error = this.status;
-            this.code = -1;
-        } else {
-            this.code = 0;
-        }
+
     }
 
     public String getStatus() {

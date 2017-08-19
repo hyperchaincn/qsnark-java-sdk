@@ -43,7 +43,7 @@ public class InvokeConReturn {
                 this.txHash = jsonObject.getString("TxHash");
             }
         }
-        if (this.txHash.equals("")) {
+        if (this.txHash == null || this.txHash.equals("")) {
             this.error = this.status;
             this.message = this.status;
             this.code = -1;

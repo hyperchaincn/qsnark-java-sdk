@@ -10,32 +10,22 @@ package cn.qsnark.sdk.rpc.params;
 public class MainTainParams implements Params {
 
     private String token;
-    private String accountToken;
     private String from;
     private int opration;
-    private String paivatekey;
     private String payload;
-
-
     private String to;
 
 
-    public MainTainParams(String token, String accountToken, String from, int opration, String paivatekey, String payload, String to) {
+    public MainTainParams(String token, String from, int opration, String payload, String to) {
         this.token = token;
-        this.accountToken = accountToken;
         this.from = from;
         this.opration = opration;
-        this.paivatekey = paivatekey;
         this.payload = payload;
         this.to = to;
     }
 
     public String getToken() {
         return token;
-    }
-
-    public String getAccountToken() {
-        return accountToken;
     }
 
     public String getFrom() {
@@ -46,9 +36,6 @@ public class MainTainParams implements Params {
         return opration;
     }
 
-    public String getPaivatekey() {
-        return paivatekey;
-    }
 
     public String getPayload() {
         return payload;
@@ -62,10 +49,8 @@ public class MainTainParams implements Params {
     @Override
     public String serlize() {
         String str = "{" +
-                "\"AccountToken\":\"" + this.accountToken + "\"," +
                 "\"from\":\"" + this.from + "\"," +
-                "\"operation\":" + this.accountToken + "," +
-                "\"paivatekey\":\"" + this.paivatekey + "\"," +
+                "\"operation\":" + this.opration + "," +
                 "\"payload\":\"" + this.payload + "\"," +
                 "\"to\":\"" + this.to + "\"" + "}";
         return str;
