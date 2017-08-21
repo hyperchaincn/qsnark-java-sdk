@@ -10,7 +10,7 @@ package cn.qsnark.sdk.rpc.base;
 public enum LocalURL {
 
 //    URL("127.0.0.1:8080");
-    URL("172.16.100.121:8080");
+    URL("127.0.0.1:8080");
 
     private String url;
 

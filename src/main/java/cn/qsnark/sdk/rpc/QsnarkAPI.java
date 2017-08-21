@@ -5,10 +5,10 @@ import cn.qsnark.sdk.exception.TxException;
 import cn.qsnark.sdk.rpc.callback.*;
 import cn.qsnark.sdk.rpc.function.FuncParamReal;
 import cn.qsnark.sdk.rpc.function.FunctionEncode;
+import cn.qsnark.sdk.rpc.function.FunctionParamException;
 import cn.qsnark.sdk.rpc.params.*;
 import cn.qsnark.sdk.rpc.returns.*;
 import cn.qsnark.sdk.rpc.utils.Utils;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Date;
@@ -27,7 +27,8 @@ public class QsnarkAPI {
     private RetokenManager retokenManager = new RetokenManager();
     private GetTokenManager getTokenManager = new GetTokenManager();
     private QueryBlockManager queryBlockManager = new QueryBlockManager();
-    private QueryBlocksManager queryBlocksManager = new QueryBlocksManager();
+    private PageBlocksManager pageBlocksManager = new PageBlocksManager();
+    private RangeBlocksManager rangeBlocksManager = new RangeBlocksManager();
     private NodesManager nodesManager = new NodesManager();
     private CompileContManager compileContManager = new CompileContManager();
     private DeleteConManager deleteConManager = new DeleteConManager();
@@ -105,13 +106,27 @@ public class QsnarkAPI {
      * <p>
      *
      * @param token user api access token
+     * @param index  from index
+     * @param size    to index 可以使int也可以是'latest'
+     * @Description query block by hash 通过区块哈希查询区块
+     */
+    public PageBlocksReturn pageBlocks(String token, long index, long size) throws IOException {
+        PageBlocksParams pageBlocksParams = new PageBlocksParams(token, index, size);
+        return new PageBlocksReturn(this.pageBlocksManager.SyncRequest(pageBlocksParams));
+    }
+
+    /**
+     * 1.5.2 blocksquery
+     * <p>
+     *
+     * @param token user api access token
      * @param from  from index
      * @param to    to index 可以使int也可以是'latest'
      * @Description query block by hash 通过区块哈希查询区块
      */
-    public QueryBlocksReturn queryBlocks(String token, long from, Object to) throws IOException {
-        QueryBlocksParams queryBlocksParams = new QueryBlocksParams(token, from, to);
-        return new QueryBlocksReturn(this.queryBlocksManager.SyncRequest(queryBlocksParams));
+    public RangeBlocksReturn rangeBlocks(String token, long from, Object to) throws IOException {
+        RangeBlocksParams rangeBlocksParams = new RangeBlocksParams(token, from, to);
+        return new RangeBlocksReturn(this.rangeBlocksManager.SyncRequest(rangeBlocksParams));
     }
 
     /**
@@ -166,20 +181,24 @@ public class QsnarkAPI {
      *
      * @param token  user api access token
      * @param abiStr Abistr
-     * @param args   Args
      * @param bin    Bin
      * @param from   From
      * @return hash
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
-    public DeployArgsConReturn deployArgsContract(String token, String abiStr, String args, String bin, String from, ComCallback callback) throws IOException {
-        DeployArgsConParams deployArgsConParams = new DeployArgsConParams(token, abiStr, args, bin, from);
-        DeployArgsConReturn deployArgsConReturn = new DeployArgsConReturn(this.deployArgsConManager.SyncRequest(deployArgsConParams));
-        GetDepArgTxReceiptThread getDepArgTxReceiptThread = new GetDepArgTxReceiptThread(token, deployArgsConReturn, callback);
+    public DeployConReturn deployArgsContract(String token, String bin, String from, ComCallback callback, String abiStr,FuncParamReal... functionParams) throws IOException, FunctionParamException {
 
-        Thread thread = new Thread(getDepArgTxReceiptThread);
+        String payload = createPayload(functionParams);
+        from = from + payload;
+        DeployConParams deployConParams = new DeployConParams(token, bin, from);
+        DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
+
+        GetDepTxReceiptThread getDepTxReceiptThread = new GetDepTxReceiptThread(token, deployConReturn, callback);
+
+        Thread thread = new Thread(getDepTxReceiptThread);
         thread.start();
-        return deployArgsConReturn;
+
+        return deployConReturn;
     }
 
     /**
@@ -195,8 +214,7 @@ public class QsnarkAPI {
      * @return 编译结果
      * @Description Invoke Contract
      */
-    public InvokeConReturn invokeContract(String token, String from, String to, String abi, InvCallback callback, String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
-        boolean _const = true;
+    public InvokeConReturn invokeContract(String token,boolean _const, String from, String to, String abi, InvCallback callback, String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
         String payload = createPayload(func_name, functionParams);
         InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
@@ -211,8 +229,7 @@ public class QsnarkAPI {
      * 1.11 maintain
      * <p>
      *
-     * @param token      user api access token
-     * @param jsonString request body
+     * @param token user api access token
      * @return 编译结果
      * @Description Maintain Contract[合约升级] opcode: 1:升级，2:冻结，3:解冻
      */
@@ -310,6 +327,13 @@ public class QsnarkAPI {
     private static String createPayload(String func_name, FuncParamReal... functionParams) {
 
         String payload = FunctionEncode.encodeFunction(func_name, functionParams);
+        return payload;
+
+    }
+
+    private static String createPayload(FuncParamReal... functionParams) throws FunctionParamException {
+
+        String payload = FunctionEncode.encodeFunctionConstructor(functionParams);
         return payload;
 
     }

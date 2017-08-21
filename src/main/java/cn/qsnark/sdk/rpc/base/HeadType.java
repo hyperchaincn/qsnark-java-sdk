@@ -10,9 +10,8 @@ package cn.qsnark.sdk.rpc.base;
 public enum HeadType {
     Content_Type("application/json"),
     Accept("application/json"),
-//    URL("127.0.0.1:8080");
-    URL("172.16.100.121:8080");
-
+    URL("172.16.100.121:8080"),
+    TOKENURL("172.16.100.121:14000");
     private String type;
 
     private HeadType(String type) {

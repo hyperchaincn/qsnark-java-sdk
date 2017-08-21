@@ -414,23 +414,23 @@
 2017-08-18 18:27:55  [ main:73 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "error:block hash is empty."
 }
-2017-08-18 18:28:12  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe
-2017-08-18 18:28:12  [ main:7 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe'
+2017-08-18 18:28:12  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe
+2017-08-18 18:28:12  [ main:7 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe'
 2017-08-18 18:28:12  [ main:76 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-18 18:28:12  [ main:78 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
-2017-08-18 18:29:35  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe
-2017-08-18 18:29:35  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe'
+2017-08-18 18:29:35  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe
+2017-08-18 18:29:35  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe'
 2017-08-18 18:29:35  [ main:60 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-18 18:29:35  [ main:62 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
-2017-08-18 18:30:12  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@4218d6a3
-2017-08-18 18:30:12  [ main:54 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@4218d6a3'
+2017-08-18 18:30:12  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@4218d6a3
+2017-08-18 18:30:12  [ main:54 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@4218d6a3'
 2017-08-18 18:30:12  [ main:768 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-18 18:30:13  [ main:785 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
-2017-08-18 18:31:09  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe
-2017-08-18 18:31:09  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe'
+2017-08-18 18:31:09  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe
+2017-08-18 18:31:09  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe'
 2017-08-18 18:31:09  [ main:68 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-18 18:31:09  [ main:70 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
@@ -450,8 +450,8 @@
 2017-08-18 18:35:54  [ main:67 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "error:block hash is empty."
 }
-2017-08-18 18:36:33  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe
-2017-08-18 18:36:33  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@1753acfe'
+2017-08-18 18:36:33  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe
+2017-08-18 18:36:33  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@1753acfe'
 2017-08-18 18:36:33  [ main:62 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-18 18:36:33  [ main:64 ] - [ DEBUG ]  [RESPONSE] invalid access token
 

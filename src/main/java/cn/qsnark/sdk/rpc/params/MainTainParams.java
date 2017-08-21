@@ -48,11 +48,11 @@ public class MainTainParams implements Params {
     //构建json格式字符串
     @Override
     public String serlize() {
-        String str = "{" +
-                "\"from\":\"" + this.from + "\"," +
-                "\"operation\":" + this.opration + "," +
-                "\"payload\":\"" + this.payload + "\"," +
-                "\"to\":\"" + this.to + "\"" + "}";
+        String str = "{\n" +
+                "\"from\":\"" + this.from + "\",\n" +
+                "\"opration\":" + this.opration + ",\n" +
+                "\"payload\":\"" + this.payload + "\",\n" +
+                "\"to\":\"" + this.to + "\"" + "\n}";
         return str;
     }
 

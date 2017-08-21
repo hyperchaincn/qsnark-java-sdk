@@ -1,5 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
+import cn.qsnark.sdk.rpc.base.HeadType;
 import cn.qsnark.sdk.rpc.params.RetokenParams;
 import cn.qsnark.sdk.rpc.utils.OkHttpClientUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -25,7 +26,7 @@ public class RetokenManager {
 
 
 //    public String sourceURL = "https://127.0.0.1:14000/token?";
-    public String sourceURL = "https://172.16.100.121:14000/token?";
+    public String sourceURL = "https://"+ HeadType.TOKENURL.getType()+"/token?";
 
 
 
@@ -68,14 +69,8 @@ public class RetokenManager {
      * @throws HttpRequest.HttpRequestException -
      */
     public Request Post(RetokenParams params) throws HttpRequest.HttpRequestException {
-//        RequestBody body = RequestBody.create(JSON, params.serlize());
         String randomURL = sourceURL;
-//        Request request = new Request.Builder()
-//                .addHeader("Content-Type", HeadType.Content_Type.getType())
-//                .addHeader("Accept", HeadType.Accept.getType())
-//                .post(body)
-//                .url("http://" + randomURL + "appid=" + params.getApp_id())
-//                .build();
+
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
         RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"grant_type\"\r\n\r\n"+params.getGrant_type()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: " +

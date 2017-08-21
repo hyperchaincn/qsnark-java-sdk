@@ -1,9 +1,13 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
+import cn.qsnark.sdk.rpc.base.HeadType;
 import cn.qsnark.sdk.rpc.params.GetTokenParams;
 import cn.qsnark.sdk.rpc.utils.OkHttpClientUtil;
 import com.github.kevinsawicki.http.HttpRequest;
-import okhttp3.*;
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -26,7 +30,7 @@ public class GetTokenManager {
 
 
 //    public String sourceURL = "127.0.0.1:14000/token";
-    public String sourceURL = "172.16.100.121:14000/token";
+    public String sourceURL = "https://"+HeadType.TOKENURL.getType()+"/token";
 
 
     public String SyncRequest(GetTokenParams params) throws IOException {
@@ -70,26 +74,9 @@ public class GetTokenManager {
 
     public Request Post(GetTokenParams params) throws HttpRequest.HttpRequestException {
 
-//        RequestBody body = RequestBody.create(JSON, params.serlize());
-        String randomURL = sourceURL;
+
         Request request = null;
-//        curl -X POST \
-//        https://127.0.0.1:14000/token \
-//        -H 'authorization: Basic MTIzOjEyMw==' \
-//        -H 'cache-control: no-cache' \
-//        -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-//        -H 'postman-token: 6eb4ba4b-089e-f726-b652-550aab55b055' \
-//        -F grant_type=password \
-//        -F scope=all \
-//        -F username=yeyc \
-//        -F password=hello \
-//        -F app_key=123 \
-//        -F app_secret=123
-//        request = new Request.Builder()
-//                .addHeader("Content-Type", "application/json")
-//                .post(body)
-//                .url("https://" + randomURL )
-//                .build();
+
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
         RequestBody body = RequestBody.create(mediaType,
                 "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: " +
@@ -104,7 +91,7 @@ public class GetTokenManager {
                         "\r\nContent-Disposition: form-data; name=\"client_secret\"\r\n\r\n"+params.getApp_secret()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
 
          request = new Request.Builder()
-                .url("https://172.16.100.121:14000/token")
+                .url(sourceURL)
 //                .url("https://127.0.0.1:14000/token")
                 .post(body)
                 .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")

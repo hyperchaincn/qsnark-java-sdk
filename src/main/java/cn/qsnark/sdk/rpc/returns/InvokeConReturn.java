@@ -27,7 +27,7 @@ public class InvokeConReturn {
 //        System.out.println(jsonString);
         logger.debug("[RESPONSE] " + jsonString);
 
-        if (jsonString.contains("invalid access token")) {
+        if (jsonString.contains("invalid access token")||jsonString.contains("expired access token")) {
             this.error = "invalid access token";
             this.message = "invalid access token";
             this.code = -1;
@@ -42,16 +42,17 @@ public class InvokeConReturn {
             if (jsonObject.has("TxHash")) {
                 this.txHash = jsonObject.getString("TxHash");
             }
-        }
-        if (this.txHash == null || this.txHash.equals("")) {
-            this.error = this.status;
-            this.message = this.status;
-            this.code = -1;
-        } else {
+            if (this.txHash == null || this.txHash.equals("")) {
+                this.error = this.status;
+                this.message = this.status;
+                this.code = -1;
+            } else {
 
-            this.message = "success";
-            this.code = 0;
+                this.message = "success";
+                this.code = 0;
+            }
         }
+
     }
 
     public String getStatus() {

@@ -1,7 +1,8 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
 import cn.qsnark.sdk.rpc.base.HeadType;
-import cn.qsnark.sdk.rpc.params.QueryBlocksParams;
+import cn.qsnark.sdk.rpc.params.PageBlocksParams;
+import cn.qsnark.sdk.rpc.params.RangeBlocksParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -9,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
 
+import javax.print.attribute.standard.PagesPerMinute;
 import java.io.IOException;
 
 /**
@@ -18,20 +20,20 @@ import java.io.IOException;
  * Date: 2017-05-31
  * Time: 下午4:56
  */
-public class QueryBlocksManager {
+public class PageBlocksManager {
 
 
-    private static Logger logger = Logger.getLogger(QueryBlocksManager.class);
+    private static Logger logger = Logger.getLogger(PageBlocksManager.class);
     //media type
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //这是一个单例
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/blocks/query?";
+    public String sourceURL = HeadType.URL.getType() + "/v1/dev/blocks/page?";
 
 
-    public String SyncRequest(QueryBlocksParams params) throws IOException {
+    public String SyncRequest(PageBlocksParams params) throws IOException {
 
         Request req = null;
         req = Get(params);
@@ -68,14 +70,14 @@ public class QueryBlocksManager {
      * @return 返回请求回来的string 一般是json格式
      * @throws HttpRequest.HttpRequestException -
      */
-    public Request Get(QueryBlocksParams params) throws HttpRequest.HttpRequestException {
+    public Request Get(PageBlocksParams params) throws HttpRequest.HttpRequestException {
         String randomURL = sourceURL;
         Request request = null;
 
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "from=" + params.getFrom() + "&to=" + params.getTo())
+                .url("http://" + randomURL + "index=" + params.getIndex() + "&pageSize=" + params.getSize())
                 .build();
         return request;
 

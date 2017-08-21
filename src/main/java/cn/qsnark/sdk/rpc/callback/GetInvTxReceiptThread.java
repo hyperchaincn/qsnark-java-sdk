@@ -31,7 +31,7 @@ public class GetInvTxReceiptThread implements Runnable {
     private GetTxReceiptManager getTxReceiptManager = new GetTxReceiptManager();
 
     public GetInvTxReceiptThread(String func_name, String token, InvokeConReturn invokeConReturn, String abi, InvCallback callback) {
-        this.func_name =func_name;
+        this.func_name = func_name;
         this.abi = abi;
         this.token = token;
         this.invokeConReturn = invokeConReturn;
@@ -49,9 +49,10 @@ public class GetInvTxReceiptThread implements Runnable {
                 GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.getTxReceiptManager.SyncRequest(getTxReceiptParams));
 
                 ret = getTxReciptReturn.getRet();
-                if (ret.equals(""))
+                System.out.println(ret);
+                if (ret == null || ret.equals(""))
                     Thread.sleep(1000);
-                if (!ret.equals(""))
+                if (ret != null && !ret.equals(""))
                     break;
 
             } catch (InterruptedException e) {
@@ -63,25 +64,25 @@ public class GetInvTxReceiptThread implements Runnable {
 
         List<String> res = null;
         abi = this.abi.replace("\\", "");
+        if (ret != null && !ret.equals("")) {
+            try {
+                String result = FunctionDecode.resultDecode(func_name, abi, ret);
+                JSONArray array = JSONArray.fromObject(result);
+                res = new ArrayList<String>();
+                for (int i = 0; i < array.size(); i++) {
+                    String temp = array.get(i).toString();
+                    JSONObject jsonObject = JSONObject.fromObject(temp);
+                    String s = null;
+                    if (jsonObject.containsKey("value"))
+                        s = jsonObject.getString("value");
+                    res.add(s);
+                }
 
-        try {
-            String result = FunctionDecode.resultDecode(func_name, abi, ret);
-            JSONArray array = JSONArray.fromObject(result);
-            res = new ArrayList<String>();
-            for (int i = 0; i < array.size(); i++) {
-                String temp = array.get(i).toString();
-                JSONObject jsonObject = JSONObject.fromObject(temp);
-                String s = null;
-                if(jsonObject.containsKey("value"))
-                 s = jsonObject.getString("value");
-                res.add(s);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            callback.onCompute(res);
         }
-        callback.onCompute(res);
     }
-
 
 }

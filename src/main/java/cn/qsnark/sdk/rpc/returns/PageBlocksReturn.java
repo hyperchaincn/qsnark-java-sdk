@@ -13,15 +13,16 @@ import org.apache.log4j.Logger;
  * Date: 2017-06-02
  * Time: 下午4:50
  */
-public class QueryBlocksReturn {
+public class PageBlocksReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String status;
-    private JSONArray blocks;
+    private JSONArray list;
+    private int count;
     private String error;
     private String message;
     private int code;
 
-    public QueryBlocksReturn(String jsonString) {
+    public PageBlocksReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
         if (jsonString.contains("invalid access token")) {
             this.error = "invalid access token";
@@ -32,17 +33,20 @@ public class QueryBlocksReturn {
                 JSONObject jsonObject = JSONObject.fromObject(jsonString);
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
-                if (jsonObject.containsKey("Blocks")) {
-                    if (jsonObject.getString("Blocks") == null || jsonObject.getString("Blocks").equals("null") || jsonObject.getString("Blocks").equals("")) {
-                        this.blocks = null;
+                if (jsonObject.containsKey("List")) {
+                    if (jsonObject.getString("List") == null || jsonObject.getString("List").equals("null") || jsonObject.getString("List").equals("")) {
+                        this.list = null;
                     } else {
-                        this.blocks = jsonObject.getJSONArray("Blocks");
+                        this.list = jsonObject.getJSONArray("List");
                     }
+                }
+                if(jsonObject.containsKey("Count")){
+                    this.count = jsonObject.getInt("Count");
                 }
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-            if (this.blocks == null || this.blocks.equals("")) {
+            if (this.list == null || this.list.equals("")) {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;
@@ -54,13 +58,16 @@ public class QueryBlocksReturn {
         }
     }
 
-
     public String getStatus() {
         return status;
     }
 
-    public JSONArray getBlocks() {
-        return blocks;
+    public JSONArray getList() {
+        return list;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     public String getError() {

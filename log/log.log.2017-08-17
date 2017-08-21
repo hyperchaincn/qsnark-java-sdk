@@ -329,8 +329,8 @@
 2017-08-17 15:55:14  [ main:0 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
 2017-08-17 15:55:14  [ main:204 ] - [ DEBUG ]  [RESPONSE] {"access_token":"EKKAHAIVO3WWNAPA-FV35W","expires_in":7200,"refresh_token":"HJCC75RJUNQRFHR_4IIN7Q","scope":"all","token_type":"Bearer"}
 
-2017-08-17 15:55:44  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 15:55:44  [ main:16 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 15:55:44  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 15:55:44  [ main:16 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 15:55:44  [ main:172 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "",
   "Blocks": [
@@ -4206,8 +4206,8 @@
     ]
   }
 }
-2017-08-17 16:15:38  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 16:15:38  [ main:7 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 16:15:38  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 16:15:38  [ main:7 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 16:15:38  [ main:216 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "",
   "Blocks": [
@@ -7470,8 +7470,8 @@
     }
   ]
 }
-2017-08-17 16:16:17  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 16:16:17  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 16:16:17  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 16:16:17  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 16:16:17  [ main:242 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "",
   "Blocks": [
@@ -10734,8 +10734,8 @@
     }
   ]
 }
-2017-08-17 16:16:45  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 16:16:45  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 16:16:45  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 16:16:45  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 16:16:46  [ main:218 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "",
   "Blocks": [
@@ -14504,13 +14504,13 @@
 2017-08-17 17:00:41  [ main:72 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:00:41  [ main:73 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
-2017-08-17 17:00:47  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:00:47  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:00:47  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:00:47  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:00:47  [ main:64 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:00:47  [ main:65 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
-2017-08-17 17:08:44  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:08:44  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:08:44  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:08:44  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:08:44  [ main:44 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:08:44  [ main:46 ] - [ DEBUG ]  [RESPONSE] invalid access token
 
@@ -14555,8 +14555,8 @@
     ]
   }
 }
-2017-08-17 17:10:59  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:10:59  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:10:59  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:10:59  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:11:00  [ main:73 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "",
   "Blocks": [
@@ -14589,22 +14589,22 @@
     }
   ]
 }
-2017-08-17 17:11:36  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:11:36  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:11:36  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:11:36  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:11:37  [ main:56 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:11:37  [ main:58 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "Rpc Server: block number can't be negative or zero, but get 0",
   "Blocks": null
 }
-2017-08-17 17:17:09  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:17:09  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:17:09  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:17:09  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:17:09  [ main:72 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:17:09  [ main:74 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "Rpc Server: block number can't be negative or zero, but get 0",
   "Blocks": null
 }
-2017-08-17 17:18:13  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e
-2017-08-17 17:18:13  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlocksParams@7c16905e'
+2017-08-17 17:18:13  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e
+2017-08-17 17:18:13  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.RangeBlocksParams@7c16905e'
 2017-08-17 17:18:13  [ main:70 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
 2017-08-17 17:18:13  [ main:72 ] - [ DEBUG ]  [RESPONSE] {
   "Status": "Rpc Server: block number can't be negative or zero, but get 0",
