@@ -45,6 +45,7 @@ public class GetInvTxReceiptThread implements Runnable {
         String ret = "";
         for (int i = 1; i < timeout; i++) {
             try {
+                Thread.sleep(1000);
                 GetTxReceiptParams getTxReceiptParams = new GetTxReceiptParams(token, this.invokeConReturn.getTxHash());
                 GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.getTxReceiptManager.SyncRequest(getTxReceiptParams));
 
@@ -67,15 +68,17 @@ public class GetInvTxReceiptThread implements Runnable {
         if (ret != null && !ret.equals("")) {
             try {
                 String result = FunctionDecode.resultDecode(func_name, abi, ret);
-                JSONArray array = JSONArray.fromObject(result);
-                res = new ArrayList<String>();
-                for (int i = 0; i < array.size(); i++) {
-                    String temp = array.get(i).toString();
-                    JSONObject jsonObject = JSONObject.fromObject(temp);
-                    String s = null;
-                    if (jsonObject.containsKey("value"))
-                        s = jsonObject.getString("value");
-                    res.add(s);
+                if(result != null && !result.equals("")) {
+                    JSONArray array = JSONArray.fromObject(result);
+                    res = new ArrayList<String>();
+                    for (int i = 0; i < array.size(); i++) {
+                        String temp = array.get(i).toString();
+                        JSONObject jsonObject = JSONObject.fromObject(temp);
+                        String s = null;
+                        if (jsonObject.containsKey("value"))
+                            s = jsonObject.getString("value");
+                        res.add(s);
+                    }
                 }
 
             } catch (UnsupportedEncodingException e) {

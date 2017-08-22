@@ -18,7 +18,7 @@ import java.io.IOException;
  * Date: 2017-05-31
  * Time: 下午4:56
  */
-public class DiscardManager {
+public class  DiscardManager {
 
 
     private static Logger logger = Logger.getLogger(DiscardManager.class);

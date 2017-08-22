@@ -17,9 +17,9 @@ import java.io.IOException;
 public class GetDepTxReceiptThread implements Runnable {
     private String token;
     private DeployConReturn deployConReturn;
-    private ComCallback callback;
+    private DevCallback callback;
 
-    public GetDepTxReceiptThread(String token, DeployConReturn deployConReturn, ComCallback callback) {
+    public GetDepTxReceiptThread(String token, DeployConReturn deployConReturn, DevCallback callback) {
         this.token = token;
         this.deployConReturn = deployConReturn;
         this.callback = callback;

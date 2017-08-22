@@ -33,8 +33,10 @@ public class QsnarkAPI {
     private CompileContManager compileContManager = new CompileContManager();
     private DeleteConManager deleteConManager = new DeleteConManager();
     private DeployConManager deployConManager = new DeployConManager();
+    private DeploysyncConManager deploysycnConManager = new DeploysyncConManager();
     private DeployArgsConManager deployArgsConManager = new DeployArgsConManager();
     private InvokeConManager invokeConManager = new InvokeConManager();
+    private InvokesyncConManager invokesyncConManager = new InvokesyncConManager();
     private MainTainContManager mainTainContManager = new MainTainContManager();
     private QueryContManage queryContManage = new QueryContManage();
     private StatusManager statusManager = new StatusManager();
@@ -116,7 +118,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.5.2 blocksquery
+     * 1.6 blocksquery
      * <p>
      *
      * @param token user api access token
@@ -130,7 +132,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.6 nodes
+     * 1.7 nodes
      * <p>
      *
      * @param token user api access token
@@ -141,7 +143,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.7 compileContract编译智能合约
+     * 1.8 compileContract编译智能合约
      *
      * @param token      API授权token
      * @param sourceCode 智能合约源码
@@ -154,7 +156,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.8 DeployContract
+     * 1.9 DeployContract
      *
      * @param token header string true "user api access token"
      * @param bin   合约调用者地址
@@ -162,7 +164,7 @@ public class QsnarkAPI {
      * @return 编译结果
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
-    public DeployConReturn deployContract(String token, String bin, String from, ComCallback callback) throws IOException, InterruptedException {
+    public DeployConReturn deployContract(String token, String bin, String from, DevCallback callback) throws IOException, InterruptedException {
 
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
@@ -176,7 +178,24 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.9 deployArgs
+     * 1.10 DeployContract
+     *
+     * @param token header string true "user api access token"
+     * @param bin   合约调用者地址
+     * @param from  合约调用者地址
+     * @return 编译结果
+     * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
+     */
+    public GetTxReciptReturn deploysyncContract(String token, String bin, String from) throws IOException, InterruptedException {
+
+        DeployConParams deployConParams = new DeployConParams(token, bin, from);
+        GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.deploysycnConManager.SyncRequest(deployConParams));
+
+        return getTxReciptReturn;
+    }
+
+    /**
+     * 1.11 deployArgs
      * <p>
      *
      * @param token  user api access token
@@ -186,10 +205,11 @@ public class QsnarkAPI {
      * @return hash
      * @Description compile contract 立即返回交易hash，SDK轮询获取合约地址
      */
-    public DeployConReturn deployArgsContract(String token, String bin, String from, ComCallback callback, String abiStr,FuncParamReal... functionParams) throws IOException, FunctionParamException {
+    public DeployConReturn deployArgsContract(String token, String bin, String from, DevCallback callback, String abiStr, FuncParamReal... functionParams) throws IOException, FunctionParamException {
 
         String payload = createPayload(functionParams);
-        from = from + payload;
+        System.out.println("payload"+payload);
+        bin = bin + payload;
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
 
@@ -202,7 +222,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.10 Invoke Contract
+     * 1.12 Invoke Contract
      * <p>
      * 用户传入交易签名
      *
@@ -226,7 +246,27 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.11 maintain
+     * 1.13 Invoke Contract
+     * <p>
+     * 用户传入交易签名
+     *
+     * @param func_name      方法名
+     * @param functionParams
+     * @param from           交易发送方的地址
+     * @param to             交易接收方的地址
+     * @return 编译结果
+     * @Description Invoke Contract
+     */
+    public GetTxReciptReturn invokesyncContract(String token,boolean _const, String from, String to, String abi,String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
+        String payload = createPayload(func_name, functionParams);
+        InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
+        GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.invokesyncConManager.SyncRequest(invokeConParams));
+
+        return getTxReciptReturn;
+    }
+
+    /**
+     * 1.14  maintain
      * <p>
      *
      * @param token user api access token
@@ -240,7 +280,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.12 获取某个应用下的合约列表
+     * 1.15 获取某个应用下的合约列表
      *
      * @param token  query string true "user api access token"
      * @param pindex query string true "page index"
@@ -253,7 +293,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.13 status
+     * 1.16 status
      * <p>
      *
      * @param token   user api access token
@@ -266,7 +306,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.14 count
+     * 1.17 count
      * <p>
      *
      * @param token user api access token
@@ -277,7 +317,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.15 查询交易信息
+     * 1.18  查询交易信息
      *
      * @param token user api access token
      * @param hash  transaction hash
@@ -289,7 +329,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.16 GetTxReceipt查询交易信息
+     * 1.19 GetTxReceipt查询交易信息
      *
      * @param token  header string true "user api access token"
      * @param txhash query string true "transaction hash"
@@ -302,7 +342,7 @@ public class QsnarkAPI {
     }
 
     /**
-     * 1.17 discard
+     * 1.20 discard
      * <p>
      *
      * @param token user api access token

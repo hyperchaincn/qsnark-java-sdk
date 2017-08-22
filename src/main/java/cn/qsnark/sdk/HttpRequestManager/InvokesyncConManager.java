@@ -1,12 +1,9 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
 import cn.qsnark.sdk.rpc.base.HeadType;
-import cn.qsnark.sdk.rpc.params.RangeBlocksParams;
+import cn.qsnark.sdk.rpc.params.InvokeConParams;
 import com.github.kevinsawicki.http.HttpRequest;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -15,50 +12,46 @@ import java.io.IOException;
  * Created with IntelliJ IDEA.
  * Description:
  * User: linxin
- * Date: 2017-05-31
- * Time: 下午4:56
+ * Date: 2017-06-02
+ * Time: 下午5:47
  */
-public class RangeBlocksManager {
+public class InvokesyncConManager {
 
-
-    private static Logger logger = Logger.getLogger(RangeBlocksManager.class);
+    private static Logger logger = Logger.getLogger(InvokesyncConManager.class);
     //media type
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //这是一个单例
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/blocks/range?";
+    public String sourceURL = HeadType.URL.getType() + "/v1/dev/contract/invokesync";
 
 
-    public String SyncRequest(RangeBlocksParams params) throws IOException {
+    public String SyncRequest(InvokeConParams params) throws IOException {
 
         Request req = null;
-        req = Get(params);
-        logger.debug("[REQUEST] " + params);
-        logger.debug("[REQUEST] CURL： " + "curl -X POST --head " + "'" + params + "'");
+        req = Post(params);
+        logger.debug("[REQUEST] " + params.serlize());
+        logger.debug("[REQUEST] CURL： " + "curl -X POST --head " + "'" + params.serlize() + "'");
         Response response = null;
         try {
             response = this.httpClient.newCall(req).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         if (response.isSuccessful()) {
             try {
                 return response.body().string();
             } catch (IOException e) {
                 e.printStackTrace();
 
-                logger.error("the  url is " + this.sourceURL + "is incorrect" + ",please resend this request.");
+                logger.error("the  url is " + this.sourceURL +"is incorrect"+ ",please resend this request.");
             }
             return response.body().string();
         } else {
-            logger.error("Incoming parameters are incorrect, please re-pass the parameters");
+            logger.info("Incoming parameters are incorrect, please re-pass the parameters");
             return response.body().string();
         }
-
-
     }
 
     /**
@@ -68,15 +61,21 @@ public class RangeBlocksManager {
      * @return 返回请求回来的string 一般是json格式
      * @throws HttpRequest.HttpRequestException -
      */
-    public Request Get(RangeBlocksParams params) throws HttpRequest.HttpRequestException {
+
+    public Request Post(InvokeConParams params) throws HttpRequest.HttpRequestException {
+        RequestBody body = RequestBody.create(JSON, params.serlize());
         String randomURL = sourceURL;
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Content-Type", HeadType.Content_Type.getType())
+                .addHeader("Accept", "text/html")
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "from=" + params.getFrom() + "&to=" + params.getTo())
+                .post(body)
+                .url("http://" + randomURL)
                 .build();
+
+
         return request;
 
     }

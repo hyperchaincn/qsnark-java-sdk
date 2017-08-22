@@ -52,7 +52,6 @@ public class InvokeConParams implements Params {
                 "\"From\":\"" + this.from + "\"," +
                 "\"Payload\":\"" + this.payload + "\"," +
                 "\"To\":\"" + this.to + "\"" + "}";
-        System.out.println(str);
         return str;
     }
 }

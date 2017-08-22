@@ -27,7 +27,9 @@ public class QueryTranReturn {
     private String to;
     private int amount;
     private String timestamp;
+    private long nonce;
     private int executeTime;
+    private String payload;
     private boolean invalid;
     private String invalidMsg;
     private String error;
@@ -73,6 +75,12 @@ public class QueryTranReturn {
                         this.invalid = jsonObject.getBoolean("Invalid");
                     if (jsonObject.containsKey("InvalidMsg"))
                         this.invalidMsg = jsonObject.getString("InvalidMsg");
+                    if(jsonObject.containsKey("Nonce")){
+                        this.nonce = jsonObject.getLong("Nonce");
+                    }
+                    if(jsonObject.containsKey("Payload")){
+                        this.payload = jsonObject.getString("Payload");
+                    }
                 }
             }
             if (this.hash == null || this.hash.equals("")) {
@@ -86,12 +94,12 @@ public class QueryTranReturn {
         }
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public String getVersion() {
         return version;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public JSONObject getTransaction() {
@@ -130,8 +138,16 @@ public class QueryTranReturn {
         return timestamp;
     }
 
+    public long getNonce() {
+        return nonce;
+    }
+
     public int getExecuteTime() {
         return executeTime;
+    }
+
+    public String getPayload() {
+        return payload;
     }
 
     public boolean isInvalid() {

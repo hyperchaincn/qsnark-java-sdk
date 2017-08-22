@@ -3,7 +3,6 @@ package cn.qsnark.sdk.rpc.callback;
 import cn.qsnark.sdk.HttpRequestManager.GetTxReceiptManager;
 import cn.qsnark.sdk.rpc.params.GetTxReceiptParams;
 import cn.qsnark.sdk.rpc.returns.DeployArgsConReturn;
-import cn.qsnark.sdk.rpc.returns.DeployConReturn;
 import cn.qsnark.sdk.rpc.returns.GetTxReciptReturn;
 
 import java.io.IOException;
@@ -18,9 +17,9 @@ import java.io.IOException;
 public class GetDepArgTxReceiptThread implements Runnable {
     private String token;
     private DeployArgsConReturn deployArgsConReturn;
-    private ComCallback callback;
+    private DevCallback callback;
 
-    public GetDepArgTxReceiptThread(String token, DeployArgsConReturn deployArgsConReturn, ComCallback callback) {
+    public GetDepArgTxReceiptThread(String token, DeployArgsConReturn deployArgsConReturn, DevCallback callback) {
         this.token = token;
         this.deployArgsConReturn = deployArgsConReturn;
         this.callback = callback;
