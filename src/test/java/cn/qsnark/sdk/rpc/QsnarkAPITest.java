@@ -37,7 +37,7 @@ public class QsnarkAPITest {
     @Test
     public void refAccess_Token() throws Exception {
 
-        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "ECE-NFZUUOCIJHWT8LFYNQ");
+        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "MDBVBSVOVHWLT7JS6JAKWQ");
         System.out.println(retokenReturn.getCode());
         System.out.println(retokenReturn.getMessage());
         System.out.println(retokenReturn.getError());
@@ -64,7 +64,7 @@ public class QsnarkAPITest {
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer K8YYCZSSMTSVEJY7VA5KTQ", "number", 1);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer FMINFTYLMH-0IVLVUQLNWG", "number", 1);
 
         System.out.println(queryBlockReturn.getCode());
         System.out.println(queryBlockReturn.getMessage());
@@ -134,7 +134,7 @@ public class QsnarkAPITest {
 
     @Test
     public void manitainContract() throws Exception {
-        MainTainReturn mainTainReturn = api.maintainContract("Bearer WUZH-S3OPZO6PSFYUAJXYW", "0x885b67411d84f6aa3b1e8e5ee6730c8123423777", 1, "0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575fe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029", "0x6a713a318ac303457da2d42e52e7304f33ef310a");
+        MainTainReturn mainTainReturn = api.maintainContract("Bearer JVASRGLPOGUOFVM2FJ3GHA", "0x885b67411d84f6aa3b1e8e5ee6730c8123423777", 1, "0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575fe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029", "0x6a713a318ac303457da2d42e52e7304f33ef310a");
         System.out.println(mainTainReturn.getCode());
         System.out.println(mainTainReturn.getMessage());
         System.out.println(mainTainReturn.getError());
@@ -157,7 +157,7 @@ public class QsnarkAPITest {
     @Test
     public void statusContract() throws Exception {
 
-        StatusConReturn statusConReturn = api.statusContract("Bearer K8YYCZSSMTSVEJY7VA5KTQ", "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
+        StatusConReturn statusConReturn = api.statusContract("Bearer JVASRGLPOGUOFVM2FJ3GHA", "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
         System.out.println(statusConReturn.getCode());
         System.out.println(statusConReturn.getMessage());
         System.out.println(statusConReturn.getError());

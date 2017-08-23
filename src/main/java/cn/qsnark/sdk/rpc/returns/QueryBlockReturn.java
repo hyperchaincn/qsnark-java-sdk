@@ -31,11 +31,11 @@ public class QueryBlockReturn {
                 JSONObject jsonObject = JSONObject.fromObject(jsonString);
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
-                if (jsonObject.containsKey("Block")) {
-                    if (jsonObject.getString("Block") == null || jsonObject.getString("Block").equals("null") || jsonObject.getString("Block").equals("")) {
+                if (jsonObject.containsKey("block")) {
+                    if (jsonObject.getString("block") == null || jsonObject.getString("block").equals("null") || jsonObject.getString("block").equals("")) {
                         this.blocks = null;
                     } else {
-                        this.blocks = jsonObject.getJSONObject("Block");
+                        this.blocks = jsonObject.getJSONObject("block");
                     }
                 }
             } else {
