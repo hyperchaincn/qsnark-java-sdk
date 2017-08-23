@@ -2,6 +2,7 @@ package cn.qsnark.sdk.rpc.returns;
 
 
 import cn.qsnark.sdk.rpc.QsnarkAPI;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
@@ -15,7 +16,15 @@ import org.apache.log4j.Logger;
 public class QueryBlockReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String status;
-    private JSONObject blocks;
+    private JSONObject block;
+    private long number;
+    private String hash;
+    private String parentHash;
+    private long writeTime;
+    private long avgTime;
+    private long txCounts;
+    private String merkleRoot;
+    private JSONArray transactions;
     private String error;
     private String message;
     private int code;
@@ -33,15 +42,26 @@ public class QueryBlockReturn {
                     this.status = jsonObject.getString("Status");
                 if (jsonObject.containsKey("block")) {
                     if (jsonObject.getString("block") == null || jsonObject.getString("block").equals("null") || jsonObject.getString("block").equals("")) {
-                        this.blocks = null;
+                        this.block = null;
                     } else {
-                        this.blocks = jsonObject.getJSONObject("block");
+                        this.block = jsonObject.getJSONObject("block");
+                        JSONObject blockObject = JSONObject.fromObject(this.block);
+                        this.number = blockObject.getLong("Number");
+                        this.hash = blockObject.getString("Hash");
+                        this.parentHash  = blockObject.getString("ParentHash");
+                        this.writeTime = blockObject.getLong("WriteTime");
+                        this.avgTime = blockObject.getLong("AvgTime");
+                        this.txCounts = blockObject.getLong("Txcounts");
+                        this.merkleRoot = blockObject.getString("MerkleRoot");
+                        this.transactions = blockObject.getJSONArray("Transactions");
+
+
                     }
                 }
             } else {
                 logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
             }
-            if (this.blocks == null || this.blocks.equals("")) {
+            if (this.block == null || this.block.equals("")) {
                 this.error = this.status;
                 this.message = this.status;
                 this.code = -1;
@@ -58,8 +78,40 @@ public class QueryBlockReturn {
         return status;
     }
 
-    public JSONObject getBlocks() {
-        return blocks;
+    public JSONObject getBlock() {
+        return block;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public String getParentHash() {
+        return parentHash;
+    }
+
+    public long getWriteTime() {
+        return writeTime;
+    }
+
+    public long getAvgTime() {
+        return avgTime;
+    }
+
+    public long getTxCounts() {
+        return txCounts;
+    }
+
+    public String getMerkleRoot() {
+        return merkleRoot;
+    }
+
+    public JSONArray getTransactions() {
+        return transactions;
     }
 
     public String getError() {
@@ -73,5 +125,4 @@ public class QueryBlockReturn {
     public int getCode() {
         return code;
     }
-
 }

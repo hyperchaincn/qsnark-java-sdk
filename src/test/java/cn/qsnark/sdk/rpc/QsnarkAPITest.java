@@ -52,7 +52,7 @@ public class QsnarkAPITest {
     @Test
     public void createAccount() throws Exception {
 
-        CreteAccountReturn creteAccountReturn = api.createAccount("Bearer K8YYCZSSMTSVEJY7VA5KTQ");
+        CreteAccountReturn creteAccountReturn = api.createAccount("Bearer IVKEWCXMOAWXG1DTYAGUZA");
         System.out.println(creteAccountReturn.getCode());
         System.out.println(creteAccountReturn.getMessage());
         System.out.println(creteAccountReturn.getError());
@@ -64,20 +64,22 @@ public class QsnarkAPITest {
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer FMINFTYLMH-0IVLVUQLNWG", "number", 1);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer IVKEWCXMOAWXG1DTYAGUZA", "number", 1);
 
         System.out.println(queryBlockReturn.getCode());
         System.out.println(queryBlockReturn.getMessage());
         System.out.println(queryBlockReturn.getError());
         System.out.println(queryBlockReturn.getStatus());
-        System.out.println(queryBlockReturn.getBlocks());
+        System.out.println(queryBlockReturn.getBlock());
+        System.out.println(queryBlockReturn.getWriteTime());
+        System.out.println(queryBlockReturn.getTransactions());
 
 
     }
     @Test
     public void pageBlocks() throws Exception {
 
-        PageBlocksReturn pageBlocksReturn = api.pageBlocks("Bearer O6URCYSYPKCHFMIHLFAVAQ", 1, 1);
+        PageBlocksReturn pageBlocksReturn = api.pageBlocks("Bearer IVKEWCXMOAWXG1DTYAGUZA", 1, 12);
 
         System.out.println(pageBlocksReturn.getCode());
         System.out.println(pageBlocksReturn.getMessage());
@@ -92,7 +94,7 @@ public class QsnarkAPITest {
     @Test
     public void rangeBlocks() throws Exception {
 
-        RangeBlocksReturn queryBlocksReturn = api.rangeBlocks("Bearer O6URCYSYPKCHFMIHLFAVAQ", 1, 2);
+        RangeBlocksReturn queryBlocksReturn = api.rangeBlocks("Bearer IVKEWCXMOAWXG1DTYAGUZA", 1, 2);
 
         System.out.println(queryBlocksReturn.getCode());
         System.out.println(queryBlocksReturn.getMessage());
@@ -106,7 +108,7 @@ public class QsnarkAPITest {
     @Test
     public void nodesChain() throws Exception {
 
-        NodesChainReturn nodesConReturn = api.nodesChain("Bearer K8YYCZSSMTSVEJY7VA5KTQ");
+        NodesChainReturn nodesConReturn = api.nodesChain("Bearer IVKEWCXMOAWXG1DTYAGUZA");
         System.out.println(nodesConReturn.getCode());
         System.out.println(nodesConReturn.getMessage());
         System.out.println(nodesConReturn.getError());
@@ -119,7 +121,7 @@ public class QsnarkAPITest {
     public void compileContract() throws Exception {
 
         String s = "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-        CompileReturn compileReturn = api.compileContract("Bearer K8YYCZSSMTSVEJY7VA5KTQ", s);
+        CompileReturn compileReturn = api.compileContract("Bearer IVKEWCXMOAWXG1DTYAGUZA", s);
 
         System.out.println(compileReturn.getCode());
         System.out.println(compileReturn.getMessage());
@@ -134,7 +136,7 @@ public class QsnarkAPITest {
 
     @Test
     public void manitainContract() throws Exception {
-        MainTainReturn mainTainReturn = api.maintainContract("Bearer JVASRGLPOGUOFVM2FJ3GHA", "0x885b67411d84f6aa3b1e8e5ee6730c8123423777", 1, "0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575fe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029", "0x6a713a318ac303457da2d42e52e7304f33ef310a");
+        MainTainReturn mainTainReturn = api.maintainContract("Bearer IVKEWCXMOAWXG1DTYAGUZA", "0x885b67411d84f6aa3b1e8e5ee6730c8123423777", 1, "0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575fe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029", "0x6a713a318ac303457da2d42e52e7304f33ef310a");
         System.out.println(mainTainReturn.getCode());
         System.out.println(mainTainReturn.getMessage());
         System.out.println(mainTainReturn.getError());
@@ -146,7 +148,7 @@ public class QsnarkAPITest {
     @Test
     public void queryContract() throws Exception {
 
-        QueryContReturn queryContReturn = api.queryContract("Bearer K8YYCZSSMTSVEJY7VA5KTQ", "-1", "1");
+        QueryContReturn queryContReturn = api.queryContract("Bearer IVKEWCXMOAWXG1DTYAGUZA", "1", "1");
         System.out.println(queryContReturn.getCode());
         System.out.println(queryContReturn.getMessage());
         System.out.println(queryContReturn.getError());
@@ -157,7 +159,7 @@ public class QsnarkAPITest {
     @Test
     public void statusContract() throws Exception {
 
-        StatusConReturn statusConReturn = api.statusContract("Bearer JVASRGLPOGUOFVM2FJ3GHA", "0x9dcaee215a9cbd1207f6d1351a930a804a269892");
+        StatusConReturn statusConReturn = api.statusContract("Bearer IVKEWCXMOAWXG1DTYAGUZA", "0xd71e6c4910e517b8556fa3d3b7866eb2f6a7025f");
         System.out.println(statusConReturn.getCode());
         System.out.println(statusConReturn.getMessage());
         System.out.println(statusConReturn.getError());
@@ -167,7 +169,7 @@ public class QsnarkAPITest {
     @Test
     public void countTransaction() throws Exception {
 
-        CountTraReturn countTraReturn = api.countTransaction("Bearer K8YYCZSSMTSVEJY7VA5KTQ");
+        CountTraReturn countTraReturn = api.countTransaction("Bearer IVKEWCXMOAWXG1DTYAGUZA");
         System.out.println(countTraReturn.getCode());
         System.out.println(countTraReturn.getMessage());
         System.out.println(countTraReturn.getError());
@@ -204,7 +206,7 @@ public class QsnarkAPITest {
     @Test
     public void getTxReceipt() throws Exception {
 
-        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer K8YYCZSSMTSVEJY7VA5KTQ", "0xe99162f667f1cdff50e6bbbe193f885d9fb0d3456c29b02fa15d91c99aad1c36");
+        GetTxReciptReturn getTxReciptReturn = api.getTxReceipt("Bearer IVKEWCXMOAWXG1DTYAGUZA", "0xe99162f667f1cdff50e6bbbe193f885d9fb0d3456c29b02fa15d91c99aad1c36");
         System.out.println(getTxReciptReturn.getCode());
         System.out.println(getTxReciptReturn.getMessage());
         System.out.println(getTxReciptReturn.getError());
