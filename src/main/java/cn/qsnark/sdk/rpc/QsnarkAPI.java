@@ -51,10 +51,10 @@ public class QsnarkAPI {
      * 1.1 获取access_token
      * <p>
      *
-     * @param client_id   httpkey
-     * @param client_secret  appsecret
-     * @param username 用户名
-     * @param password 密码
+     * @param client_id     httpkey
+     * @param client_secret appsecret
+     * @param username      用户名
+     * @param password      密码
      * @return GetTokenReturn对象
      */
     public GetTokenReturn getAccess_Token(String client_id, String client_secret, String username, String password) throws IOException {
@@ -70,7 +70,7 @@ public class QsnarkAPI {
      *
      * @param client_id
      * @param client_secret
-     * @param retoken 刷新token
+     * @param retoken       刷新token
      * @return RetokenReturn对象
      */
     public RetokenReturn refAccess_Token(String client_id, String client_secret, String retoken) throws IOException {
@@ -88,6 +88,8 @@ public class QsnarkAPI {
      * @return CreteAccountReturn对象
      */
     public CreteAccountReturn createAccount(String token) throws IOException {
+        if(token == null)
+            token = "";
         CreateAccountParams createParams = new CreateAccountParams(token);
         return new CreteAccountReturn(this.createAccountManager.SyncRequest(createParams));
     }
@@ -102,6 +104,8 @@ public class QsnarkAPI {
      * @return QueryBlockReturn
      */
     public QueryBlockReturn queryBlock(String token, String type, Object value) throws IOException {
+        if (token == null)
+            token = "";
         QueryBlockParams queryBlockParams = new QueryBlockParams(token, type, value);
         return new QueryBlockReturn(this.queryBlockManager.SyncRequest(queryBlockParams));
     }
@@ -111,11 +115,13 @@ public class QsnarkAPI {
      * <p>
      *
      * @param token 授权令牌
-     * @param index  页码
-     * @param size    每页区块数量
+     * @param index 页码
+     * @param size  每页区块数量
      * @return PageBlocksReturn
      */
     public PageBlocksReturn pageBlocks(String token, long index, long size) throws IOException {
+        if(token == null)
+            token = "";
         PageBlocksParams pageBlocksParams = new PageBlocksParams(token, index, size);
         return new PageBlocksReturn(this.pageBlocksManager.SyncRequest(pageBlocksParams));
     }
@@ -130,6 +136,8 @@ public class QsnarkAPI {
      * @return RangeBlocksReturn
      */
     public RangeBlocksReturn rangeBlocks(String token, long from, Object to) throws IOException {
+        if(token == null)
+            token = "";
         RangeBlocksParams rangeBlocksParams = new RangeBlocksParams(token, from, to);
         return new RangeBlocksReturn(this.rangeBlocksManager.SyncRequest(rangeBlocksParams));
     }
@@ -142,6 +150,8 @@ public class QsnarkAPI {
      * @return NodesChainReturn
      */
     public NodesChainReturn nodesChain(String token) throws IOException {
+        if(token == null)
+            token = "";
         return new NodesChainReturn(this.nodesManager.SyncRequest(token));
     }
 
@@ -153,7 +163,11 @@ public class QsnarkAPI {
      * @return CompileReturn对象
      */
     public CompileReturn compileContract(String token, String sourceCode) throws IOException {
+        if (sourceCode == null)
+            sourceCode = "";
 
+        if (token == null)
+            token = "";
         CompileContParams compileContParams = new CompileContParams(token, sourceCode);
         return new CompileReturn(this.compileContManager.SyncRequest(compileContParams));
     }
@@ -165,10 +179,12 @@ public class QsnarkAPI {
      * @param bin   合约编码生成的bin
      * @param from  合约调用者地址
      * @return DeployConReturn对象
-     * @Description   立即返回交易hash，SDK轮询获取合约地址
+     * @Description 立即返回交易hash，SDK轮询获取合约地址
      */
     public DeployConReturn deployContract(String token, String bin, String from, DevCallback callback) throws IOException, InterruptedException {
 
+        if (token == null)
+            token = "";
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
 
@@ -189,7 +205,8 @@ public class QsnarkAPI {
      * @return GetTxReciptReturn对象
      */
     public GetTxReciptReturn deploysyncContract(String token, String bin, String from) throws IOException, InterruptedException {
-
+        if(token == null)
+            token = "";
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.deploysycnConManager.SyncRequest(deployConParams));
 
@@ -200,19 +217,20 @@ public class QsnarkAPI {
      * 1.11 deployArgsContract部署合约
      * <p>
      *
-     * @param token  授权令牌
-     * @param bin    合约编码生成的bin。
-     * @param from   From
-     * @param callback 用户自定义方法
-     * @param abiStr 合约源码对应的abi数组
+     * @param token          授权令牌
+     * @param bin            合约编码生成的bin。
+     * @param from           From
+     * @param callback       用户自定义方法
+     * @param abiStr         合约源码对应的abi数组
      * @param functionParams <FuncParamReal对象>0个或1个或多个
-     * @Description 立即返回交易hash，SDK轮询获取合约地址
      * @return DeployConReturn对象
+     * @Description 立即返回交易hash，SDK轮询获取合约地址
      */
     public DeployConReturn deployArgsContract(String token, String bin, String from, DevCallback callback, String abiStr, FuncParamReal... functionParams) throws IOException, FunctionParamException {
-
+        if(token == null)
+            token = "";
         String payload = createPayload(functionParams);
-        System.out.println("payload"+payload);
+        System.out.println("payload" + payload);
         bin = bin + payload;
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
@@ -229,18 +247,20 @@ public class QsnarkAPI {
      * 1.12 InvokeContract调用合约
      * <p>
      *
-     * @param token  授权令牌
+     * @param token          授权令牌
      * @param _const
-     * @param from   From
-     * @param to   合约地址
-     * @param abi   合约地址
-     * @param callback 用户自定义方法
-     * @param func_name 调用合约中的方法名
+     * @param from           From
+     * @param to             合约地址
+     * @param abi            合约地址
+     * @param callback       用户自定义方法
+     * @param func_name      调用合约中的方法名
      * @param functionParams <FuncParamReal对象>0个或1个或多个
-     * @Description 立即返回交易hash，SDK轮询获取合约地址
      * @return InvokeConReturn对象
+     * @Description 立即返回交易hash，SDK轮询获取合约地址
      */
-    public InvokeConReturn invokeContract(String token,boolean _const, String from, String to, String abi, InvCallback callback, String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
+    public InvokeConReturn invokeContract(String token, boolean _const, String from, String to, String abi, InvCallback callback, String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
+        if(token == null)
+            token = "";
         String payload = createPayload(func_name, functionParams);
         InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         InvokeConReturn invokeReturn = new InvokeConReturn(this.invokeConManager.SyncRequest(invokeConParams));
@@ -255,17 +275,19 @@ public class QsnarkAPI {
      * 1.13 Invoke Contract调用合约
      * <p>
      *
-     * @param token  授权令牌
+     * @param token          授权令牌
      * @param _const
-     * @param from   From
-     * @param to   合约地址
-     * @param abi   合约地址
-     * @param func_name 调用合约中的方法名
+     * @param from           From
+     * @param to             合约地址
+     * @param abi            合约地址
+     * @param func_name      调用合约中的方法名
      * @param functionParams <FuncParamReal对象>0个或1个或多个
-     * @Description 立即返回交易hash，SDK轮询获取合约地址
      * @return GetTxReciptReturn对象
+     * @Description 立即返回交易hash，SDK轮询获取合约地址
      */
-    public GetTxReciptReturn invokesyncContract(String token,boolean _const, String from, String to, String abi,String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
+    public GetTxReciptReturn invokesyncContract(String token, boolean _const, String from, String to, String abi, String func_name, FuncParamReal... functionParams) throws IOException, TxException, InterruptedException {
+        if (token == null)
+            token = "";
         String payload = createPayload(func_name, functionParams);
         InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.invokesyncConManager.SyncRequest(invokeConParams));
@@ -277,16 +299,18 @@ public class QsnarkAPI {
      * 1.14  maintain维护合约
      * <p>
      *
-     * @param token 授权令牌
-     * @param from 合约调用者地址
+     * @param token    授权令牌
+     * @param from     合约调用者地址
      * @param opration 1升级2冻结3解冻
-     * @param payload 新的合约的bin
-     * @param to 合约地址
+     * @param payload  新的合约的bin
+     * @param to       合约地址
      * @return MainTainReturn对象
      * @Description Maintain Contract[合约升级] opcode: 1:升级，2:冻结，3:解冻
      */
     public MainTainReturn maintainContract(String token, String from, int opration, String payload, String to) throws IOException {
 
+        if (token == null)
+            token = "";
         MainTainParams mainTainParams = new MainTainParams(token, from, opration, payload, to);
         return new MainTainReturn(this.mainTainContManager.SyncRequest(mainTainParams));
     }
@@ -309,10 +333,15 @@ public class QsnarkAPI {
      *
      * @param token   登录令牌
      * @param address 合约地址
-     * @Description query contract status 合约状态
      * @return StatusConReturn对象
+     * @Description query contract status 合约状态
      */
     public StatusConReturn statusContract(String token, String address) throws IOException {
+        if (address == null)
+            address = "";
+        if (token == null) {
+            token = "";
+        }
         StatusConParams statusConParams = new StatusConParams(token, address);
         return new StatusConReturn(this.statusManager.SyncRequest(statusConParams));
     }
@@ -322,10 +351,12 @@ public class QsnarkAPI {
      * <p>
      *
      * @param token 登录令牌
-     * @Description query transaction by hash 获取链上交易总数
      * @return CountTraReturn对象
+     * @Description query transaction by hash 获取链上交易总数
      */
     public CountTraReturn countTransaction(String token) throws IOException {
+        if(token == null)
+            token = "";
         return new CountTraReturn(this.countManager.SyncRequest(token));
     }
 
@@ -337,6 +368,8 @@ public class QsnarkAPI {
      * @return QueryTranReturn对象
      */
     public QueryTranReturn queryTransaction(String token, String hash) throws IOException {
+        if(token == null)
+            token = "";
         QueryTranParams queryTranParams = new QueryTranParams(token, hash);
         return new QueryTranReturn(this.queryTranManager.SyncRequest(queryTranParams));
     }
@@ -346,10 +379,12 @@ public class QsnarkAPI {
      *
      * @param token  授权令牌
      * @param txhash 交易hash
-     * @Description get transaction receipt
      * @return GetTxReciptReturn对象
+     * @Description get transaction receipt
      */
     public GetTxReciptReturn getTxReceipt(String token, String txhash) throws IOException {
+        if(token == null)
+            token = "";
         GetTxReceiptParams getTxReceiptParams = new GetTxReceiptParams(token, txhash);
         return new GetTxReciptReturn(this.getTxReceiptManager.SyncRequest(getTxReceiptParams));
     }
@@ -364,6 +399,8 @@ public class QsnarkAPI {
      * @Description query discard transaction 查询时间区间内的失败交易
      */
     public DiscardConReturn discardTransaction(String token, String start, String end) throws IOException {
+        if(token == null)
+            token = "";
         DiscardConParams discardConParams = new DiscardConParams(token, start, end);
         return new DiscardConReturn(this.discardManager.SyncRequest(discardConParams));
     }

@@ -28,6 +28,7 @@ public class CompileReturn {
     public CompileReturn(String jsonString) {
 
         logger.debug("[RESPONSE] " + jsonString);
+        String ctsJsonString = "";
         if (jsonString.contains("invalid access token")) {
             this.error = "invalid access token";
             this.message = "invalid access token";
@@ -38,7 +39,7 @@ public class CompileReturn {
                 if (jsonObject.containsKey("Status"))
                     this.status = jsonObject.getString("Status");
                 if (jsonObject.containsKey("Cts")) {
-                    String ctsJsonString = jsonObject.getString("Cts");
+                    ctsJsonString = jsonObject.getString("Cts");
                     if (ctsJsonString != null && !ctsJsonString.equals("") && ctsJsonString != "null") {
                         this.cts = JSONArray.fromObject(ctsJsonString);
 
@@ -63,9 +64,21 @@ public class CompileReturn {
                             this.message = "success";
                             this.code = 0;
                         }
+                    }else{
+                        this.error = this.status;
+                        this.message = this.status;
+                        this.code = -1;
                     }
+
                 }
+
+
             }
+        }
+        if (ctsJsonString == null || ctsJsonString.equals("")) {
+            this.error = this.status;
+            this.message = this.status;
+            this.code = -1;
         }
     }
 

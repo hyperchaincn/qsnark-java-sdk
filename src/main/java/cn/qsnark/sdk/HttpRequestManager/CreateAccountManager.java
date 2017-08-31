@@ -71,7 +71,7 @@ public class CreateAccountManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL +"userId=")
+                .url("http://" + randomURL )
                 .build();
         return request;
 

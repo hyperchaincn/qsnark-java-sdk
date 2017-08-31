@@ -37,7 +37,7 @@ public class QsnarkAPITest {
     @Test
     public void refAccess_Token() throws Exception {
 
-        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "MDBVBSVOVHWLT7JS6JAKWQ");
+        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "YFUMQEGTUT2-VAJ_LHA1QA");
         System.out.println(retokenReturn.getCode());
         System.out.println(retokenReturn.getMessage());
         System.out.println(retokenReturn.getError());
@@ -52,7 +52,7 @@ public class QsnarkAPITest {
     @Test
     public void createAccount() throws Exception {
 
-        CreteAccountReturn creteAccountReturn = api.createAccount("Bearer IVKEWCXMOAWXG1DTYAGUZA");
+        CreteAccountReturn creteAccountReturn = api.createAccount("Bearer BPJKDVCJNDOJ6EXLYTW_PQ");
         System.out.println(creteAccountReturn.getCode());
         System.out.println(creteAccountReturn.getMessage());
         System.out.println(creteAccountReturn.getError());
@@ -64,7 +64,7 @@ public class QsnarkAPITest {
     @Test
     public void queryBlock() throws Exception {
 
-        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer IVKEWCXMOAWXG1DTYAGUZA", "number", 1);
+        QueryBlockReturn queryBlockReturn = api.queryBlock("Bearer ZWUEW9TLN3Q_EMELYQFVAA", "", 1);
 
         System.out.println(queryBlockReturn.getCode());
         System.out.println(queryBlockReturn.getMessage());
@@ -120,8 +120,10 @@ public class QsnarkAPITest {
     @Test
     public void compileContract() throws Exception {
 
-        String s = "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-        CompileReturn compileReturn = api.compileContract("Bearer IVKEWCXMOAWXG1DTYAGUZA", s);
+        String s = "contract Accumulator    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
+//        String s = "";
+        s = null;
+        CompileReturn compileReturn = api.compileContract("Bearer 21QO6FBLPK2NXVV_HTVYBW", s);
 
         System.out.println(compileReturn.getCode());
         System.out.println(compileReturn.getMessage());
