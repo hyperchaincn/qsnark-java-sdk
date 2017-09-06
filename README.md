@@ -1,11 +1,11 @@
-#Qsnarksdk使用说明文档
+# Qsnarksdk使用说明文档
 
-##sdk开发说明
+## sdk开发说明
 
 * 接口使用参照`/doc/Qsnarksdk使用说明文档说明文档.doc`
 * Qsnark SDK 是qsnark对外提供的API接口的Java封装。
 
-##1 使用方法
+## 1 使用方法
 
 简述：
 
@@ -20,7 +20,7 @@
 
 -----
 
-##1.1 getAccess_Token接口
+## 1.1 getAccess_Token接口
 
 * 通过输入client_id，client_secret，username,password获取accesstoken，即，QsnarkAPI api = new Qsnark(),
 然后通过api.getAccesstoken_Token()方法获取accesstoken。
@@ -29,7 +29,7 @@
 
 -----
 
-##1.2 refAccess_Token接口
+## 1.2 refAccess_Token接口
 
 * 通过输入client_id，client_secret,refresh_token（该值由getAccessToken接口返回）刷新token，即，QsnarkAPI api = new Qsnark(),然后通过api.refAccesstoken_Token()方法刷新token。
 * 返回结果封装成ReTokenReturn对象，用户可以通过对象的属性来获取返回结果。在接下来的示例中需要用到以上返回的token 即token_type+空格+access_token，本例中即为Bearer CD843SDUOQ61RY3NEXZHLA;refresh_token为继续刷新token使用。
@@ -52,28 +52,28 @@ api.queryBlock()方法获取QueryBlockReturn对象。
 
 -----
 
-##1.5 pageBlocks接口
+## 1.5 pageBlocks接口
 
 * 通过输入token，index，size获取PageBlocksReturn，该方法实现查询指定页的区块，即，QsnarkAPI api = new Qsnark(),然后通过api.pageBlocks()方法获取PageBlocksReturn对象。
 * 返回结果封装成QueryBlocksReturn对象，用户可以通过对象的属性来获取返回结果。
 
 -----
 
-##1.6 rangeBlocks接口
+## 1.6 rangeBlocks接口
 
 * 通过输入token，from，to获取RangeBlocksReturn，该方法实现查询指定区间内的区块，即，QsnarkAPI api = new Qsnark(),然后通过api.rangeBlocks()方法获取RangeBlocksReturn对象。
 * 返回结果封装成RangeBlocksReturn对象，用户可以通过对象的属性来获取返回结果。
 
 -----
 
-##1.7 nodesChain接口
+## 1.7 nodesChain接口
 
 * 通过输入token获取NodesChainReturn 对象，该方法实现查询所有节点信息，即，QsnarkAPI api = new Qsnark(),然后通过api.nodesChain()方法获取NodesChainReturn 对象。
 * 返回结果封装成NodesConReturn 对象，用户可以通过对象的属性来获取返回结果。
 
 -----
 
-##1.8 compileContract接口
+## 1.8 compileContract接口
 
 * 使用时我们要QsnarkAPI api = new QsnarkAPI();创建QsnarkAPI的对象使用其中的compileContract()方法，该方法实现编译合约生成合约的bin，abi，等合约信息。
 * 在sdk中我们将返回值进行封装为CompileReturn 类的对象，该对象中包含所有返回结果，通过get方法即可取得返回值，该方法生成的bin，abi，为之后的deploy，invoke，maintain方法使用
@@ -103,7 +103,7 @@ deployArgsContract方法中间我们进行了一个处理，利用了使用deplo
 
 -----
 
-##1.12 invokeContract接口
+## 1.12 invokeContract接口
 
 * 使用时我们要QsnarkAPI api = new QsnarkAPI();创建QsnarkAPI的对象使用其中的invokeContract()方法。该方法实现调用合约中的相应方法，要传入对应的方法名以及参数，invokeContract方法中间我们进行了一个处理，利用了使用invokeContract()方法传入的token以及方法返回回来的txhash，去调用getTxReceipt()方法最终返回结果。该方法传依次传入了token,from,to,abi,用户自定义方法,func_name,param1,....。Invoke Contract 直接接受payload参数，payload打包工作交给SDK,立即返回交易hash，在SDK轮询获取调用结果。
 方法名后面的由参数与值构成的对象可以有0个到多个即FuncParamReal param1 = new FuncParamReal("uint32", 1)可以有0个到多个，下面的例子中我们给了两个包装的对象;
@@ -112,53 +112,53 @@ deployArgsContract方法中间我们进行了一个处理，利用了使用deplo
 
 -----
 
-##1.13 invokesyncContract接口
+## 1.13 invokesyncContract接口
 
 * 使用时我们要QsnarkAPI api = new QsnarkAPI();创建QsnarkAPI的对象使用其中的invokesyncContract()方法。该方法实现调用合约中的相应方法，要传入对应的方法名以及参数，方法名后面的由参数与值构成的对象可以有0个到多个即FuncParamReal param1 = new FuncParamReal("uint32", 1)可以有0个到多个，下面的例子中我们给了两个包装的对象;该方法后面直接利用invoke的hash以及token获取回执getReceipt。返回GetTxReceipt对象，封装了回执信息。
 *
 
 -----
 
-##1.14.1调用api中maintainContract()方法
+## 1.14.1调用api中maintainContract()方法
 
 * 此方法主要是对已经部署的合约进行维护，通过输入token，from，opration,payload,to（合约地址）获取MainTainReturn对象，Maintain Contract[合约升级] opcode: 1:升级，2:冻结，3:解冻即，QsnarkAPI api = new Qsnark(),然后通过api.maintainContract()方法获取MainTainReturn对象。该方法要用到compile方法使用源码改动后生成的bin作为payload，to是合约地址，from为账号地址。
 * 返回结果封装成MainTainReturn对象，用户可以通过对象的属性来获取返回结果。
 
 -----
 
-##1.15 queryContract接口(未实现待完成)
+## 1.15 queryContract接口(未实现待完成)
 
 -----
 
-##1.16 statusContract接口
+## 1.16 statusContract接口
 
 * 通过输入token，address获取StatusConReturn对象，该方法查询合约状态，即，QsnarkAPI api = new Qsnark(),然后通过api.statusContract()方法获取StatusConReturn对象.
 * 返回结果封装成StatusConReturn对象，用户可以通过对象的属性来获取返回结果。
 
 -----
 
-##1.17 countTransaction接口
+## 1.17 countTransaction接口
 
 * 通过输入token获取CountTraReturn对象，该方法获取链上的交易总数，即，QsnarkAPI api = new Qsnark(),然后通过api.countTrasaction()方法获取CountTraReturn对象。
 * 返回结果封装成CountTraReturn对象，用户可以通过对象的属性来获取返回结果。
 
 ------
 
-##1.18 queryTransaction接口
+## 1.18 queryTransaction接口
 
 * 通过输入token,hash获取交易信息，该方法通过hash查询交易，即，QsnarkAPI api = new Qsnark(),然后通过api.queryTransaction()方法获取hash对应的交易。
 * 返回QueryTranReturn对象，用户可通过对象属性获取返回值。
 
 -----
 
-##1.9 getTxReceipt接口
+## 1.9 getTxReceipt接口
 
 * 根据交易hash获取交易回执:使用时我们要QsnarkAPI api = new QsnarkAPI();创建QsnarkAPI的对象使用其中的getTxReceipt()方法。
 * 在sdk中我们将返回值进行封装为GetTxReciptReturn类的对象，该对象中包含所有返回结果，通过get方法即可取得返回值。
 
 -----
 
-##1.20 discardTransaction接口
+## 1.20 discardTransaction接口
 
 * 通过输入token，start，end获取DiscardConReturn对象，即，QsnarkAPI api = new Qsnark(),然后通过api.discardTransaction()方法获取DiscardConReturn对象。
 * 返回结果封装成DiscardConReturn对象，用户可以通过对象的属性来获取返回结果。
