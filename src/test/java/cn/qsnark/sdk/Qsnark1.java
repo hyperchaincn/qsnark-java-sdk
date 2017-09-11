@@ -14,7 +14,7 @@ import java.util.List;
 public class Qsnark1 {
     public static void main(String[] args) throws Exception{
         QsnarkAPI api = new QsnarkAPI();
-        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "yeyc", "hello");
+        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "17706421110", "123");
         String token = getTokenReturn.getToken_type()+" "+getTokenReturn.getAccess_token();
         CreteAccountReturn creteAccountReturn = api.createAccount(token);
         String address = creteAccountReturn.getAddress();
@@ -47,7 +47,7 @@ public class Qsnark1 {
 
         String to = getTxReciptReturn.getContract_address();
 
-        MainTainReturn mainTainReturn = api.maintainContract(token, address, 1, bin, to);
+        MainTainReturn mainTainReturn = api.maintainContract(token, address, 0, bin, to);
 
         GetTxReciptReturn invokesyncContract = api.invokesyncContract(token, true,address
                 , to, abi, "increment");

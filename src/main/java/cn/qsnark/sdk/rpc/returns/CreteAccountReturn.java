@@ -14,56 +14,58 @@ import org.apache.log4j.Logger;
 public class CreteAccountReturn {
 
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
-    private String address;
-    private String status;
+
     private int code;
-    private String message;
-    private String error;
+    private String status;
+    private int id;
+    private String address;
+    private String time;
+    private boolean isDisabled;
 
     public CreteAccountReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
-
-        if (jsonString.contains("invalid access token")) {
-            this.error = "invalid access token";
-            this.message = "invalid access token";
-            this.code = -1;
-        } else {
+        if (jsonString.contains("Status")) {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("address"))
-                this.address = jsonObject.getString("address");
+            if (jsonObject.containsKey("Code"))
+                this.code = jsonObject.getInt("Code");
             if (jsonObject.containsKey("Status"))
                 this.status = jsonObject.getString("Status");
-            if (this.address == null || this.address.equals("")) {
-                this.error = this.status;
-                this.message = this.status;
-                this.code = -1;
-            } else {
-
-                this.message = "success";
-                this.code = 0;
+            if (code == 0) {
+                if (jsonObject.containsKey("id"))
+                    this.id = jsonObject.getInt("id");
+                if (jsonObject.containsKey("address"))
+                    this.address = jsonObject.getString("address");
+                if (jsonObject.containsKey("time"))
+                    this.time = jsonObject.getString("time");
+                if (jsonObject.containsKey("isDisabled"))
+                    this.isDisabled = jsonObject.getBoolean("isDisabled");
             }
-
         }
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public int getCode() {
         return code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getStatus() {
+        return status;
     }
 
-    public String getError() {
-        return error;
+    public int getId() {
+        return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public boolean isDisabled() {
+        return isDisabled;
     }
 }
+
 

@@ -16,9 +16,10 @@ public class QueryTranReturn {
 
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
 
-    private String version;
+    private int code;
     private String status;
     private JSONObject transaction;
+    private String version;
     private String hash;
     private int blockNumber;
     private String blockHash;
@@ -32,64 +33,51 @@ public class QueryTranReturn {
     private String payload;
     private boolean invalid;
     private String invalidMsg;
-    private String error;
-    private String message;
-    private int code;
 
     public QueryTranReturn(String jsonString) {
 
         logger.debug("[RESPONSE] " + jsonString);
-        if (jsonString.contains("invalid access token")) {
-            this.error = "invalid access token";
-            this.message = "invalid access token";
-            this.code = -1;
-        } else if (jsonString.contains("Status")) {
+        if (jsonString.contains("Status")) {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("status"))
-                this.status = jsonObject.getString("Status");
-            if (jsonObject.containsKey("Transaction")) {
-                this.transaction = jsonObject.getJSONObject("Transaction");
-                jsonObject = this.transaction;
-                if (jsonObject != null || jsonObject.equals("")) {
-                    if (jsonObject.containsKey("Version"))
-                        this.version = jsonObject.getString("Version");
-                    if (jsonObject.containsKey("Hash"))
-                        this.hash = jsonObject.getString("Hash");
-                    if (jsonObject.containsKey("BlockNumber"))
-                        this.blockNumber = jsonObject.getInt("BlockNumber");
-                    if (jsonObject.containsKey("BlockHash"))
-                        this.blockHash = jsonObject.getString("BlockHash");
-                    if (jsonObject.containsKey("TxIndex"))
-                        this.txIndex = jsonObject.getString("TxIndex");
-                    if (jsonObject.containsKey("From"))
-                        this.from = jsonObject.getString("From");
-                    if (jsonObject.containsKey("To"))
-                        this.to = jsonObject.getString("To");
-                    if (jsonObject.containsKey("Amount"))
-                        this.amount = jsonObject.getInt("Amount");
-                    if (jsonObject.containsKey("Timestamp"))
-                        this.timestamp = jsonObject.getString("Timestamp");
-                    if (jsonObject.containsKey("ExecuteTime"))
-                        this.executeTime = jsonObject.getInt("ExecuteTime");
-                    if (jsonObject.containsKey("Invalid"))
-                        this.invalid = jsonObject.getBoolean("Invalid");
-                    if (jsonObject.containsKey("InvalidMsg"))
-                        this.invalidMsg = jsonObject.getString("InvalidMsg");
-                    if(jsonObject.containsKey("Nonce")){
-                        this.nonce = jsonObject.getLong("Nonce");
-                    }
-                    if(jsonObject.containsKey("Payload")){
-                        this.payload = jsonObject.getString("Payload");
+            this.status = jsonObject.getString("Status");
+            this.code = jsonObject.getInt("Code");
+            if (code == 0) {
+                if (jsonObject.containsKey("Transaction")) {
+                    this.transaction = jsonObject.getJSONObject("Transaction");
+                    jsonObject = this.transaction;
+                    if (jsonObject != null || jsonObject.equals("")) {
+                        if (jsonObject.containsKey("Version"))
+                            this.version = jsonObject.getString("Version");
+                        if (jsonObject.containsKey("Hash"))
+                            this.hash = jsonObject.getString("Hash");
+                        if (jsonObject.containsKey("BlockNumber"))
+                            this.blockNumber = jsonObject.getInt("BlockNumber");
+                        if (jsonObject.containsKey("BlockHash"))
+                            this.blockHash = jsonObject.getString("BlockHash");
+                        if (jsonObject.containsKey("TxIndex"))
+                            this.txIndex = jsonObject.getString("TxIndex");
+                        if (jsonObject.containsKey("From"))
+                            this.from = jsonObject.getString("From");
+                        if (jsonObject.containsKey("To"))
+                            this.to = jsonObject.getString("To");
+                        if (jsonObject.containsKey("Amount"))
+                            this.amount = jsonObject.getInt("Amount");
+                        if (jsonObject.containsKey("Timestamp"))
+                            this.timestamp = jsonObject.getString("Timestamp");
+                        if (jsonObject.containsKey("ExecuteTime"))
+                            this.executeTime = jsonObject.getInt("ExecuteTime");
+                        if (jsonObject.containsKey("Invalid"))
+                            this.invalid = jsonObject.getBoolean("Invalid");
+                        if (jsonObject.containsKey("InvalidMsg"))
+                            this.invalidMsg = jsonObject.getString("InvalidMsg");
+                        if (jsonObject.containsKey("Nonce")) {
+                            this.nonce = jsonObject.getLong("Nonce");
+                        }
+                        if (jsonObject.containsKey("Payload")) {
+                            this.payload = jsonObject.getString("Payload");
+                        }
                     }
                 }
-            }
-            if (this.hash == null || this.hash.equals("")) {
-                this.error = this.status;
-                this.message = this.status;
-                this.code = -1;
-            } else {
-                this.message = "success";
-                this.code = 0;
             }
         }
     }
@@ -156,14 +144,6 @@ public class QueryTranReturn {
 
     public String getInvalidMsg() {
         return invalidMsg;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public int getCode() {

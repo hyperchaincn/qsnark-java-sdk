@@ -49,10 +49,10 @@ public class MainTainParams implements Params {
     @Override
     public String serlize() {
         String str = "{\n" +
-                "\"from\":\"" + this.from + "\",\n" +
-                "\"opration\":" + this.opration + ",\n" +
-                "\"payload\":\"" + this.payload + "\",\n" +
-                "\"to\":\"" + this.to + "\"" + "\n}";
+                "\"From\":\"" + this.from + "\",\n" +
+                "\"Operation\":" + this.opration + ",\n" +
+                "\"Payload\":\"" + this.payload + "\",\n" +
+                "\"To\":\"" + this.to + "\"" + "\n}";
         return str;
     }
 

@@ -19,26 +19,17 @@ public class GetTxReciptReturn {
     private String poststate;
     private String contract_address;
     private String ret;
-    private String error;
-    private String message;
     private int code;
 
 
     public GetTxReciptReturn(String jsonString) {
 
-//        System.out.println(jsonString);
         logger.debug("[RESPONSE] " + jsonString);
-
-
-        if (jsonString.contains("invalid access token")) {
-            this.error = "invalid access token";
-            this.message = "invalid access token";
-            this.code = -1;
-        } else {
-            if (jsonString.contains("Status")) {
-                JSONObject jsonObject = JSONObject.fromObject(jsonString);
-                if (jsonObject.containsKey("Status"))
-                    this.status = jsonObject.getString("Status");
+        if (jsonString.contains("Status")) {
+            JSONObject jsonObject = JSONObject.fromObject(jsonString);
+            this.status = jsonObject.getString("Status");
+            this.code = jsonObject.getInt("Code");
+            if (this.code == 0) {
                 if (jsonObject.containsKey("TxHash"))
                     this.txHash = jsonObject.getString("TxHash");
                 if (jsonObject.containsKey("PostState"))
@@ -47,14 +38,6 @@ public class GetTxReciptReturn {
                     this.contract_address = jsonObject.getString("ContractAddress");
                 if (jsonObject.containsKey("Ret"))
                     this.ret = jsonObject.getString("Ret");
-                if (this.txHash == null || this.txHash.equals("")) {
-                    this.error = this.status;
-                    this.message = this.status;
-                    this.code = -1;
-                } else {
-                    this.message = "success";
-                    this.code = 0;
-                }
             }
         }
     }
@@ -77,14 +60,6 @@ public class GetTxReciptReturn {
 
     public String getRet() {
         return ret;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public int getCode() {

@@ -15,7 +15,7 @@ public class QsnarkAPITest {
     public static void main(String[] args) throws Exception {
 
         QsnarkAPI api = new QsnarkAPI();
-        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "yeyc", "hello");
+        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "17706421110", "123");
         String refresh = getTokenReturn.getRefresh_token();
 
         RetokenReturn retokenReturn = api.refAccess_Token("123", "123", refresh);
@@ -85,7 +85,7 @@ public class QsnarkAPITest {
         PageBlocksReturn pageBlocksReturn = api.pageBlocks(token, 1, 1);
         RangeBlocksReturn rangeBlocksReturn = api.rangeBlocks(token, 1, 2);
         NodesChainReturn nodesConReturn = api.nodesChain(token);
-        QueryContReturn queryContReturn = api.queryContract(token, "1", "11");
+//        QueryContReturn queryContReturn = api.queryContract(token, "1", "11");
         StatusConReturn statusConReturn = api.statusContract(token, address);
         CountTraReturn countTraReturn = api.countTransaction(token);
         QueryTranReturn qreturn = api.queryTransaction(token, dephash);

@@ -14,53 +14,29 @@ import org.apache.log4j.Logger;
  */
 public class CountTraReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
+    private int code;
     private String status;
     private String count;
     private String timeStamp;
-    private String error;
-    private String message;
-    private int code;
-
-
-    public String getError() {
-        return error;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public int getCode() {
-        return code;
-    }
 
     public CountTraReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
-        if (jsonString.contains("invalid access token")) {
-            this.error = "invalid access token";
-            this.message = "invalid access token";
-            this.code = -1;
-        } else {
-            JSONObject jsonObject = JSONObject.fromObject(jsonString);
-            if (jsonObject.containsKey("Status")) {
-                this.status = jsonObject.getString("Status");
-            }
+        JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+        this.status = jsonObject.getString("Status");
+        this.code = jsonObject.getInt("Code");
+        if (code == 0) {
             if (jsonObject.containsKey("Count")) {
                 this.count = jsonObject.getString("Count");
             }
             if (jsonObject.containsKey("Timestamp")) {
                 this.timeStamp = jsonObject.getString("Timestamp");
             }
-            if (this.timeStamp == null || this.timeStamp.equals("")) {
-                this.error = this.status;
-                this.message = this.status;
-                this.code = -1;
-            } else {
-                this.message = "success";
-                this.code = 0;
-            }
-
         }
+    }
+
+    public int getCode() {
+        return code;
     }
 
     public String getStatus() {

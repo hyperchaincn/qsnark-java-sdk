@@ -24,7 +24,7 @@ public class QueryTranManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/transaction/query";
+    public String sourceURL = HeadType.URL.getType() + "/v1/dev/transaction/query?";
 
 
     public String SyncRequest(QueryTranParams params) throws IOException {
@@ -69,8 +69,7 @@ public class QueryTranManager {
         request = new Request.Builder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Authorization", params.getToken())
-                .addHeader("hash", params.getHash())
-                .url("http://" + randomURL )
+                .url("http://" + randomURL +"hash="+params.getHash())
                 .build();
         return request;
 

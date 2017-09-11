@@ -315,18 +315,18 @@ public class QsnarkAPI {
         return new MainTainReturn(this.mainTainContManager.SyncRequest(mainTainParams));
     }
 
-    /**
+   /* *//**
      * 1.15 获取某个应用下的合约列表
      *
      * @param token  query string true "user api access token"
      * @param pindex query string true "page index"
      * @param psize  query string true "page size"
      * @return 标准格式返回值
-     */
+     *//*
     public QueryContReturn queryContract(String token, String pindex, String psize) throws IOException {
         QueryContParams queryContParams = new QueryContParams(token, pindex, psize);
         return new QueryContReturn(this.queryContManage.SyncRequest(queryContParams));
-    }
+    }*/
 
     /**
      * 1.16 status合约状态

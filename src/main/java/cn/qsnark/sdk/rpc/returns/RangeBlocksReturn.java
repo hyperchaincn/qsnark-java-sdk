@@ -15,23 +15,17 @@ import org.apache.log4j.Logger;
  */
 public class RangeBlocksReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
+    private int code;
     private String status;
     private JSONArray blocks;
-    private String error;
-    private String message;
-    private int code;
 
     public RangeBlocksReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
-        if (jsonString.contains("invalid access token")) {
-            this.error = "invalid access token";
-            this.message = "invalid access token";
-            this.code = -1;
-        } else {
-            if (jsonString.contains("Status")) {
-                JSONObject jsonObject = JSONObject.fromObject(jsonString);
-                if (jsonObject.containsKey("Status"))
-                    this.status = jsonObject.getString("Status");
+        if (jsonString.contains("Status")) {
+            JSONObject jsonObject = JSONObject.fromObject(jsonString);
+            this.status = jsonObject.getString("Status");
+            this.code = jsonObject.getInt("Code");
+            if (code == 0) {
                 if (jsonObject.containsKey("Blocks")) {
                     if (jsonObject.getString("Blocks") == null || jsonObject.getString("Blocks").equals("null") || jsonObject.getString("Blocks").equals("")) {
                         this.blocks = null;
@@ -39,36 +33,15 @@ public class RangeBlocksReturn {
                         this.blocks = jsonObject.getJSONArray("Blocks");
                     }
                 }
-            } else {
-                logger.debug("Incoming parameters are incorrect, please re-pass the parameters");
-            }
-            if (this.blocks == null || this.blocks.equals("")) {
-                this.error = this.status;
-                this.message = this.status;
-                this.code = -1;
-            } else {
-
-                this.message = "success";
-                this.code = 0;
             }
         }
     }
-
-
     public String getStatus() {
         return status;
     }
 
     public JSONArray getBlocks() {
         return blocks;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public int getCode() {
