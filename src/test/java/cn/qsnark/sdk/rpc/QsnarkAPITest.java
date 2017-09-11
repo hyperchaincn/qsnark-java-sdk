@@ -22,7 +22,7 @@ public class QsnarkAPITest {
     @Test
     public void getAccess_Token() throws Exception {
 
-        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "yeyc", "hello");
+        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "17706421110", "123");
         System.out.println(getTokenReturn.getCode());
         System.out.println(getTokenReturn.getMessage());
         System.out.println(getTokenReturn.getError());
@@ -37,7 +37,7 @@ public class QsnarkAPITest {
     @Test
     public void refAccess_Token() throws Exception {
 
-        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "YFUMQEGTUT2-VAJ_LHA1QA");
+        RetokenReturn retokenReturn = api.refAccess_Token("123", "123", "EDMFBVVZXIY_VWCV1IUBNG");
         System.out.println(retokenReturn.getCode());
         System.out.println(retokenReturn.getMessage());
         System.out.println(retokenReturn.getError());

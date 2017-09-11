@@ -26,7 +26,7 @@ public class RetokenManager {
 
 
 //    public String sourceURL = "https://127.0.0.1:14000/token?";
-    public String sourceURL = "https://"+ HeadType.TOKENURL.getType()+"/token?";
+    public String sourceURL = "http://"+ HeadType.URL.getType()+"/v1/token/rtoken";
 
 
 
@@ -69,24 +69,18 @@ public class RetokenManager {
      * @throws HttpRequest.HttpRequestException -
      */
     public Request Post(RetokenParams params) throws HttpRequest.HttpRequestException {
+        RequestBody body = RequestBody.create(null, params.serlize());
         String randomURL = sourceURL;
+        Request request = null;
 
-        MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-        RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
-                " name=\"grant_type\"\r\n\r\n"+params.getGrant_type()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: " +
-                "form-data; name=\"scope\"\r\n\r\n"+params.getScope()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
-                " name=\"refresh_token\"\r\n\r\n"+params.getRetoken()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: " +
-                "form-data; name=\"client_id\"\r\n\r\n"+params.getClient_id()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; " +
-                "name=\"client_secret\"\r\n\r\n"+params.getClient_secret()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-        Request request = new Request.Builder()
-                .url(randomURL)
+        request = new Request.Builder()
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("Accept", "application/json")
                 .post(body)
-                .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                .addHeader("authorization", "Basic MTIzOjEyMw==")
-                .addHeader("cache-control", "no-cache")
-                .addHeader("postman-token", "60550094-a582-1c59-fb0d-ad7a2973d51e")
+                .url(randomURL)
                 .build();
-        return request;
 
+
+        return request;
     }
 }

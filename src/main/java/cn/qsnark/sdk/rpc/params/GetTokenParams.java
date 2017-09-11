@@ -51,14 +51,13 @@ public class GetTokenParams implements Params {
 
     @Override
     public String serlize() {
-        String str = "{" +
-                "\"app_key\":\"" + this.app_key + "\"," +
-                "\"app_secret\":\"" + this.app_secret + "\"," +
-                "\"grant_type\":\"" + this.grant_type + "\"," +
-                "\"scope\":\"" + this.scope + "\"," +
-                "\"username\":\"" + this.username + "\"," +
-                "\"password\":\"" + this.password + "\"" + "}";
-        System.out.println(str);
+        String str =
+                "grant_type=" + this.grant_type +
+                "&scope=" + this.scope +
+                "&username=" + this.username +
+                "&password=" + this.password +
+                "&client_id=" + this.app_key +
+                "&client_secret=" + this.app_secret;
         return str;
     }
 }

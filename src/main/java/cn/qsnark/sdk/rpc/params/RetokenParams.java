@@ -8,7 +8,7 @@ package cn.qsnark.sdk.rpc.params;
  * Date: 2017-06-01
  * Time: 下午1:35
  */
-public class RetokenParams   {
+public class RetokenParams implements Params {
 
     private String grant_type;
     private String scope;
@@ -18,7 +18,7 @@ public class RetokenParams   {
 
 
     public RetokenParams(String grant_type, String scope, String client_id, String client_secret, String retoken) {
-        this.grant_type =grant_type;
+        this.grant_type = grant_type;
         this.scope = scope;
         this.client_id = client_id;
         this.client_secret = client_secret;
@@ -44,5 +44,17 @@ public class RetokenParams   {
 
     public String getRetoken() {
         return retoken;
+    }
+
+    @Override
+    public String serlize() {
+        String str =
+                "grant_type=" + this.grant_type +
+                "&scope=" + this.scope +
+                "&refresh_token=" + this.retoken +
+                "&client_id=" + this.client_id +
+                "&client_secret=" + this.client_secret;
+        System.out.println(str);
+        return str;
     }
 }

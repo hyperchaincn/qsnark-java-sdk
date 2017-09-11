@@ -9,6 +9,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
+import sun.plugin.dom.core.Text;
 
 import java.io.IOException;
 
@@ -30,7 +31,7 @@ public class GetTokenManager {
 
 
 //    public String sourceURL = "127.0.0.1:14000/token";
-    public String sourceURL = "https://"+HeadType.TOKENURL.getType()+"/token";
+    public String sourceURL = "http://"+HeadType.URL.getType()+"/v1/token/gtoken";
 
 
     public String SyncRequest(GetTokenParams params) throws IOException {
@@ -74,31 +75,17 @@ public class GetTokenManager {
 
     public Request Post(GetTokenParams params) throws HttpRequest.HttpRequestException {
 
-
+        RequestBody body = RequestBody.create(null, params.serlize());
+        String randomURL = sourceURL;
         Request request = null;
 
-        MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-        RequestBody body = RequestBody.create(mediaType,
-                "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: " +
-                        "form-data; name=\"grant_type\"\r\n\r\n"+params.getGrant_type()+"\r\n" +
-                        "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition:" +
-                        " form-data; name=\"scope\"\r\n\r\n"+params.getScope()+"\r\n------" +
-                        "WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition:" +
-                        " form-data; name=\"username\"\r\n\r\n"+params.getUsername()+"\r\n------" +
-                        "WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; " +
-                        "name=\"password\"\r\n\r\n"+params.getPassword()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\n" +
-                        "Content-Disposition: form-data; name=\"client_id\"\r\n\r\n"+params.getApp_key()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW" +
-                        "\r\nContent-Disposition: form-data; name=\"client_secret\"\r\n\r\n"+params.getApp_secret()+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
-
-         request = new Request.Builder()
-                .url(sourceURL)
-//                .url("https://127.0.0.1:14000/token")
+        request = new Request.Builder()
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("Accept", "application/json")
                 .post(body)
-                .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                .addHeader("authorization", "Basic MTIzOjEyMw==")
-                .addHeader("cache-control", "no-cache")
-                .addHeader("postman-token", "5b54b403-d435-85eb-2453-da5b1cce8aca")
+                .url(randomURL)
                 .build();
+
 
         return request;
 
