@@ -10,30 +10,17 @@ package cn.qsnark.sdk.rpc.params;
  */
 public class RetokenParams implements Params {
 
-    private String grant_type;
-    private String scope;
     private String client_id;
     private String client_secret;
     private String retoken;
 
 
-    public RetokenParams(String grant_type, String scope, String client_id, String client_secret, String retoken) {
-        this.grant_type = grant_type;
-        this.scope = scope;
+    public RetokenParams(String client_id, String client_secret, String retoken) {
         this.client_id = client_id;
         this.client_secret = client_secret;
         this.retoken = retoken;
 
     }
-
-    public String getGrant_type() {
-        return grant_type;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
     public String getClient_id() {
         return client_id;
     }
@@ -49,12 +36,9 @@ public class RetokenParams implements Params {
     @Override
     public String serlize() {
         String str =
-                "grant_type=" + this.grant_type +
-                "&scope=" + this.scope +
                 "&refresh_token=" + this.retoken +
                 "&client_id=" + this.client_id +
                 "&client_secret=" + this.client_secret;
-        System.out.println(str);
         return str;
     }
 }

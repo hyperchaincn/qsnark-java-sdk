@@ -58,9 +58,7 @@ public class QsnarkAPI {
      * @return GetTokenReturn对象
      */
     public GetTokenReturn getAccess_Token(String client_id, String client_secret, String username, String password) throws IOException {
-        String grant_type = "password";
-        String scope = "all";
-        GetTokenParams getTokenParams = new GetTokenParams(client_secret, client_secret, username, password, grant_type, scope);
+        GetTokenParams getTokenParams = new GetTokenParams(client_secret, client_secret, username, password);
         return new GetTokenReturn(this.getTokenManager.SyncRequest(getTokenParams));
     }
 
@@ -74,9 +72,7 @@ public class QsnarkAPI {
      * @return RetokenReturn对象
      */
     public RetokenReturn refAccess_Token(String client_id, String client_secret, String retoken) throws IOException {
-        String grant_type = "refresh_token";
-        String scope = "all";
-        RetokenParams retokenParams = new RetokenParams(grant_type, scope, client_id, client_secret, retoken);
+        RetokenParams retokenParams = new RetokenParams(client_id, client_secret, retoken);
         return new RetokenReturn(this.retokenManager.SyncRequest(retokenParams));
     }
 

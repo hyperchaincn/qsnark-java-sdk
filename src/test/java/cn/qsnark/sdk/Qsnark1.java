@@ -15,8 +15,9 @@ public class Qsnark1 {
     public static void main(String[] args) throws Exception{
         QsnarkAPI api = new QsnarkAPI();
         GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "17706421110", "123");
-        String token = getTokenReturn.getToken_type()+" "+getTokenReturn.getAccess_token();
+        String token = getTokenReturn.getAccess_token();
         CreteAccountReturn creteAccountReturn = api.createAccount(token);
+        System.out.println(token);
         String address = creteAccountReturn.getAddress();
 
         String sourcecode=  "contract Accumulator{    uint32 sum = 0;   function increment()returns(uint32){        return sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
@@ -47,7 +48,7 @@ public class Qsnark1 {
 
         String to = getTxReciptReturn.getContract_address();
 
-        MainTainReturn mainTainReturn = api.maintainContract(token, address, 0, bin, to);
+        MainTainReturn mainTainReturn = api.maintainContract(token, address, 1, bin, to);
 
         GetTxReciptReturn invokesyncContract = api.invokesyncContract(token, true,address
                 , to, abi, "increment");

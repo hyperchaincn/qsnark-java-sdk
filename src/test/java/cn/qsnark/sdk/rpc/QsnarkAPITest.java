@@ -143,7 +143,7 @@ public class QsnarkAPITest {
     @Test
     public void statusContract() throws Exception {
 
-        StatusConReturn statusConReturn = api.statusContract("Bearer HOFOKHIJNQEQOPI1CE7VHG", "0x69ffb5f1a76ea6ab4dfd58cceea0bcfabdb0f98e");
+        StatusConReturn statusConReturn = api.statusContract("Bearer HOFOKHIJNQEQOI1CE7VHG", "0x69ffb5f1a76ea6ab4dfd58cceea0bcfabdb0f98e");
         System.out.println(statusConReturn.getCode());
         System.out.println(statusConReturn.getStatus());
     }

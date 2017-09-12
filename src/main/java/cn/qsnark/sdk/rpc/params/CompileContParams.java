@@ -24,14 +24,14 @@ public class CompileContParams implements Params {
         return token;
     }
 
+    public String getStringParam() {
+        return stringParam;
+    }
 
     //构建json格式字符串
     @Override
     public String serlize() {
-        String str = "{\n"+
-                "\"ctcode\": "+ "\""+this.stringParam +"\""+
-        "\n}";
-        return str;
+        return  this.stringParam ;
     }
 
 }
