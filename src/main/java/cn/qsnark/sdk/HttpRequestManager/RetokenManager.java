@@ -26,7 +26,7 @@ public class RetokenManager {
 
 
 //    public String sourceURL = "https://127.0.0.1:14000/token?";
-    public String sourceURL = "http://"+ HeadType.URL.getType()+"/v1/token/rtoken";
+    public String sourceURL = HeadType.URL.getType()+"/v1/token/rtoken";
 
 
 

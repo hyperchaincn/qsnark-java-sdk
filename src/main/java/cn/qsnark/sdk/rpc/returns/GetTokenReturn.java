@@ -27,25 +27,33 @@ public class GetTokenReturn {
         logger.debug("[RESPONSE] " + jsonString);
 
         JSONObject jsonObject = JSONObject.fromObject(jsonString);
-        if (jsonObject.containsKey("error")) {
-            this.error = jsonObject.getString("error");
-            this.message = jsonObject.getString("error_description");
-            this.code = -1;
+        if (jsonObject.containsKey("Code"))
+            this.code = jsonObject.getInt("Code");
+        if (this.code < 0) {
+            this.message = jsonObject.getString("Status");
+            this.error = "error";
         } else {
-            this.code = 0;
-            this.message = "success";
-        }
-        if (jsonObject.containsKey("access_token"))
-            this.access_token = jsonObject.getString("access_token");
-        if (jsonObject.containsKey("expires_in"))
-            this.expires_in = jsonObject.getString("expires_in");
-        if (jsonObject.containsKey("refresh_token"))
-            this.refresh_token = jsonObject.getString("refresh_token");
-        if (jsonObject.containsKey("scope"))
-            this.scope = jsonObject.getString("scope");
-        if (jsonObject.containsKey("token_type"))
-            this.token_type = jsonObject.getString("token_type");
 
+            if (jsonObject.containsKey("error")) {
+                this.error = jsonObject.getString("error");
+                this.message = jsonObject.getString("error_description");
+                this.code = -1;
+            } else {
+                this.code = 0;
+                this.message = "success";
+            }
+            if (jsonObject.containsKey("access_token"))
+                this.access_token = jsonObject.getString("access_token");
+            if (jsonObject.containsKey("expires_in"))
+                this.expires_in = jsonObject.getString("expires_in");
+            if (jsonObject.containsKey("refresh_token"))
+                this.refresh_token = jsonObject.getString("refresh_token");
+            if (jsonObject.containsKey("scope"))
+                this.scope = jsonObject.getString("scope");
+            if (jsonObject.containsKey("token_type"))
+                this.token_type = jsonObject.getString("token_type");
+
+        }
     }
 
     public String getAccess_token() {

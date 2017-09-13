@@ -72,7 +72,7 @@ public class InvokesyncConManager {
                 .addHeader("Accept", "text/html")
                 .addHeader("Authorization", params.getToken())
                 .post(body)
-                .url("http://" + randomURL)
+                .url(randomURL)
                 .build();
 
 

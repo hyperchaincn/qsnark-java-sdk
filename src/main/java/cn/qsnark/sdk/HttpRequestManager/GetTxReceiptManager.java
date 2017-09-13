@@ -74,7 +74,7 @@ public class GetTxReceiptManager {
         request = new Request.Builder()
                 .addHeader("Accept", "Accept: text/html")
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "txhash=" + params.getTxhash())
+                .url(randomURL + "txhash=" + params.getTxhash())
                 .build();
         return request;
 

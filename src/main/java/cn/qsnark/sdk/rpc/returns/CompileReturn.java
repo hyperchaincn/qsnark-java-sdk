@@ -58,12 +58,20 @@ public class CompileReturn {
         }
     }
 
+    public int getCode() {
+        return code;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public JSONArray getCts() {
         return cts;
+    }
+
+    public int getCts_code() {
+        return cts_code;
     }
 
     public String getCts_status() {
@@ -84,10 +92,6 @@ public class CompileReturn {
 
     public boolean isCts_ok() {
         return cts_ok;
-    }
-
-    public int getCode() {
-        return code;
     }
 }
 

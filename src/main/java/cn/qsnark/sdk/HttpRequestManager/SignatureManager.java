@@ -73,7 +73,7 @@ public class SignatureManager {
                 .addHeader("Accept", "application/json")
                 .addHeader("Authorization", params.getToken())
                 .post(body)
-                .url("http://" + randomURL + "token="+params.get_token())
+                .url(randomURL + "token="+params.get_token())
                 .build();
         return request;
 

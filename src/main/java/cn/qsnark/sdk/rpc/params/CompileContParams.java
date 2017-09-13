@@ -31,7 +31,7 @@ public class CompileContParams implements Params {
     //构建json格式字符串
     @Override
     public String serlize() {
-        return  this.stringParam ;
+        return "{\n"+"\"CTCode\": \""+ this.stringParam +"\"\n}";
     }
 
 }

@@ -76,7 +76,7 @@ public class ChangeAccountManager {
                 .addHeader("Authorization", params.getToken())
                 .addHeader("appkey", params.getApp_key())
                 .post(body)
-                .url("http://" + randomURL + params.getAccess_token())
+                .url(randomURL + params.getAccess_token())
                 .build();
         return request;
 

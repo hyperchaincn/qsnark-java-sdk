@@ -77,7 +77,7 @@ public class PageBlocksManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "index=" + params.getIndex() + "&pageSize=" + params.getSize())
+                .url(randomURL + "index=" + params.getIndex() + "&pageSize=" + params.getSize())
                 .build();
         return request;
 

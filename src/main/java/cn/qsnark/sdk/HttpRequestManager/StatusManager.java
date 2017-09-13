@@ -75,7 +75,7 @@ public class StatusManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "address=" + params.getAddress() )
+                .url(randomURL + "address=" + params.getAddress() )
                 .build();
         return request;
 

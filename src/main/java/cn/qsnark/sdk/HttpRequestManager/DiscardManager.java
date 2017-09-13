@@ -75,7 +75,7 @@ public class  DiscardManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "start=" + params.getStart() + "&end=" + params.getEnd())
+                .url(randomURL + "start=" + params.getStart() + "&end=" + params.getEnd())
                 .build();
         return request;
 

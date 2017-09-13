@@ -75,7 +75,7 @@ public class QueryBlockManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "type=" + params.getType() + "&value=" + params.getValue())
+                .url(randomURL + "type=" + params.getType() + "&value=" + params.getValue())
                 .build();
         return request;
 

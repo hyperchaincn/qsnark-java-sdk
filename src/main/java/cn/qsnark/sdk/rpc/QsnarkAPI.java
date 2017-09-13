@@ -53,12 +53,12 @@ public class QsnarkAPI {
      *
      * @param client_id     httpkey
      * @param client_secret appsecret
-     * @param username      用户名
+     * @param phone         用户手机号
      * @param password      密码
      * @return GetTokenReturn对象
      */
-    public GetTokenReturn getAccess_Token(String client_id, String client_secret, String username, String password) throws IOException {
-        GetTokenParams getTokenParams = new GetTokenParams(client_secret, client_secret, username, password);
+    public GetTokenReturn getAccess_Token(String client_id, String client_secret, String phone, String password) throws IOException {
+        GetTokenParams getTokenParams = new GetTokenParams(client_id, client_secret, phone, password);
         return new GetTokenReturn(this.getTokenManager.SyncRequest(getTokenParams));
     }
 
@@ -164,6 +164,7 @@ public class QsnarkAPI {
 
         if (token == null)
             token = "";
+        sourceCode = sourceCode.replace("\"","\\\"").replace("\n", "").replace("\t","");
         CompileContParams compileContParams = new CompileContParams(token, sourceCode);
         return new CompileReturn(this.compileContManager.SyncRequest(compileContParams));
     }
@@ -181,6 +182,8 @@ public class QsnarkAPI {
 
         if (token == null)
             token = "";
+        if(bin == null)
+            bin = "";
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         DeployConReturn deployConReturn = new DeployConReturn(this.deployConManager.SyncRequest(deployConParams));
 
@@ -203,6 +206,8 @@ public class QsnarkAPI {
     public GetTxReciptReturn deploysyncContract(String token, String bin, String from) throws IOException, InterruptedException {
         if(token == null)
             token = "";
+        if(bin == null)
+            bin = "";
         DeployConParams deployConParams = new DeployConParams(token, bin, from);
         GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.deploysycnConManager.SyncRequest(deployConParams));
 
@@ -225,6 +230,8 @@ public class QsnarkAPI {
     public DeployConReturn deployArgsContract(String token, String bin, String from, DevCallback callback, String abiStr, FuncParamReal... functionParams) throws IOException, FunctionParamException {
         if(token == null)
             token = "";
+        if(bin == null)
+            bin = "";
         String payload = createPayload(functionParams);
         System.out.println("payload" + payload);
         bin = bin + payload;

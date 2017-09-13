@@ -68,7 +68,7 @@ public class QueryContManage {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "token=" + params.getToken() + "&pindex=" + params.getPindex() + "&psize=" + params.getPsize())
+                .url(randomURL + "token=" + params.getToken() + "&pindex=" + params.getPindex() + "&psize=" + params.getPsize())
                 .build();
         return request;
 

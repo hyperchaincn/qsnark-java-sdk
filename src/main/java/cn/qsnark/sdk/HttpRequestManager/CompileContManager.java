@@ -72,7 +72,7 @@ public class CompileContManager {
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .post(body)
-                .url("http://" + randomURL)
+                .url(randomURL)
                 .build();
         return request;
 

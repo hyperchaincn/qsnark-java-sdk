@@ -75,7 +75,7 @@ public class RangeBlocksManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL + "from=" + params.getFrom() + "&to=" + params.getTo())
+                .url(randomURL + "from=" + params.getFrom() + "&to=" + params.getTo())
                 .build();
         return request;
 

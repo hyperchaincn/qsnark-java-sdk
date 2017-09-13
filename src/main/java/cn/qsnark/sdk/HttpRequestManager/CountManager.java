@@ -74,7 +74,7 @@ public class CountManager {
         request = new Request.Builder()
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params)
-                .url("http://" + randomURL )
+                .url(randomURL )
                 .build();
         return request;
 

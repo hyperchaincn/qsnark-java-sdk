@@ -69,7 +69,7 @@ public class QueryTranManager {
         request = new Request.Builder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Authorization", params.getToken())
-                .url("http://" + randomURL +"hash="+params.getHash())
+                .url(randomURL +"hash="+params.getHash())
                 .build();
         return request;
 

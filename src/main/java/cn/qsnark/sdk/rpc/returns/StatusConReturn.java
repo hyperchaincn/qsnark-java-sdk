@@ -16,6 +16,7 @@ public class StatusConReturn {
     private static Logger logger = Logger.getLogger(QsnarkAPI.class);
     private String status;
     private int code;
+    private String ctStatus;
 
     public StatusConReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
@@ -23,6 +24,9 @@ public class StatusConReturn {
             JSONObject jsonObject = JSONObject.fromObject(jsonString);
             this.code = jsonObject.getInt("Code");
             this.status = jsonObject.getString("Status");
+            if(this.code == 0){
+                this.ctStatus = jsonObject.getString("ctStatus");
+            }
         }
     }
 
@@ -32,5 +36,9 @@ public class StatusConReturn {
 
     public int getCode() {
         return code;
+    }
+
+    public String getCtStatus() {
+        return ctStatus;
     }
 }

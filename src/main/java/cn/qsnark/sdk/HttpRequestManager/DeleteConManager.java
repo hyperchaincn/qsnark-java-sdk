@@ -73,7 +73,7 @@ public class DeleteConManager {
                 .addHeader("Accept", HeadType.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .delete()
-                .url("http://" + randomURL)
+                .url(randomURL)
                 .build();
 
 
