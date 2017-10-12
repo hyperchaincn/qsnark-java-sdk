@@ -38,6 +38,21 @@ public class GetInvTxReceiptThread implements Runnable {
         this.callback = callback;
     }
 
+    private List<Object> getArray(JSONObject jsonObject) {
+        List<Object> list = new ArrayList<Object>();
+        JSONArray array = JSONArray.fromObject(jsonObject.getString("value"));
+        for (int i = 0; i < array.size(); i++) {
+            String temp = array.get(i).toString();
+            JSONObject jo = JSONObject.fromObject(temp);
+//            System.out.println("when i="+i+" object:"+jo.toString());
+            if (jo.containsKey("type") && jo.getString("type").equals("array")) {
+                list.add(getArray(jo));
+            } else {
+                list.add(jo.getString("mayvalue"));
+            }
+        }
+        return list;
+    }
 
     @Override
     public void run() {
@@ -63,20 +78,26 @@ public class GetInvTxReceiptThread implements Runnable {
             }
         }
 
-        List<String> res = null;
+        List<Object> res = null;
         abi = this.abi.replace("\\", "");
         if (ret != null && !ret.equals("")) {
             try {
                 String result = FunctionDecode.resultDecode(func_name, abi, ret);
                 if(result != null && !result.equals("")) {
                     JSONArray array = JSONArray.fromObject(result);
-                    res = new ArrayList<String>();
+                    res = new ArrayList<Object>();
                     for (int i = 0; i < array.size(); i++) {
                         String temp = array.get(i).toString();
                         JSONObject jsonObject = JSONObject.fromObject(temp);
-                        String s = null;
-                        if (jsonObject.containsKey("value"))
-                            s = jsonObject.getString("value");
+                        Object s = null;
+                        System.out.println(jsonObject.toString());
+                        if (jsonObject.containsKey("mayvalue")) {
+                            if (jsonObject.containsKey("type") && jsonObject.getString("type").equals("array")) {
+                                s = getArray(jsonObject);
+                            } else {
+                                s = jsonObject.getString("mayvalue");
+                            }
+                        }
                         res.add(s);
                     }
                 }
