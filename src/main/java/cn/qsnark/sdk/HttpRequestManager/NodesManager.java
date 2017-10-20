@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -27,7 +27,7 @@ public class NodesManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/chain/nodes";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/chain/nodes";
 
 
     public String SyncRequest(String params) throws IOException {
@@ -72,7 +72,7 @@ public class NodesManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params)
                 .url(randomURL )
                 .build();

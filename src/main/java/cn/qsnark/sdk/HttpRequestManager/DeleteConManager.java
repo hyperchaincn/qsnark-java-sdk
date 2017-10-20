@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.DeleteConParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -24,7 +24,7 @@ public class DeleteConManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/contract/delete";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/contract/delete";
 
 
     public String SyncRequest(DeleteConParams params) throws IOException {
@@ -70,7 +70,7 @@ public class DeleteConManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .delete()
                 .url(randomURL)

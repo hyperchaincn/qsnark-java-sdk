@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.InvokeConParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -24,7 +24,7 @@ public class InvokeConManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/contract/invoke";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/contract/invoke";
 
 
     public String SyncRequest(InvokeConParams params) throws IOException {
@@ -68,7 +68,7 @@ public class InvokeConManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Content-Type", HeadType.Content_Type.getType())
+                .addHeader("Content-Type", BaseConfig.Content_Type.getType())
                 .addHeader("Accept", "text/html")
                 .addHeader("Authorization", params.getToken())
                 .post(body)

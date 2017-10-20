@@ -3,6 +3,7 @@ contract MyContract{
                         bytes32[] bb;
                         bb.push(b);
                         bb.push(b);
+                        bb.push(bb);
                         return (a,bb,c);
                     }
                 }

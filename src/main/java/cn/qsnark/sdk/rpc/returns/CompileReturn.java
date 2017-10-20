@@ -23,6 +23,7 @@ public class CompileReturn {
     private String cts_bin;
     private String cts_abi;
     private boolean cts_ok;
+    private String cts_name;
 
     public CompileReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
@@ -51,6 +52,8 @@ public class CompileReturn {
                                 this.cts_code = jsObject.getInt("Code");
                             if (jsonObject.containsKey("Status"))
                                 this.cts_status = jsObject.getString("Status");
+                            if (jsObject.containsKey("Name"))
+                                this.cts_name = jsObject.getString("Name");
                         }
                     }
                 }
@@ -84,6 +87,10 @@ public class CompileReturn {
 
     public String getCts_bin() {
         return cts_bin;
+    }
+
+    public String getCts_name() {
+        return cts_name;
     }
 
     public String getCts_abi() {

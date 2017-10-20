@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.SignTransactionParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -24,7 +24,7 @@ public class SignatureManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/transaction/signature?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/transaction/signature?";
 
 
     public String SyncRequest(SignTransactionParams params) throws IOException {

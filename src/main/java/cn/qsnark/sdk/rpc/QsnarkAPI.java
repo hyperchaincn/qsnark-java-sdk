@@ -8,6 +8,7 @@ import cn.qsnark.sdk.rpc.function.FunctionEncode;
 import cn.qsnark.sdk.rpc.function.FunctionParamException;
 import cn.qsnark.sdk.rpc.params.*;
 import cn.qsnark.sdk.rpc.returns.*;
+import cn.qsnark.sdk.rpc.utils.AnalyzeRet;
 import cn.qsnark.sdk.rpc.utils.Utils;
 
 import java.io.IOException;
@@ -165,6 +166,7 @@ public class QsnarkAPI {
         if (token == null)
             token = "";
         sourceCode = sourceCode.replace("\"","\\\"").replace("\n", "").replace("\t","");
+        System.out.println(sourceCode);
         CompileContParams compileContParams = new CompileContParams(token, sourceCode);
         return new CompileReturn(this.compileContManager.SyncRequest(compileContParams));
     }
@@ -294,7 +296,8 @@ public class QsnarkAPI {
         String payload = createPayload(func_name, functionParams);
         InvokeConParams invokeConParams = new InvokeConParams(token, _const, from, payload, to);
         GetTxReciptReturn getTxReciptReturn = new GetTxReciptReturn(this.invokesyncConManager.SyncRequest(invokeConParams));
-
+        String ret = getTxReciptReturn.getRet();
+        System.out.println(new AnalyzeRet().getRes(ret,abi,func_name));
         return getTxReciptReturn;
     }
 

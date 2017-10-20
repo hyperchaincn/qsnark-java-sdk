@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.CreateAccountParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -24,7 +24,7 @@ public class CreateAccountManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/account/create?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/account/create?";
 
 
     public String SyncRequest(CreateAccountParams params) throws IOException {
@@ -69,7 +69,7 @@ public class CreateAccountManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .url(randomURL )
                 .build();

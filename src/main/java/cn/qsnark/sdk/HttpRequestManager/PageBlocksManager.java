@@ -1,8 +1,7 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.PageBlocksParams;
-import cn.qsnark.sdk.rpc.params.RangeBlocksParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -10,7 +9,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
 
-import javax.print.attribute.standard.PagesPerMinute;
 import java.io.IOException;
 
 /**
@@ -30,7 +28,7 @@ public class PageBlocksManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/blocks/page?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/blocks/page?";
 
 
     public String SyncRequest(PageBlocksParams params) throws IOException {
@@ -75,7 +73,7 @@ public class PageBlocksManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .url(randomURL + "index=" + params.getIndex() + "&pageSize=" + params.getSize())
                 .build();

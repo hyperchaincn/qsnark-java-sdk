@@ -21,6 +21,11 @@ public class InvokeDecodeTest {
     private static final String auth_client_id = "4909d978-fb21-45e2-974d-c7b6a9c17067";
     private static final String auth_client_secret = "868v4oq14w1DvGt6Bft19rQ3091t2589";
 
+//    private static final String auth_phone = "17706421110";
+//    private static final String auth_password = "123";
+//    private static final String auth_client_id = "123";
+//    private static final String auth_client_secret = "123";
+
     // from address
     private static final String FROM = "0x738fdc2553b5cdcae43952539dcb04b3ae621ee1";
     // contract address
@@ -73,12 +78,12 @@ public class InvokeDecodeTest {
     public static void main(String[] args) throws Exception {
 
 
-        GetTokenReturn getTokenReturn = api.getAccess_Token("4909d978-fb21-45e2-974d-c7b6a9c17067", "868v4oq14w1DvGt6Bft19rQ3091t2589", "13056961943", "123456");
+        GetTokenReturn getTokenReturn = api.getAccess_Token(auth_client_id, auth_client_secret, auth_phone, auth_password);
 
         access_token = getTokenReturn.getAccess_token();
 
-        save_evidence("apanoo");
-        get_evidence("apanoo");
+//        save_evidence("apanoo");
+//        get_evidence("apanoo");
 
         get_users();
     }

@@ -5,6 +5,7 @@ import cn.qsnark.sdk.rpc.function.FunctionDecode;
 import cn.qsnark.sdk.rpc.params.GetTxReceiptParams;
 import cn.qsnark.sdk.rpc.returns.GetTxReciptReturn;
 import cn.qsnark.sdk.rpc.returns.InvokeConReturn;
+import cn.qsnark.sdk.rpc.utils.AnalyzeRet;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -38,22 +39,6 @@ public class GetInvTxReceiptThread implements Runnable {
         this.callback = callback;
     }
 
-    private List<Object> getArray(JSONObject jsonObject) {
-        List<Object> list = new ArrayList<Object>();
-        JSONArray array = JSONArray.fromObject(jsonObject.getString("value"));
-        for (int i = 0; i < array.size(); i++) {
-            String temp = array.get(i).toString();
-            JSONObject jo = JSONObject.fromObject(temp);
-//            System.out.println("when i="+i+" object:"+jo.toString());
-            if (jo.containsKey("type") && jo.getString("type").equals("array")) {
-                list.add(getArray(jo));
-            } else {
-                list.add(jo.getString("mayvalue"));
-            }
-        }
-        return list;
-    }
-
     @Override
     public void run() {
         int timeout = 10;
@@ -77,36 +62,8 @@ public class GetInvTxReceiptThread implements Runnable {
                 e.printStackTrace();
             }
         }
-
-        List<Object> res = null;
-        abi = this.abi.replace("\\", "");
-        if (ret != null && !ret.equals("")) {
-            try {
-                String result = FunctionDecode.resultDecode(func_name, abi, ret);
-                if(result != null && !result.equals("")) {
-                    JSONArray array = JSONArray.fromObject(result);
-                    res = new ArrayList<Object>();
-                    for (int i = 0; i < array.size(); i++) {
-                        String temp = array.get(i).toString();
-                        JSONObject jsonObject = JSONObject.fromObject(temp);
-                        Object s = null;
-                        System.out.println(jsonObject.toString());
-                        if (jsonObject.containsKey("mayvalue")) {
-                            if (jsonObject.containsKey("type") && jsonObject.getString("type").equals("array")) {
-                                s = getArray(jsonObject);
-                            } else {
-                                s = jsonObject.getString("mayvalue");
-                            }
-                        }
-                        res.add(s);
-                    }
-                }
-
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            callback.onCompute(res);
-        }
+        List<Object> res = new AnalyzeRet().getRes(ret, abi, func_name);
+        callback.onCompute(res);
     }
 
 }

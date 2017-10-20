@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.DiscardConParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
@@ -28,7 +28,7 @@ public class  DiscardManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/transactions/discard?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/transactions/discard?";
 
 
     public String SyncRequest(DiscardConParams params) throws IOException {
@@ -73,7 +73,7 @@ public class  DiscardManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .url(randomURL + "start=" + params.getStart() + "&end=" + params.getEnd())
                 .build();

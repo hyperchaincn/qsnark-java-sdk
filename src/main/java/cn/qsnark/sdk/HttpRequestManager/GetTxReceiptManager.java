@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.GetTxReceiptParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
@@ -26,7 +26,7 @@ public class GetTxReceiptManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/transaction/txreceipt?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/transaction/txreceipt?";
 
 
     public String SyncRequest(GetTxReceiptParams params) throws IOException {

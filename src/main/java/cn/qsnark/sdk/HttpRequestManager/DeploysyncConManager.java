@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.DeployConParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -25,7 +25,7 @@ public class DeploysyncConManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/contract/deploysync";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/contract/deploysync";
 
 
     public String SyncRequest(DeployConParams params) throws IOException {
@@ -71,8 +71,8 @@ public class DeploysyncConManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Content-Type", HeadType.Content_Type.getType())
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Content-Type", BaseConfig.Content_Type.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .post(body)
                 .url(randomURL)

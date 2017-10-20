@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.RangeBlocksParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
@@ -28,7 +28,7 @@ public class RangeBlocksManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/blocks/range?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/blocks/range?";
 
 
     public String SyncRequest(RangeBlocksParams params) throws IOException {
@@ -73,7 +73,7 @@ public class RangeBlocksManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .url(randomURL + "from=" + params.getFrom() + "&to=" + params.getTo())
                 .build();

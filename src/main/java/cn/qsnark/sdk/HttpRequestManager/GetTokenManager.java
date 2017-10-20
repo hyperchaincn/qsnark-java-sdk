@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.GetTokenParams;
 import cn.qsnark.sdk.rpc.utils.OkHttpClientUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -29,7 +29,7 @@ public class GetTokenManager {
 
 
 //    public String sourceURL = "127.0.0.1:14000/token";
-    public String sourceURL = HeadType.URL.getType()+"/v1/token/gtoken";
+    public String sourceURL = BaseConfig.URL.getType()+"/v1/token/gtoken";
 
 
     public String SyncRequest(GetTokenParams params) throws IOException {

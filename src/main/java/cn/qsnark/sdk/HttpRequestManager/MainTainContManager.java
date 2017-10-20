@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.MainTainParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.*;
@@ -23,7 +23,7 @@ public class MainTainContManager {
     //这是一个单例
     public OkHttpClient httpClient = new OkHttpClient();
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/contract/maintain";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/contract/maintain";
 
     public String SyncRequest(MainTainParams params) throws IOException {
         Request req = null;
@@ -66,8 +66,8 @@ public class MainTainContManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Content-Type", HeadType.Content_Type.getType())
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Content-Type", BaseConfig.Content_Type.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .post(body)
                 .url(randomURL)

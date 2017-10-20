@@ -1,6 +1,6 @@
 package cn.qsnark.sdk.HttpRequestManager;
 
-import cn.qsnark.sdk.rpc.base.HeadType;
+import cn.qsnark.sdk.rpc.base.BaseConfig;
 import cn.qsnark.sdk.rpc.params.QueryBlockParams;
 import com.github.kevinsawicki.http.HttpRequest;
 import okhttp3.MediaType;
@@ -28,7 +28,7 @@ public class QueryBlockManager {
     public OkHttpClient httpClient = new OkHttpClient();
 
 
-    public String sourceURL = HeadType.URL.getType() + "/v1/dev/block/query?";
+    public String sourceURL = BaseConfig.URL.getType() + "/v1/dev/block/query?";
 
 
     public String SyncRequest(QueryBlockParams params) throws IOException {
@@ -73,7 +73,7 @@ public class QueryBlockManager {
         Request request = null;
 
         request = new Request.Builder()
-                .addHeader("Accept", HeadType.Accept.getType())
+                .addHeader("Accept", BaseConfig.Accept.getType())
                 .addHeader("Authorization", params.getToken())
                 .url(randomURL + "type=" + params.getType() + "&value=" + params.getValue())
                 .build();
