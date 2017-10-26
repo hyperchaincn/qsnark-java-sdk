@@ -84,12 +84,12 @@ public class QsnarkAPI {
      * @param token 授权令牌
      * @return CreteAccountReturn对象
      */
-    public CreteAccountReturn createAccount(String token) throws IOException {
+/*    public CreteAccountReturn createAccount(String token) throws IOException {
         if(token == null)
             token = "";
         CreateAccountParams createParams = new CreateAccountParams(token);
         return new CreteAccountReturn(this.createAccountManager.SyncRequest(createParams));
-    }
+    }*/
 
     /**
      * 1.4 通过区块哈希查询区块

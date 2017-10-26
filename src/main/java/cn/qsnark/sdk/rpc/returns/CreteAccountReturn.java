@@ -21,6 +21,7 @@ public class CreteAccountReturn {
     private String address;
     private String time;
     private boolean isDisabled;
+    private String appName;
 
     public CreteAccountReturn(String jsonString) {
         logger.debug("[RESPONSE] " + jsonString);
@@ -39,6 +40,9 @@ public class CreteAccountReturn {
                     this.time = jsonObject.getString("time");
                 if (jsonObject.containsKey("isDisabled"))
                     this.isDisabled = jsonObject.getBoolean("isDisabled");
+                if(jsonObject.containsKey("appName")){
+                    this.appName = jsonObject.getString("appName");
+                }
             }
         }
     }

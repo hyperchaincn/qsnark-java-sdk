@@ -1,0 +1,159 @@
+2017-10-23 12:48:30  [ main:0 ] - [ DEBUG ]  [REQUEST] &phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589
+2017-10-23 12:48:30  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '&phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589'
+2017-10-23 12:48:30  [ main:264 ] - [ DEBUG ]  [RESPONSE] {"access_token":"6R1TYJSWNOY6JVDCZ4GWOQ","expires_in":7200,"refresh_token":"BJXPQW7KVH2KS-6GZSIY7G","scope":"all","token_type":"Bearer"}
+
+2017-10-23 12:48:31  [ main:327 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978
+2017-10-23 12:48:31  [ main:328 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978'
+2017-10-23 12:48:31  [ main:422 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "",
+  "id": 1544,
+  "address": "0x4d24ecce672260fba6d51fb32369db5172a756e0",
+  "time": "2017-10-23 12:48:31",
+  "isDisabled": false,
+  "appName": ""
+}
+2017-10-23 12:48:31  [ main:424 ] - [ DEBUG ]  [REQUEST] {
+"CTCode": "contract MyContract{                    function mreturns(uint a,bytes32 b,address c)returns(uint,bytes32[],address){                        bytes32[] bb;                        bb.push(b);                        bb.push(b);                        bb.push(bb);                        return (a,bb,c);                    }                }"
+}
+2017-10-23 12:48:31  [ main:424 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@1efee8e7'
+2017-10-23 12:48:31  [ main:533 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1013,
+  "Status": "solc: exit status 1\n\u003cstdin\u003e:1:1: Warning: Source file does not specify required compiler version!Consider adding \"pragma solidity ^0.4.16\ncontract MyContract{                    function mreturns(uint a,bytes32 b,address c)returns(uint,bytes32[],address){                        bytes32[] bb;                        bb.push(b);                        bb.push(b);                        bb.push(bb);                        return (a,bb,c);                    }                }\n^\nSpanning multiple lines.\n\u003cstdin\u003e:1:142: Warning: Variable is declared as a storage pointer. Use an explicit \"storage\" keyword to silence this warning.\ncontract MyContract{                    function mreturns(uint a,bytes32 b,address c)returns(uint,bytes32[],address){                        bytes32[] bb;                        bb.push(b);                        bb.push(b);                        bb.push(bb);                        return (a,bb,c);                    }                }\n                                                                                                                                             ^----------^\n\u003cstdin\u003e:1:142: Warning: Uninitialized storage pointer. Did you mean '\u003ctype\u003e memory bb'?\ncontract MyContract{                    function mreturns(uint a,bytes32 b,address c)returns(uint,bytes32[],address){                        bytes32[] bb;                        bb.push(b);                        bb.push(b);                        bb.push(bb);                        return (a,bb,c);                    }                }\n                                                                                                                                             ^----------^\n\u003cstdin\u003e:1:257: Error: Invalid type for argument in function call. Invalid implicit conversion from bytes32[] storage pointer to bytes32 requested.\ncontract MyContract{                    function mreturns(uint a,bytes32 b,address c)returns(uint,bytes32[],address){                        bytes32[] bb;                        bb.push(b);                        bb.push(b);                        bb.push(bb);                        return (a,bb,c);                    }                }\n                                                                                                                                                                                                                                                                ^^\n",
+  "Cts": null
+}
+2017-10-23 12:48:31  [ main:536 ] - [ DEBUG ]  [REQUEST] {"Bin":"","From":"0x4d24ecce672260fba6d51fb32369db5172a756e0"}
+2017-10-23 12:48:31  [ main:536 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Bin":"","From":"0x4d24ecce672260fba6d51fb32369db5172a756e0"}'
+2017-10-23 12:48:31  [ main:628 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1015,
+  "Status": "contract code is empty",
+  "TxHash": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-10-23 12:48:31  [ main:659 ] - [ DEBUG ]  [REQUEST] {"Const":false,"From":"0x4d24ecce672260fba6d51fb32369db5172a756e0","Payload":"0x569c5f6d","To":"null"}
+2017-10-23 12:48:31  [ main:659 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":false,"From":"0x4d24ecce672260fba6d51fb32369db5172a756e0","Payload":"0x569c5f6d","To":"null"}'
+2017-10-23 12:48:31  [ main:751 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1016,
+  "Status": "Invalid address length, expected 40 got 4 bytes",
+  "TxHash": ""
+}
+2017-10-23 12:48:32  [ Thread-1:1758 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:32  [ Thread-1:1759 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:32  [ Thread-1:1848 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:34  [ Thread-1:3849 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:34  [ Thread-1:3849 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:34  [ Thread-1:3859 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:36  [ Thread-1:5860 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:36  [ Thread-1:5861 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:36  [ Thread-1:5871 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:38  [ Thread-1:7872 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:38  [ Thread-1:7873 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:38  [ Thread-1:7884 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:40  [ Thread-1:9885 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:40  [ Thread-1:9885 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:40  [ Thread-1:9896 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:42  [ Thread-1:11898 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:42  [ Thread-1:11898 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:42  [ Thread-1:11908 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:44  [ Thread-1:13909 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:44  [ Thread-1:13909 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:44  [ Thread-1:13919 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:46  [ Thread-1:15920 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:46  [ Thread-1:15920 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:46  [ Thread-1:15931 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:48  [ Thread-1:17932 ] - [ DEBUG ]  [REQUEST] {"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}
+2017-10-23 12:48:48  [ Thread-1:17932 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"6R1TYJSWNOY6JVDCZ4GWOQ","txhash":""}'
+2017-10-23 12:48:48  [ Thread-1:17942 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": -1009,
+  "Status": "txHash empty or parse error!"
+}
+2017-10-23 12:48:57  [ main:0 ] - [ DEBUG ]  [REQUEST] &phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589
+2017-10-23 12:48:57  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '&phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589'
+2017-10-23 12:48:57  [ main:165 ] - [ DEBUG ]  [RESPONSE] {"access_token":"PAYC1XPDMHI611CVM1YBDQ","expires_in":7200,"refresh_token":"JRHZEHN3V22VHHDAGHEGDW","scope":"all","token_type":"Bearer"}
+
+2017-10-23 12:48:57  [ main:232 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978
+2017-10-23 12:48:57  [ main:232 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978'
+2017-10-23 12:48:57  [ main:329 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "",
+  "id": 1545,
+  "address": "0x4e6b1282f2e6dd53119bb9b6f2b47da052ee243c",
+  "time": "2017-10-23 12:48:58",
+  "isDisabled": false,
+  "appName": ""
+}
+2017-10-23 12:48:58  [ main:362 ] - [ DEBUG ]  [REQUEST] {
+"CTCode": "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }"
+}
+2017-10-23 12:48:58  [ main:362 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@1efee8e7'
+2017-10-23 12:48:58  [ main:449 ] - [ DEBUG ]  [RESPONSE] {"Code":-1008,"Status":"invalid access token"}
+
+2017-10-23 12:48:58  [ main:450 ] - [ DEBUG ]  [REQUEST] {
+"CTCode": "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }"
+}
+2017-10-23 12:48:58  [ main:450 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@351d0846'
+2017-10-23 12:48:58  [ main:557 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "Cts": [
+    {
+      "Code": 0,
+      "Status": "",
+      "Id": 0,
+      "Bin": "0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029",
+      "Abi": "[{\"constant\":false,\"inputs\":[{\"name\":\"num1\",\"type\":\"uint32\"},{\"name\":\"num2\",\"type\":\"uint32\"}],\"name\":\"add\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getSum\",\"outputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"increment\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+      "Name": "Accumulator",
+      "OK": true
+    }
+  ]
+}
+2017-10-23 12:48:58  [ main:570 ] - [ DEBUG ]  [REQUEST] {"Bin":"0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029","From":"0x4e6b1282f2e6dd53119bb9b6f2b47da052ee243c"}
+2017-10-23 12:48:58  [ main:571 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Bin":"0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029","From":"0x4e6b1282f2e6dd53119bb9b6f2b47da052ee243c"}'
+2017-10-23 12:48:59  [ main:1687 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "TxHash": "0x1e23ab5a42d0987f0b833bf8ec7f37475a2a60129bb33d3b0768b58c4286c43c",
+  "ContractAddress": "0x23144275fe31bec3d67f69897e18f694fadab374",
+  "Ret": "0x606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029"
+}
+2017-10-23 12:48:59  [ main:1709 ] - [ DEBUG ]  [REQUEST] {"Const":false,"From":"0x4e6b1282f2e6dd53119bb9b6f2b47da052ee243c","Payload":"0x569c5f6d","To":"0x23144275fe31bec3d67f69897e18f694fadab374"}
+2017-10-23 12:48:59  [ main:1710 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":false,"From":"0x4e6b1282f2e6dd53119bb9b6f2b47da052ee243c","Payload":"0x569c5f6d","To":"0x23144275fe31bec3d67f69897e18f694fadab374"}'
+2017-10-23 12:48:59  [ main:1805 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "TxHash": "0xcb00b91a95f5f305b040f0fa84cc2fdafd47391e83f9d87740c127b1f820e3e4"
+}
+2017-10-23 12:49:00  [ Thread-1:2807 ] - [ DEBUG ]  [REQUEST] {"token":"PAYC1XPDMHI611CVM1YBDQ","txhash":"0xcb00b91a95f5f305b040f0fa84cc2fdafd47391e83f9d87740c127b1f820e3e4"}
+2017-10-23 12:49:00  [ Thread-1:2807 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"PAYC1XPDMHI611CVM1YBDQ","txhash":"0xcb00b91a95f5f305b040f0fa84cc2fdafd47391e83f9d87740c127b1f820e3e4"}'
+2017-10-23 12:49:00  [ Thread-1:3107 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "TxHash": "0xcb00b91a95f5f305b040f0fa84cc2fdafd47391e83f9d87740c127b1f820e3e4",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
