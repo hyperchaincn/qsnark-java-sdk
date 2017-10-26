@@ -84,12 +84,12 @@ public class QsnarkAPI {
      * @param token 授权令牌
      * @return CreteAccountReturn对象
      */
-/*    public CreteAccountReturn createAccount(String token) throws IOException {
+    public CreteAccountReturn createAccount(String token) throws IOException {
         if(token == null)
             token = "";
         CreateAccountParams createParams = new CreateAccountParams(token);
         return new CreteAccountReturn(this.createAccountManager.SyncRequest(createParams));
-    }*/
+    }
 
     /**
      * 1.4 通过区块哈希查询区块
@@ -146,11 +146,11 @@ public class QsnarkAPI {
      * @param token 授权令牌
      * @return NodesChainReturn
      */
-    public NodesChainReturn nodesChain(String token) throws IOException {
+/*    public NodesChainReturn nodesChain(String token) throws IOException {
         if(token == null)
             token = "";
         return new NodesChainReturn(this.nodesManager.SyncRequest(token));
-    }
+    }*/
 
     /**
      * 1.8 compileContract编译智能合约
