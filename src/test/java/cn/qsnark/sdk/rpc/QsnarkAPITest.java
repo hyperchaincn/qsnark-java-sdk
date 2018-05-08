@@ -23,14 +23,15 @@ public class QsnarkAPITest {
 
 
     private static final String auth_phone = "17706421110";
-    private static final String auth_password = "123";
-    private static final String auth_client_id = "123";
-    private static final String auth_client_secret = "123";
+    private static final String auth_password = "linxin";
+    private static final String auth_client_id = "be7b6f33-a9bd-46b3-82dd-e32dcf5b79c1";
+    private static final String auth_client_secret = "9C6Y9uVO78o08s00VG49PkdE10182UKb";
+    private static final String token = "AQ1_OVXWN0CMCXFNKBL3LA";
 
     @Test
     public void getAccess_Token() throws Exception {
 
-        GetTokenReturn getTokenReturn = api.getAccess_Token(auth_client_id, auth_client_secret, auth_phone, auth_password);
+        GetTokenReturn getTokenReturn = api.getAccess_Token(auth_client_id,auth_client_secret,auth_phone,auth_password);
         access_token =getTokenReturn.getAccess_token();
         System.out.println(getTokenReturn.getCode());
         System.out.println(getTokenReturn.getMessage());
@@ -105,22 +106,100 @@ public class QsnarkAPITest {
         System.out.println(queryBlocksReturn.getBlocks());
     }
 
-    @Test
+   /* @Test
     public void nodesChain() throws Exception {
 
         NodesChainReturn nodesConReturn = api.nodesChain("HOFOKHIJNQEQOPI1CE7VHG");
         System.out.println(nodesConReturn.getCode());
         System.out.println(nodesConReturn.getStatus());
         System.out.println(nodesConReturn.getNodes());
-    }
+    }*/
 
     @Test
     public void compileContract() throws Exception {
 
-        String s = "contract Accumulator    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }";
-//        s = "contract Token {}";
+        String s = "contract Receipt {\n" +
+                "\n" +
+                "    uint[] ids;\n" +
+                "    string[] receipts;\n" +
+                "    mapping(uint => string) receiptsIdMap;\n" +
+                "\n" +
+                "    function addReceipt(string receipt) public returns(uint) {\n" +
+                "        return receipts.push(receipt);\n" +
+                "    }\n" +
+                "\n" +
+                "    function addReceiptById(uint id, string receipt) public returns(uint) {\n" +
+                "        receiptsIdMap[id] = receipt;\n" +
+                "        ids.push(id);\n" +
+                "        return receipts.push(receipt);\n" +
+                "    }\n" +
+                "\n" +
+                "    function deleteReceiptByIndex(uint index) public {\n" +
+                "        uint len = receipts.length;\n" +
+                "        uint id = ids[index];\n" +
+                "        if (index >= len) return;\n" +
+                "        for (uint i = index; i < len - 1; i++) {\n" +
+                "            receipts[i] = receipts[i + 1];\n" +
+                "            ids[i] = ids[i + 1];\n" +
+                "        }\n" +
+                "\n" +
+                "        delete receiptsIdMap[id];\n" +
+                "        delete receipts[len - 1];\n" +
+                "        delete ids[len - 1];\n" +
+                "        ids.length--;\n" +
+                "        receipts.length--;\n" +
+                "    }\n" +
+                "\n" +
+                "    function deleteReceiptById(uint id) public {\n" +
+                "        uint len = receipts.length;\n" +
+                "        uint index = findIdIndex(id);\n" +
+                "        if (index >= len) return;\n" +
+                "        for (uint i = index; i < len - 1; i++) {\n" +
+                "            receipts[i] = receipts[i + 1];\n" +
+                "            ids[i] = ids[i + 1];\n" +
+                "        }\n" +
+                "\n" +
+                "        delete receiptsIdMap[id];\n" +
+                "        delete receipts[len - 1];\n" +
+                "        delete ids[len - 1];\n" +
+                "        ids.length--;\n" +
+                "        receipts.length--;\n" +
+                "    }\n" +
+                "\n" +
+                "    function updateReceiptByIndex(uint index, string receipt) public {\n" +
+                "        receiptsIdMap[ids[index]] = receipt;\n" +
+                "        receipts[index] = receipt;\n" +
+                "    }\n" +
+                "\n" +
+                "    function updateReceiptById(uint id, string receipt) public {\n" +
+                "        receiptsIdMap[id] = receipt;\n" +
+                "        receipts[findIdIndex(id)] = receipt;\n" +
+                "    }\n" +
+                "\n" +
+                "    function findIdIndex(uint id) private returns(uint index) {\n" +
+                "        uint len = receipts.length;\n" +
+                "        for (index = 0; index < len; index++) {\n" +
+                "            if (ids[index] == id) {\n" +
+                "                break;\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "\n" +
+                "    function getReceiptByIndex(uint index) public constant returns(string receipt) {\n" +
+                "        receipt = receipts[index];\n" +
+                "    }\n" +
+                "\n" +
+                "    function getReceiptById(uint id) public constant returns(string receipt) {\n" +
+                "        receipt = receiptsIdMap[id];\n" +
+                "    }\n" +
+                "\n" +
+                "    function getSize() public constant returns(uint size) {\n" +
+                "        size = receipts.length;\n" +
+                "    }\n" +
+                "}";
+        //        s = "contract Token {}";
 //        s = "contract Digitalpoint {    enum Actor{ Aviation, Bank, Market, Petroleum, Client }        struct Aviation{        bytes32 ID;        bytes32 Name;        uint pointbalance;    }        struct Bank{        bytes32 ID;        bytes32 Name;        uint pointbalance;    }        struct Market{        bytes32 ID;        bytes32 Name;        uint pointbalance;    }        struct Petroleum{        bytes32 ID;        bytes32 Name;        uint pointbalance;    }        struct Client{        bytes32 ID;        bytes32 Name;        uint[] pointbalances;        uint unionpaybalance;    }        struct Commodity{        bytes32 ID;        bytes32 Name;        uint value;    }        mapping(bytes32 => Aviation) aviationMap;    mapping(bytes32 => Bank) bankMap;    mapping(bytes32 => Market) marketMap;    mapping(bytes32 => Petroleum) petroleumMap;    mapping(bytes32 => Client) clientMap;    mapping(bytes32 => Commodity) commodityMap;        function newAviation(bytes32 ID, bytes32 Name, uint pointbalance) returns (bool, bytes32){        Aviation aviation = aviationMap[ID];        if(aviation.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        aviation.ID = ID;        aviation.Name = Name;        aviation.pointbalance = pointbalance;        return (true,\"success\");    }        function newBank(bytes32 ID, bytes32 Name, uint pointbalance) returns (bool, bytes32){        Bank bank = bankMap[ID];        if(bank.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        bank.ID = ID;        bank.Name = Name;        bank.pointbalance = pointbalance;        return (true,\"success\");    }        function newMarket(bytes32 ID, bytes32 Name, uint pointbalance) returns (bool, bytes32){        Market market = marketMap[ID];        if(market.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        market.ID = ID;        market.Name = Name;        market.pointbalance = pointbalance;        return (true,\"success\");    }        function newPetroleum(bytes32 ID, bytes32 Name, uint pointbalance) returns (bool, bytes32){        Petroleum petroleum = petroleumMap[ID];        if(petroleum.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        petroleum.ID = ID;        petroleum.Name = Name;        petroleum.pointbalance = pointbalance;        return (true,\"success\");    }        function newCommodity(bytes32 ID, bytes32 Name, uint value) returns (bool, bytes32){        Commodity commodity = commodityMap[ID];        if(commodity.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        commodity.ID = ID;        commodity.Name = Name;        commodity.value = value;        return (true,\"success\");    }        function newClient(bytes32 ID, bytes32 Name, uint[] pointbalances, uint unionpaybalance) returns (bool, bytes32){        Client client = clientMap[ID];        if(client.ID != 0x0){            return (false,\"this ID has been occupied!\");        }        client.ID = ID;        client.Name = Name;        client.pointbalances = pointbalances;        client.unionpaybalance = unionpaybalance;        return (true,\"success\");    }        function Queryclientbalance(bytes32 ID) returns(bool,bytes32,bytes32,uint[],uint){        Client client = clientMap[ID];        return (true,\"Success\",client.Name,client.pointbalances,client.unionpaybalance);    }        function exchangeMoneyToPoints(bytes32 ID,uint amount,uint n) returns(bool,bytes32){        Client client = clientMap[ID];        client.unionpaybalance -= amount;        client.pointbalances[n-1] += amount;        return (true,\"success\");    }        function exchangepoints(bytes32 ID1, uint amount1, uint n, bytes32 ID2, uint amount2, uint m) returns(bool, bytes32){        Client client1 = clientMap[ID1];        Client client2 = clientMap[ID2];        client1.pointbalances[n-1] -= amount1;        client2.pointbalances[n-1] += amount1;        client1.pointbalances[m-1] += amount2;        client2.pointbalances[m-1] -= amount2;        return (true,\"success\");    }    function pointstransaction(bytes32 ID1, uint n, bytes32 ID2) returns(bool, bytes32){        Client client1 = clientMap[ID1];        Commodity commodity = commodityMap[ID2];        client1.pointbalances[n-1] -= commodity.value;        return (true,\"Purchase succeeded\");    }}}";
-        CompileReturn compileReturn = api.compileContract("FSHACB2BNC6-BK-IISEOEW", s);
+        CompileReturn compileReturn = api.compileContract(token, s);
         System.out.println(compileReturn.getCode());
         System.out.println(compileReturn.getCts());
         System.out.println(compileReturn.getCts_abi());

@@ -1,0 +1,49 @@
+2017-10-26 18:18:35  [ main:0 ] - [ DEBUG ]  [REQUEST] &phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589
+2017-10-26 18:18:35  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '&phone=13056961943&password=123456&client_id=4909d978-fb21-45e2-974d-c7b6a9c17067&client_secret=868v4oq14w1DvGt6Bft19rQ3091t2589'
+2017-10-26 18:18:35  [ main:332 ] - [ DEBUG ]  [RESPONSE] {"access_token":"XS5WONOXOUCAJ0ABTUOOEW","expires_in":7200,"refresh_token":"ZWZO1VL8VAIJOMECI0MR2W","scope":"all","token_type":"Bearer"}
+
+2017-10-26 18:18:35  [ main:398 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978
+2017-10-26 18:18:35  [ main:398 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CreateAccountParams@24a35978'
+2017-10-26 18:18:35  [ main:491 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "",
+  "id": 1559,
+  "address": "0x364ffd622fbe750b908be3e89d3312fc36be9a6e",
+  "time": "2017-10-26 18:18:35",
+  "isDisabled": false,
+  "appName": ""
+}
+2017-10-26 18:18:35  [ main:520 ] - [ DEBUG ]  [REQUEST] {
+"CTCode": "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }"
+}
+2017-10-26 18:18:35  [ main:520 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@1efee8e7'
+2017-10-26 18:18:35  [ main:596 ] - [ DEBUG ]  [RESPONSE] {"Code":-1008,"Status":"invalid access token"}
+
+2017-10-26 18:18:35  [ main:597 ] - [ DEBUG ]  [REQUEST] {
+"CTCode": "contract Accumulator{    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }"
+}
+2017-10-26 18:18:35  [ main:597 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@351d0846'
+2017-10-26 18:18:35  [ main:707 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "Cts": [
+    {
+      "Code": 0,
+      "Status": "",
+      "Id": 0,
+      "Bin": "0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029",
+      "Abi": "[{\"constant\":false,\"inputs\":[{\"name\":\"num1\",\"type\":\"uint32\"},{\"name\":\"num2\",\"type\":\"uint32\"}],\"name\":\"add\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getSum\",\"outputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"increment\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+      "Name": "Accumulator",
+      "OK": true
+    }
+  ]
+}
+2017-10-26 18:18:35  [ main:719 ] - [ DEBUG ]  [REQUEST] {"Bin":"0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029","From":"0x364ffd622fbe750b908be3e89d3312fc36be9a6e"}
+2017-10-26 18:18:35  [ main:719 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Bin":"0x60606040526000805463ffffffff19169055341561001c57600080fd5b5b6101268061002c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029","From":"0x364ffd622fbe750b908be3e89d3312fc36be9a6e"}'
+2017-10-26 18:18:36  [ main:1864 ] - [ DEBUG ]  [RESPONSE] {
+  "Code": 0,
+  "Status": "ok",
+  "TxHash": "0xb387804efd134b1e8b4a8b66f1d14a9c6b5cce05c103a6daea7825a51a055fd1",
+  "ContractAddress": "0x2546f8ec61bbb9e8b977fbfa7ca5e9593f6c4229",
+  "Ret": "0x606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633ad14af381146050578063569c5f6d146071578063d09de08a14609a575b600080fd5b3415605a57600080fd5b606f63ffffffff6004358116906024351660ac565b005b3415607b57600080fd5b608160ce565b60405163ffffffff909116815260200160405180910390f35b341560a457600080fd5b606f60db565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820bccd1806f9855c781cf23418c61758b4da87d5e5cef6503be5aa0d4b4c8db4460029"
+}

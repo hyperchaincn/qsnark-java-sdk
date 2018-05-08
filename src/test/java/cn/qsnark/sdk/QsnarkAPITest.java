@@ -84,7 +84,7 @@ public class QsnarkAPITest {
         QueryBlockReturn queryBlockReturn = api.queryBlock(token, "number", 1);
         PageBlocksReturn pageBlocksReturn = api.pageBlocks(token, 1, 1);
         RangeBlocksReturn rangeBlocksReturn = api.rangeBlocks(token, 1, 2);
-        NodesChainReturn nodesConReturn = api.nodesChain(token);
+      /*  NodesChainReturn nodesConReturn = api.nodesChain(token);*/
 //        QueryContReturn queryContReturn = api.queryContract(token, "1", "11");
         StatusConReturn statusConReturn = api.statusContract(token, address);
         CountTraReturn countTraReturn = api.countTransaction(token);
