@@ -1,0 +1,382 @@
+2017-08-31 15:02:34  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:02:34  [ main:6 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:02:34  [ main:214 ] - [ DEBUG ]  [RESPONSE] {"access_token":"DGARU0T4OOS7UZEVNWVJQG","expires_in":7200,"refresh_token":"JQUPCGPNVZUNWU-PXJ3BVA","scope":"all","token_type":"Bearer"}
+
+2017-08-31 15:02:40  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:02:40  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:02:40  [ main:145 ] - [ DEBUG ]  [RESPONSE] {"access_token":"BDWWCZ45NSIK2KBFLYWO5G","expires_in":7200,"refresh_token":"YLW7_8RNU-2YNAMQJLMPCQ","scope":"all","token_type":"Bearer"}
+
+2017-08-31 15:03:00  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"1234","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:03:00  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"1234","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:03:01  [ main:224 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:03:01  [ main:228 ] - [ DEBUG ]  [RESPONSE] appkey doesn't exist:1234
+
+2017-08-31 15:10:58  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"1234","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:10:58  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"1234","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:10:58  [ main:122 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:10:58  [ main:122 ] - [ DEBUG ]  [RESPONSE] appkey doesn't exist:1234
+
+2017-08-31 15:11:08  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"1234","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:11:08  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"1234","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:11:09  [ main:119 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:11:09  [ main:120 ] - [ DEBUG ]  [RESPONSE] {"error":"invalid_client","error_description":"Client authentication failed"}
+
+2017-08-31 15:16:50  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:16:50  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:16:50  [ main:28 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:16:50  [ main:28 ] - [ DEBUG ]  [RESPONSE] invalid access token
+
+2017-08-31 15:16:59  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"1234","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:16:59  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"1234","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:16:59  [ main:107 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:16:59  [ main:107 ] - [ DEBUG ]  [RESPONSE] {"error":"invalid_client","error_description":"Client authentication failed"}
+
+2017-08-31 15:17:06  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:17:06  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:17:06  [ main:100 ] - [ DEBUG ]  [RESPONSE] {"access_token":"1MHCDLJGOP28FDWBWISKCA","expires_in":7200,"refresh_token":"DVEOQAFMXUEDP_GUMGYJZA","scope":"all","token_type":"Bearer"}
+
+2017-08-31 15:17:17  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:17:17  [ main:7 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:17:17  [ main:53 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:17:17  [ main:54 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "query type error"
+}
+2017-08-31 15:26:49  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:26:49  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:26:49  [ main:26 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:26:49  [ main:26 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "query type error"
+}
+2017-08-31 15:27:02  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:27:02  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:27:02  [ main:31 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "block": {
+    "Number": 1,
+    "Hash": "0x5ad3c9b9f156c3ea2b018f330c0663221ccfdbc6dc872120ae36123ed0d35515",
+    "ParentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "WriteTime": 1503394536661740749,
+    "AvgTime": 23,
+    "Txcounts": 1,
+    "MerkleRoot": "0x239b95dcb13681c9da7cea8edbcff419afb0fdd0838a682bcb35ae4cc730a300",
+    "Transactions": [
+      {
+        "Version": "1.2",
+        "Hash": "0x81d0a2409ac4769de713bcb8a4bc2ea6a324e37c378a705c8c29d096ebc3a1d8",
+        "BlockNumber": 1,
+        "BlockHash": "0x5ad3c9b9f156c3ea2b018f330c0663221ccfdbc6dc872120ae36123ed0d35515",
+        "TxIndex": 0,
+        "From": "0x3d508bc18baa6cd651a809540f19322f25ca30ea",
+        "To": "0x0000000000000000000000000000000000000000",
+        "Amount": 0,
+        "Timestamp": 1503394399375738460,
+        "Nonce": 4125532999287192258,
+        "ExecuteTime": 23,
+        "Payload": "0x60a0604052600b60608190527f68656c6c6f20776f726c64000000000000000000000000000000000000000000608090815261003e916000919061004c565b50341561004757fe5b6100ec565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061008d57805160ff19168380011785556100ba565b828001600101855582156100ba579182015b828111156100ba57825182559160200191906001019061009f565b5b506100c79291506100cb565b5090565b6100e991905b808211156100c757600081556001016100d1565b5090565b90565b610188806100fb6000396000f300606060405263ffffffff60e060020a6000350416638da9b7728114610021575bfe5b341561002957fe5b6100316100b1565b604080516020808252835181830152835191928392908301918501908083838215610077575b80518252602083111561007757601f199092019160209182019101610057565b505050905090810190601f1680156100a35780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100b961014a565b6000805460408051602060026001851615610100026000190190941693909304601f8101849004840282018401909252818152929183018282801561013f5780601f106101145761010080835404028352916020019161013f565b820191906000526020600020905b81548152906001019060200180831161012257829003601f168201915b505050505090505b90565b604080516020810190915260008152905600a165627a7a72305820ff8a0b89ef40366cc75ff0dafe9442fab2283671d34cac35d7aa90ad1ee623330029",
+        "Invalid": false,
+        "InvalidMsg": ""
+      }
+    ]
+  }
+}
+2017-08-31 15:27:10  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:27:10  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:27:10  [ main:37 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:27:10  [ main:38 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "block": null
+}
+2017-08-31 15:27:38  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2
+2017-08-31 15:27:38  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.QueryBlockParams@68be2bc2'
+2017-08-31 15:27:38  [ main:29 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "block": {
+    "Number": 2460,
+    "Hash": "0x56e2eafe430c33bb33e691c3dec3464c6771c00c248cf6ffb5eedf920687516a",
+    "ParentHash": "0x8e5f7d9aa050a2448b2d35877b94c0958e957e585188ff284b3925e175ed7a36",
+    "WriteTime": 1504164332083199026,
+    "AvgTime": 20,
+    "Txcounts": 1,
+    "MerkleRoot": "0x95850b52d188162570044e882d91a78bc200fb4e8090ba708e99865eecd9ba09",
+    "Transactions": [
+      {
+        "Version": "1.2",
+        "Hash": "0x4cb339d8c56306c5c1264b52827114e2d3565a92e4d50cc2a154d055c9cf0490",
+        "BlockNumber": 2460,
+        "BlockHash": "0x56e2eafe430c33bb33e691c3dec3464c6771c00c248cf6ffb5eedf920687516a",
+        "TxIndex": 0,
+        "From": "0x27c3cbebe00d7a3ec42351d9e5b2b02feaf0bd36",
+        "To": "0x170e95f480a006929bcfad635194893fe760c9cc",
+        "Amount": 0,
+        "Timestamp": 1504164331631156782,
+        "Nonce": 1874068156324778273,
+        "ExecuteTime": 20,
+        "Payload": "0xdb0721d00000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000a",
+        "Invalid": false,
+        "InvalidMsg": ""
+      }
+    ]
+  }
+}
+2017-08-31 15:33:02  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 15:33:02  [ main:5 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 15:33:02  [ main:125 ] - [ DEBUG ]  [RESPONSE] {"access_token":"6ANMC5Z8O_IER-5A0KYMRA","expires_in":7200,"refresh_token":"T1EWAP2XUOWMNJA78N_VEQ","scope":"all","token_type":"Bearer"}
+
+2017-08-31 15:33:25  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Bin":"0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029","From":"0x91049d6088088bf0c6c9c67d81375a89f648be0"}
+2017-08-31 15:33:25  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Bin":"0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029","From":"0x91049d6088088bf0c6c9c67d81375a89f648be0"}'
+2017-08-31 15:33:25  [ main:46 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:25  [ main:46 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "account doesn't exist"
+}
+2017-08-31 15:33:26  [ Thread-1:1113 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:26  [ Thread-1:1113 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:26  [ Thread-1:1122 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:26  [ Thread-1:1123 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:27  [ Thread-1:2125 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:27  [ Thread-1:2125 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:27  [ Thread-1:2132 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:27  [ Thread-1:2132 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:28  [ Thread-1:3133 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:28  [ Thread-1:3134 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:28  [ Thread-1:3141 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:28  [ Thread-1:3142 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:29  [ Thread-1:4144 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:29  [ Thread-1:4144 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:29  [ Thread-1:4152 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:29  [ Thread-1:4152 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:30  [ Thread-1:5154 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:30  [ Thread-1:5154 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:30  [ Thread-1:5161 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:30  [ Thread-1:5161 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:31  [ Thread-1:6163 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:31  [ Thread-1:6163 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:31  [ Thread-1:6170 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:31  [ Thread-1:6170 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:32  [ Thread-1:7172 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:32  [ Thread-1:7172 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:32  [ Thread-1:7180 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:32  [ Thread-1:7180 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:33  [ Thread-1:8182 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:33  [ Thread-1:8182 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:33  [ Thread-1:8190 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:33  [ Thread-1:8190 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:34  [ Thread-1:9192 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}
+2017-08-31 15:33:34  [ Thread-1:9192 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"null"}'
+2017-08-31 15:33:34  [ Thread-1:9200 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:33:34  [ Thread-1:9200 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: common: unmarshalJSON failed: hash must be exactly 32 bytes",
+  "TxHash": "",
+  "PostState": "",
+  "ContractAddress": "",
+  "Ret": ""
+}
+2017-08-31 15:33:46  [ main:0 ] - [ DEBUG ]  [REQUEST] cn.qsnark.sdk.rpc.params.CreateAccountParams@68be2bc2
+2017-08-31 15:33:46  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CreateAccountParams@68be2bc2'
+2017-08-31 15:33:46  [ main:86 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "",
+  "address": "0x6e41996787fb3883b12b309348206b7645f2ee14"
+}
+2017-08-31 15:33:59  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Bin":"0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029","From":"0x6e41996787fb3883b12b309348206b7645f2ee14"}
+2017-08-31 15:33:59  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Bin":"0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029","From":"0x6e41996787fb3883b12b309348206b7645f2ee14"}'
+2017-08-31 15:33:59  [ main:107 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x8744b0cdaffb7d0124edb185b288e96eea54450144832a33537005af515ce8a1"
+}
+2017-08-31 15:34:00  [ Thread-1:1176 ] - [ DEBUG ]  [REQUEST] {"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"0x8744b0cdaffb7d0124edb185b288e96eea54450144832a33537005af515ce8a1"}
+2017-08-31 15:34:00  [ Thread-1:1176 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"token":"Bearer 6ANMC5Z8O_IER-5A0KYMRA","txhash":"0x8744b0cdaffb7d0124edb185b288e96eea54450144832a33537005af515ce8a1"}'
+2017-08-31 15:34:00  [ Thread-1:1186 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "",
+  "TxHash": "0x8744b0cdaffb7d0124edb185b288e96eea54450144832a33537005af515ce8a1",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x82abf4b264cfe027c76cbe20dae9796f875eeca3",
+  "Ret": "0x606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a723058205196f5c898c244d3ada034d11893c7a5d67acac307f8e5db125810804cf7bb690029"
+}
+2017-08-31 15:37:54  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 15:37:54  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 15:37:54  [ main:40 ] - [ INFO ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:37:54  [ main:41 ] - [ DEBUG ]  [RESPONSE] invalid access token
+
+2017-08-31 15:41:37  [ main:0 ] - [ DEBUG ]  [REQUEST] 
+2017-08-31 15:41:37  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@7823a2f9'
+2017-08-31 15:41:37  [ main:27 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:41:37  [ main:28 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "contract code is empty"
+}
+2017-08-31 15:41:50  [ main:0 ] - [ DEBUG ]  [REQUEST] contract Accumulator    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }
+2017-08-31 15:41:50  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@7823a2f9'
+2017-08-31 15:41:50  [ main:68 ] - [ ERROR ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 15:41:50  [ main:69 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "Rpc Server: solc: exit status 1\nWarning: This is a pre-release compiler version, please do not use it in production.\n\u003cstdin\u003e:1:25: Error: Expected token LBrace got 'uint32'\ncontract Accumulator    uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }\n                        ^\n",
+  "Cts": null
+}
+2017-08-31 15:42:10  [ main:0 ] - [ DEBUG ]  [REQUEST] contract Accumulator   { uint32 sum = 0;   function increment(){         sum = sum + 1;     }      function getSum() returns(uint32){         return sum;     }   function add(uint32 num1,uint32 num2) {         sum = sum+num1+num2;     } }
+2017-08-31 15:42:10  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head 'cn.qsnark.sdk.rpc.params.CompileContParams@7823a2f9'
+2017-08-31 15:42:10  [ main:88 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "Cts": [
+    {
+      "Status": "",
+      "Id": 0,
+      "Bin": "0x60606040526000805463ffffffff19169055341561001957fe5b5b610101806100296000396000f300606060405263ffffffff60e060020a6000350416633ad14af381146034578063569c5f6d146052578063d09de08a146078575bfe5b3415603b57fe5b605063ffffffff600435811690602435166087565b005b3415605957fe5b605f60a9565b6040805163ffffffff9092168252519081900360200190f35b3415607f57fe5b605060b6565b005b6000805463ffffffff808216850184011663ffffffff199091161790555b5050565b60005463ffffffff165b90565b6000805463ffffffff8082166001011663ffffffff199091161790555b5600a165627a7a72305820d731222ae9cc718bcdb2ca73501658c68b2efde8635115e4ae16884bcc5697a00029",
+      "Abi": "[{\"constant\":false,\"inputs\":[{\"name\":\"num1\",\"type\":\"uint32\"},{\"name\":\"num2\",\"type\":\"uint32\"}],\"name\":\"add\",\"outputs\":[],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getSum\",\"outputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"increment\",\"outputs\":[],\"payable\":false,\"type\":\"function\"}]",
+      "OK": true
+    }
+  ]
+}
+2017-08-31 16:18:54  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:18:54  [ main:25 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:18:55  [ main:502 ] - [ INFO ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 16:18:55  [ main:509 ] - [ DEBUG ]  [RESPONSE] invalid access token
+
+2017-08-31 16:19:37  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:20:00  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:46:21  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:53:58  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:54:15  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:54:15  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:54:15  [ main:32 ] - [ INFO ]  Incoming parameters are incorrect, please re-pass the parameters
+2017-08-31 16:54:15  [ main:33 ] - [ DEBUG ]  [RESPONSE] invalid access token
+
+2017-08-31 16:54:28  [ main:0 ] - [ DEBUG ]  [REQUEST] {"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}
+2017-08-31 16:54:28  [ main:6 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"app_key":"123","app_secret":"123","grant_type":"password","scope":"all","username":"yeyc","password":"hello"}'
+2017-08-31 16:54:28  [ main:237 ] - [ DEBUG ]  [RESPONSE] {"access_token":"_CC9XQTUNMQGOMKDX0Y0QA","expires_in":7200,"refresh_token":"2ZHFWY6NW2SJZQV9MIWWIQ","scope":"all","token_type":"Bearer"}
+
+2017-08-31 16:54:41  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:54:41  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x89ea642f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:54:42  [ main:1136 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x17f3522668073087ecff2f8de758d0b1ca380ad3611bbf2439b73b1fa642b629",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 16:56:08  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:56:31  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 16:56:37  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x38cc4831","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:56:37  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x38cc4831","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:56:38  [ main:1117 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0xf7b41d1b324837e025a459751b0e653eaf8d8f4a4711abee0ee361fe0cf5d853",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 16:57:11  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:57:11  [ main:4 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:57:12  [ main:1098 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x7f24cf51a48bc88da59064bbc9a83358313babd1ac25c9ebc64ce55d05f5488e",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 16:57:20  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 16:57:20  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 16:57:21  [ main:1099 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x2953b37a557b5f59ff8b4cfeb5ebb544911d8576f5a6c0441365954012f5c656",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 17:06:09  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 17:06:09  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 17:06:10  [ main:1108 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x52d418d1a76626ac38cb097db0d169370cc3f9173c01c6d69bb23d3f7c09154d",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 17:06:51  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 17:06:51  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 17:06:52  [ main:1113 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0xba6fce697b3ae7c7d7b10479b84e942386952b9f03eecd74c8e30d1e607cb84e",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 17:08:45  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 17:08:45  [ main:2 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x4f2be91f","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 17:08:47  [ main:1110 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x4779e88682bc879a9a675f47c6849eb433f2d6cca76b3202fbd6828b7c1b5228",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 17:12:55  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:13:59  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:14:29  [ main:1 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:32:28  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:34:13  [ main:1 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:34:38  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:41:50  [ main:1 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x3ad14af300000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 17:41:50  [ main:48 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x3ad14af300000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 17:41:51  [ main:1223 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0xdd9f1ed8256d46c135b3f7c6121b85dbb41b8eb4b13dfd523f10b912fae2a454",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
+2017-08-31 17:42:10  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:42:18  [ main:0 ] - [ DEBUG ]  [RESPONSE] {"Status":"The method name or parameter entered does not match abi"}
+2017-08-31 17:42:26  [ main:0 ] - [ DEBUG ]  [REQUEST] {"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x38cc4831","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}
+2017-08-31 17:42:26  [ main:3 ] - [ DEBUG ]  [REQUEST] CURL： curl -X POST --head '{"Const":true,"From":"0x7c2b111bce226cde5848a6304dc36922b7099491","Payload":"0x38cc4831","To":"0x83665f52cd2d201269da2faa6c877d2d037b991b"}'
+2017-08-31 17:42:27  [ main:1111 ] - [ DEBUG ]  [RESPONSE] {
+  "Status": "ok",
+  "TxHash": "0x02ac4e4e1002703b13ec354bd1799784e31d9520825f88ea3ec37627c06e3f22",
+  "PostState": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "ContractAddress": "0x0000000000000000000000000000000000000000",
+  "Ret": "0x0"
+}
