@@ -3,7 +3,7 @@ Qsnark SDK 是qsnark对外提供的API接口的Java封装。
 
 # SDK下载列表
 |简述|下载地址|
-|:---|:---|:---|
+|:---|:---|
 |Java SDK|[https://dev.hyperchain.cn/download/qsnarksdk-1.0-SNAPSHOT.jar](https://dev.hyperchain.cn/download/qsnarksdk-1.0-SNAPSHOT.jar)|
 |Java SDK依赖包|[https://dev.hyperchain.cn/download/qsnarksdk-1.0-SNAPSHOT-jar-with-dependencies.jar](https://dev.hyperchain.cn/download/qsnarksdk-1.0-SNAPSHOT-jar-with-dependencies.jar)|
 |Go SDK|[https://github.com/hyperchaincn/qsnark-go-sdk](https://github.com/hyperchaincn/qsnark-go-sdk)|
@@ -13,7 +13,7 @@ Qsnark SDK 是qsnark对外提供的API接口的Java封装。
 
 # SDK API概览
 |接口名称|接口功能|
-|:---|:---|:---|
+|:---|:---|
 |[getAccess_Token](getAccess_Token)|获取AccessToken|
 |[refAccess_Token](refAccess_Token)|刷新AccessToken|
 |[queryTransaction](queryTransaction)|获取交易信息|
