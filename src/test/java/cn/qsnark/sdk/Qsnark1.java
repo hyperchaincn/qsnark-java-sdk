@@ -14,7 +14,7 @@ import java.util.List;
 public class Qsnark1 {
     public static void main(String[] args) throws Exception{
         QsnarkAPI api = new QsnarkAPI();
-        GetTokenReturn getTokenReturn = api.getAccess_Token("123", "123", "17706421110", "123");
+        GetTokenReturn getTokenReturn = api.getAccess_Token("", "", "", "");
         String token = getTokenReturn.getAccess_token();
         CreteAccountReturn creteAccountReturn = api.createAccount(token);
         System.out.println(token);

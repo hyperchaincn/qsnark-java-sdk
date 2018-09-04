@@ -7,7 +7,7 @@ import cn.hyperchain.sdk.rpc.function.FunctionEncode;
 import cn.hyperchain.sdk.rpc.returns.ReceiptReturn;
 import cn.qsnark.sdk.sha3.Sha3;
 import net.sf.json.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +43,7 @@ public class PlayLoadTest {
         String methodName = abiJSON.containsKey("name") ? abiJSON.getString("name") : "CONTRACT DEPLOY";
         //参数名与方法参数映射关系
         Map<String, Object> paramsMap = new HashMap<String, Object>();
-        com.alibaba.fastjson.JSONArray inputs = abiJSON.getJSONArray("inputs");
+        JSONArray inputs = abiJSON.getJSONArray("inputs");
         // 方法有参数
         if (inputs.size() != 0) {
             JSONArray inputArray = null;
@@ -77,7 +77,7 @@ public class PlayLoadTest {
     private static Map<String, JSONObject> getMethodMap(String abiStr) throws IOException {
 
         Map<String, JSONObject> map = new HashMap<>();
-        com.alibaba.fastjson.JSONArray jsonArray = com.alibaba.fastjson.JSONArray.parseArray(abiStr);
+      JSONArray jsonArray = JSONArray.fromObject(abiStr);
         for (Object o : jsonArray) {
             JSONObject method = (JSONObject) o;
             map.put(getMethodID(method), method);
@@ -89,7 +89,7 @@ public class PlayLoadTest {
     private static String getMethodID(JSONObject jsonObject) {
         String fullName = "";
         fullName += jsonObject.getString("name") + "(";
-        com.alibaba.fastjson.JSONArray inputs = jsonObject.getJSONArray("inputs");
+        JSONArray inputs = jsonObject.getJSONArray("inputs");
         for (int i = 0; i < inputs.size(); i++) {
             JSONObject input = inputs.getJSONObject(i);
             fullName += input.getString("type");

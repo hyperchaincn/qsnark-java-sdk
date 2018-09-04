@@ -10,9 +10,7 @@ package cn.qsnark.sdk.rpc.base;
 public enum BaseConfig {
     Content_Type("application/json"),
     Accept("application/json"),
-//    URL("http://127.0.0.1:8080"),
-    URL("https://api.hyperchain.cn"),
-    TOKENURL("127.0.0.1:14000");
+    URL("https://dev.hyperchain.cn");
     private String type;
 
     private BaseConfig(String type) {
