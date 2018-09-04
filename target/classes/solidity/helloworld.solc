@@ -1,1 +1,0 @@
-contract HelloWorld{    string hello= "hello world";    function getHello() returns(string) {    return hello;    }}

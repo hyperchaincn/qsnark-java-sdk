@@ -1,7 +1,0 @@
-contract C1{
-    bytes32 a;
-    function getValue()returns(bytes32,bytes32){
-     a="趣链科技";
-     return (a,a);
-     }
-}
